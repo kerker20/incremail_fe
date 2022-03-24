@@ -136,12 +136,12 @@ export default {
                email: this.email,
                password: this.password,
            })
-           console.log(response);
            setTimeout(function(){
                 element.classList.remove("animate-spin");
             }, 6000);
            localStorage.setItem('token', response.data.token);
            localStorage.setItem('data', response.data.user.name);
+           localStorage.setItem('userID', response.data.user.id);
            this.$store.dispatch('user', response.data.user)
            window.location.href = 'http://localhost:3001/example'
         }

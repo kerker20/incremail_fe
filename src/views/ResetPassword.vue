@@ -103,7 +103,7 @@
                     token: this.$route.params.token
                 });
                 console.log(response);
-                this.$router.push('/login');
+                this.$router.push('/');
             }
         }
     }

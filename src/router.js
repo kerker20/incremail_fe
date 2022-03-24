@@ -8,6 +8,7 @@ import Register from './views/Register.vue'
 import Login from './views/Login.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
 import ResetPassword from './views/ResetPassword.vue'
+import EmailTemplates from './views/EmailTemplates.vue'
 
 
 Vue.use(Router);
@@ -21,6 +22,7 @@ export default new Router({
         {path: '/settings', component: Settings},
         {path: '/register', component: Register},
         {path: '/example', component: Example},
+        {path: '/emailTemplates', component: EmailTemplates},
         {path: '/forgot', component: ForgotPassword},
         {path: '/reset/:token', component: ResetPassword},
 

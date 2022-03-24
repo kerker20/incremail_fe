@@ -598,7 +598,8 @@ export default {
     saveDesign() {
       this.$refs.emailEditor.editor.saveDesign(
         (design) => {
-          console.log('saveDesign', design);
+          var test = JSON.stringify(design);
+          console.log('saveDesign', test);
         }
       )
     },

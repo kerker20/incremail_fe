@@ -187,6 +187,9 @@ export default {
             }, 6000);
               const email = document.getElementById('email-address');
               email.value = '';
+              setTimeout(function(){
+                window.location.href = 'http://localhost:3001/'
+            }, 1000);
           }else{
               document.getElementById("toast").style.display = "none";
           }

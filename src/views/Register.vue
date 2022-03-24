@@ -197,7 +197,7 @@ export default {
            setTimeout(function(){
                 element.classList.remove("animate-spin");
             }, 6000);
-           this.$router.push('/login');
+           this.$router.push('/');
         }
     }
 };

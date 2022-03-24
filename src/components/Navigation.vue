@@ -78,8 +78,6 @@
 </template>
 <script>
 
-import {mapGetters} from 'vuex';
-
 export default {
     name: 'Navigation',
     methods: {
@@ -88,9 +86,6 @@ export default {
         this.$route.push('/')
       }
     },
-    computed: {
-      ...mapGetters(['user'])
-    }
 
 }
 </script>
