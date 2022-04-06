@@ -9,6 +9,8 @@ import Login from './views/Login.vue'
 import ForgotPassword from './views/ForgotPassword.vue'
 import ResetPassword from './views/ResetPassword.vue'
 import EmailTemplates from './views/EmailTemplates.vue'
+import EmailView from './views/ViewUpdate.vue'
+import Favorites from './views/Favorites.vue'
 
 
 Vue.use(Router);
@@ -25,6 +27,8 @@ export default new Router({
         {path: '/emailTemplates', component: EmailTemplates},
         {path: '/forgot', component: ForgotPassword},
         {path: '/reset/:token', component: ResetPassword},
+        {path: '/emailView', component: EmailView},
+        {path: '/favorites', component: Favorites},
 
     ]
 })

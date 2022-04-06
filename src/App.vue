@@ -11,4 +11,11 @@ export default {
 </script>
 
 <style>
+#app {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: gray;
+}
+span.brand {
+    display: none;
+}
 </style>

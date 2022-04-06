@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { loadScript } from './loadScript';
-import pkg from '../../package.json';
+import { loadScript } from "./loadScript";
+import pkg from "../../package.json";
 
 let lastEditorId = 0;
 
 export default {
-  name: 'EmailEditor',
+  name: "EmailEditor",
   props: {
     editorId: String,
     options: Object,
@@ -23,7 +23,7 @@ export default {
     locale: String,
     minHeight: {
       type: String,
-      default: '500px',
+      default: "100%",
     },
   },
   computed: {
@@ -58,20 +58,21 @@ export default {
       this.editor = unlayer.createEditor({
         ...options,
         id: this.id,
-        displayMode: 'email',
+        displayMode: "email",
         source: {
           name: pkg.name,
           version: pkg.version,
         },
       });
 
-      this.$emit('load');
+      this.$emit("load");
 
-      this.editor.addEventListener('editor:ready', () => {
-        this.$emit('ready');
+      this.editor.addEventListener("editor:ready", () => {
+        this.$emit("ready");
       });
     },
     loadDesign(design) {
+      console.log(design);
       this.editor.loadDesign(design);
     },
     saveDesign(callback) {
@@ -88,5 +89,11 @@ export default {
 .unlayer-editor {
   flex: 1;
   display: flex;
+}
+.frFaYW .blockbuilder-branding .fa-bolt {
+  display: none;
+}
+#cont::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="container h-auto px-6 h-fit w-full">
-    <div class="w-full h-full rounded mt-28">
+  <div class="flex justify-center bg-gray">
+    <div class="w-90 h-full rounded mt-14" id="sign">
       <div
         id="toast"
         class="
@@ -50,17 +50,19 @@
             ></path>
           </svg>
         </div>
-        <span class="ml-3 text-sm font-normal">Password Request Successfully Sent!</span>
+        <span class="ml-3 text-sm font-normal"
+          >Password Request Successfully Sent!</span
+        >
       </div>
       <div
         class="
           max-w-md
           mx-auto
-          bg-white
+          bg-gray-50
           rounded-xl
           shadow-md
           overflow-hidden
-          md:max-w-48
+          md:max-w-3xl
         "
       >
         <div class="md:flex">
@@ -143,12 +145,24 @@
                   "
                   @click="showToast"
                 >
-               <span id="loader" class="mr-2">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                </svg>
-               </span>
+                  <span id="loader" class="mr-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="17"
+                      fill="currentColor"
+                      class="bi bi-arrow-clockwise"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+                      />
+                      <path
+                        d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+                      />
+                    </svg>
+                  </span>
                   Submit
                 </button>
               </div>
@@ -175,39 +189,40 @@ export default {
       const response = await axios.post("forgot", {
         email: this.email,
       });
-          if(response) {
-              var ele = document.getElementById('toast');
-              document.getElementById("toast").style.display = "block";
-              setTimeout(function(){
-                ele.style.display = 'none';
-              }, 6000);
-              
-               setTimeout(function(){
-                element.classList.remove("animate-spin");
-            }, 6000);
-              const email = document.getElementById('email-address');
-              email.value = '';
-              setTimeout(function(){
-                window.location.href = 'http://localhost:3001/'
-            }, 1000);
-          }else{
-              document.getElementById("toast").style.display = "none";
-          }
+      if (response) {
+        var ele = document.getElementById("toast");
+        document.getElementById("toast").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 6000);
+
+        setTimeout(function () {
+          element.classList.remove("animate-spin");
+        }, 6000);
+        const email = document.getElementById("email-address");
+        email.value = "";
+        setTimeout(function () {
+          window.location.href = "http://localhost:3001/";
+        }, 1000);
+      } else {
+        document.getElementById("toast").style.display = "none";
+      }
     },
   },
 };
 </script>
 <style>
-#toast-success{
-    animation: toast .4s forwards;
-    @keyframes toast{
-        from{
-            opacity: 0;
-            transform: translateX('100px');
-        }to{
-            opacity: 1;
-            transform: translateX(0);
-        }
+#toast-success {
+  animation: toast 0.4s forwards;
+  @keyframes toast {
+    from {
+      opacity: 0;
+      transform: translateX("100px");
     }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 </style>

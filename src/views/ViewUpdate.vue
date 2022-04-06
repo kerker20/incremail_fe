@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-6"
+      class="flex items-center justify-between flex-wrap bg-gray-800 sticky p-6"
     >
       <div
         id="toast"
@@ -53,10 +53,10 @@
           </svg>
         </div>
         <span class="ml-3 text-sm font-normal"
-          >Email Template Successfully Saved!</span
+          >Email Template Successfully Updated!</span
         >
       </div>
-      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
         <svg
           class="fill-current h-8 w-8 mr-2"
           width="54"
@@ -68,7 +68,7 @@
             d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
           />
         </svg>
-        <span class="font-semibold text-xl tracking-tight">IncreMail</span>
+        <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
       </div>
       <div class="block lg:hidden">
         <button
@@ -94,22 +94,48 @@
           </svg>
         </button>
       </div>
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+          <router-link
+            :to="'/'"
+            class="
+              block
+              mt-4
+              lg:inline-block lg:mt-0
+              text-white
+              hover:text-white
+              mr-4
+            "
+          >
+            Dashboard
+          </router-link>
+          <router-link
+            :to="'/mails'"
+            class="
+              block
+              mt-4
+              lg:inline-block lg:mt-0
+              text-white
+              hover:text-white
+              mr-4
+            "
+          >
+            Mails
+          </router-link>
+        </div>
+      </div>
       <div class="flex justify-end">
-        <img
-          class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80"
-        />
-        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
+        <div class="text-white" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
     <div class="flex flex-no-wrap bg-gray-200 h-screen">
       <div
         class="
-          w-44
+          w-50
           absolute
           sm:relative
-          bg-white
+          bg-gray-800
           shadow
           md:h-full
           flex-col
@@ -118,27 +144,19 @@
           sm:flex
         "
       >
-        <div class="px-6 h-screen">
+        <div class="px-8 max-w-md">
           <ul class="mt-4">
             <router-link
               :to="'/campaigns'"
               class="
                 flex
                 w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
                 justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
+                text-gray-300
+                hover:text-gray-500
                 cursor-pointer
                 items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
+                mb-6
               "
             >
               <div class="flex items-center">
@@ -169,17 +187,12 @@
               class="
                 flex
                 w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
                 justify-between
-                text-white
-                bg-gray-600
+                text-gray-600
+                hover:text-gray-500
                 cursor-pointer
                 items-center
-                mb-4
+                mb-6
               "
             >
               <div class="flex items-center">
@@ -191,7 +204,24 @@
                 viewBox="0 0 16 16">
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
                 </svg>
-                <span class="text-sm ml-2">Templates</span>
+                <!-- <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-stack"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
+                  <polyline points="4 12 12 16 20 12" />
+                  <polyline points="4 16 12 20 20 16" />
+                </svg> -->
+                <span class="text-sm ml-2 text-blue-500">Templates</span>
               </div>
             </router-link>
             <router-link
@@ -199,23 +229,16 @@
               class="
                 flex
                 w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
                 justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
+                text-gray-600
+                hover:text-gray-500
                 cursor-pointer
                 items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
+                mb-6
               "
             >
               <div class="flex items-center">
+                
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-stack"
@@ -233,32 +256,24 @@
                   <polyline points="4 12 12 16 20 12" />
                   <polyline points="4 16 12 20 20 16" />
                 </svg>
-                <span class="text-sm ml-2">Blocks</span>
+                <span class="text-sm ml-2 text-gray-400">Blocks</span>
               </div>
             </router-link>
               <router-link
               :to="'/favorites'"
               class="
-                 flex
+                flex
                 w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
                 justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
+                text-gray-600
+                hover:text-gray-500
                 cursor-pointer
                 items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
+                mb-6
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
+                <svg xmlns="http://www.w3.org/2000/svg" 
                 width="16" height="16" 
                 fill="currentColor" 
                 class="bi bi-heart" 
@@ -282,7 +297,7 @@
                   <polyline points="4 12 12 16 20 12" />
                   <polyline points="4 16 12 20 20 16" />
                 </svg> -->
-                <span class="text-sm ml-2">Favorites</span>
+                <span class="text-sm ml-2 text-gray-400">Favorites</span>
               </div>
             </router-link>
             <router-link
@@ -290,19 +305,11 @@
               class="
                 flex
                 w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
                 justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
+                text-gray-600
+                hover:text-gray-500
                 cursor-pointer
                 items-center
-                transition
-                duration-50
-                ease-in-out
               "
             >
               <div class="flex items-center">
@@ -324,14 +331,36 @@
                   />
                   <circle cx="12" cy="12" r="3" />
                 </svg>
-                <span class="text-sm ml-2">Settings</span>
+                <span class="text-sm ml-2 text-gray-400">Settings</span>
               </div>
             </router-link>
+            <div class="flex items-center mt-96" @click="handleClick">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="white"
+                class="bi bi-box-arrow-in-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                />
+              </svg>
+              <span class="text-sm ml-2 text-gray-400 cursor-pointer">
+                Logout</span
+              >
+            </div>
           </ul>
         </div>
       </div>
       <!-- Remove class [ h-64 ] when adding a card block -->
-      <div class="container max-w-screen-2xl" id="cont">
+      <div class="container mx-auto py-1 md:w-5/7 w-11/12 px-6">
         <div id="example" class="overflow-scroll">
           <div class="container">
             <nav
@@ -340,12 +369,12 @@
                 items-center
                 justify-between
                 flex-wrap
-                bg-white
+                bg-gray-800
                 p-6
                 h-20
               "
             >
-              <div class="flex items-center flex-shrink-0 text-dark mr-6">
+              <div class="flex items-center flex-shrink-0 text-white mr-6">
                 <svg
                   class="fill-current h-8 w-8 mr-2"
                   width="54"
@@ -391,12 +420,6 @@
                 <div class="text-sm lg:flex-grow">
                   <a
                     href="#responsive-header"
-                    class="block mt-4 text-dark lg:inline-block lg:mt-0 mr-4"
-                  >
-                    Start creating you own newsletters from Scratch
-                  </a>
-
-                  <div
                     class="
                       block
                       mt-4
@@ -406,59 +429,73 @@
                       mr-4
                     "
                   >
-                    <button
-                      @click="show"
-                      class="
-                        bg-gray-300
-                        hover:bg-gray-400
-                        text-gray-800
-                        font-bold
-                        py-1
-                        px-3
-                        rounded
-                        inline-flex
-                        items-center
-                      "
-                    >
-                      <svg
-                        style="width: 24px; height: 24px"
-                        viewBox="0 0 24 24"
+                    Start creating you own newsletters from Scratch
+                  </a>
+                  <a
+                    role="button"
+                    class="
+                      block
+                      mt-4
+                      text-gray-50
+                      lg:inline-block lg:mt-0
+                      hover:text-white
+                      mr-4
+                    "
+                  >
+                    <div class="ml-20">
+                      <button
+                        @click="show"
+                        class="
+                          bg-gray-300
+                          hover:bg-gray-400
+                          text-gray-800
+                          font-bold
+                          py-1
+                          px-3
+                          rounded
+                          inline-flex
+                          items-center
+                        "
                       >
-                        <path
-                          fill="currentColor"
-                          d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"
-                        />
-                      </svg>
-                      <span>Save Design</span>
-                    </button>
-                    <button
-                      @click="show1"
-                      class="
-                        bg-gray-300
-                        hover:bg-gray-400
-                        text-gray-800
-                        ml-3
-                        font-bold
-                        py-1
-                        px-3
-                        rounded
-                        inline-flex
-                        items-center
-                      "
-                      v-on:click="exportHtml"
-                    >
-                      <svg
-                        style="width: 24px; height: 24px"
-                        viewBox="0 0 24 24"
+                        <svg
+                          style="width: 24px; height: 24px"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"
+                          />
+                        </svg>
+                        <span>Update Design</span>
+                      </button>
+                      <button
+                        class="
+                          bg-gray-300
+                          hover:bg-gray-400
+                          text-gray-800
+                          ml-3
+                          font-bold
+                          py-1
+                          px-3
+                          rounded
+                          inline-flex
+                          items-center
+                        "
+                        v-on:click="exportHtml"
                       >
-                        <path
-                          fill="currentColor"
-                          d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
-                        />
-                      </svg>
-                      <span>Send To</span>
-                    </button>
-                  </div>
+                        <svg
+                          style="width: 24px; height: 24px"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
+                          />
+                        </svg>
+                        <span> Export HTML</span>
+                      </button>
+                    </div>
+                  </a>
 
                   <div
                     id="modal"
@@ -557,25 +594,12 @@
                                   dark:placeholder-gray-400
                                   dark:text-white
                                 "
-                                v-model="title"
+                                v-model="titleEdit"
+                                v-on:change="changeTitle"
                                 placeholder="Template Title"
                                 required
                               />
                             </div>
-                            <!-- <div class="center">
-                              <div class="form-input">
-                                <div class="preview">
-                                  <img id="file-ip-1-preview" />
-                                </div>
-                                <label for="file-ip-1">Upload Image</label>
-                                <input
-                                  type="file"
-                                  id="file-ip-1"
-                                  accept="image/*"
-                                  v-on:change="showPreview"
-                                />
-                              </div>
-                            </div> -->
                           </form>
                           <button
                             v-on:click="saveDesign"
@@ -600,198 +624,10 @@
                               mr-2
                             "
                           >
-                            Submit
+                            Save
                           </button>
                           <button
                             @click="hide"
-                            data-modal-toggle="popup-modal"
-                            type="button"
-                            class="
-                              text-gray-500
-                              bg-white
-                              hover:bg-gray-100
-                              focus:ring-4
-                              focus:outline-none
-                              focus:ring-gray-200
-                              rounded-lg
-                              border border-gray-200
-                              text-sm
-                              font-medium
-                              px-5
-                              py-2.5
-                              hover:text-gray-900
-                              focus:z-10
-                              dark:bg-gray-700
-                              dark:text-gray-300
-                              dark:border-gray-500
-                              dark:hover:text-white
-                              dark:hover:bg-gray-600
-                              dark:focus:ring-gray-600
-                            "
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    id="modal1"
-                    tabindex="-1"
-                    class="
-                      hidden
-                      content-center
-                      overflow-y-auto overflow-x-hidden
-                      absolute
-                      ml-52
-                      z-50
-                      md:inset-0
-                      h-modal
-                      md:h-full
-                      justify-center
-                      items-center
-                    "
-                    aria-hidden="true"
-                  >
-                    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                      <div
-                        class="
-                          relative
-                          bg-white
-                          rounded-lg
-                          shadow
-                          dark:bg-gray-700
-                        "
-                      >
-                        <div class="flex justify-end p-2">
-                          <button
-                            type="button"
-                            class="
-                              text-gray-400
-                              bg-transparent
-                              hover:bg-gray-200 hover:text-gray-900
-                              rounded-lg
-                              text-sm
-                              p-1.5
-                              ml-auto
-                              inline-flex
-                              items-center
-                              dark:hover:bg-gray-800 dark:hover:text-white
-                            "
-                            data-modal-toggle="popup-modal"
-                          >
-                            <svg
-                              @click="hide1"
-                              class="w-5 h-5"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="p-6 pt-0 text-center">
-                          <form
-                            class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
-                            action="#"
-                          >
-                            <div>
-                              <label
-                                for="email"
-                                class="
-                                  block
-                                  mb-2
-                                  required
-                                  text-sm
-                                  font-medium
-                                  text-gray-900 text-left
-                                  dark:text-gray-300
-                                "
-                                >Send To Email Recipient</label
-                              >
-                              <input
-                                type="title"
-                                name="title"
-                                id="title"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                "
-                                v-model="title"
-                                placeholder="Recipient"
-                                required
-                              />
-                            </div>
-                            <!-- <div class="center">
-                              <div class="form-input">
-                                <div class="preview">
-                                  <img id="file-ip-1-preview" />
-                                </div>
-                                <label for="file-ip-1">Upload Image</label>
-                                <input
-                                  type="file"
-                                  id="file-ip-1"
-                                  accept="image/*"
-                                  v-on:change="showPreview"
-                                />
-                              </div>
-                            </div> -->
-                          </form>
-                          <button
-                            v-on:click="saveDesign"
-                            data-modal-toggle="popup-modal"
-                            type="button"
-                            class="
-                              text-white
-                              bg-gray-600
-                              hover:bg-gray-800
-                              focus:ring-4
-                              focus:outline-none
-                              focus:ring-gray-300
-                              dark:focus:ring-gray-800
-                              font-medium
-                              rounded-lg
-                              text-sm
-                              inline-flex
-                              items-center
-                              px-5
-                              py-2.5
-                              text-center
-                              mr-2
-                            "
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              class="bi bi-send"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"
-                              />
-                            </svg>
-                            &nbsp;Send
-                          </button>
-                          <button
-                            @click="hide1"
                             data-modal-toggle="popup-modal"
                             type="button"
                             class="
@@ -829,70 +665,25 @@
                   <router-link
                     :to="'/new'"
                     class="
-                      rounded
-                      text-white
-                      bg-gray-800
-                      hover:border-transparent
-                      hover:text-gray-800
-                      hover:bg-white
-                      ml-3
-                      text-sm
-                      font-bold
-                      py-1
-                      cursor-pointer
-                      px-3
-                      rounded
-                      inline-flex
-                      items-center
-                      transition
-                      duration-50
-                      ease-in-out
-                    "
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      fill="currentColor"
-                      class="bi bi-pencil-square"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                      />
-                    </svg>
-                    <span>&nbsp;Create New</span>
-                  </router-link>
-                  <!-- <router-link
-                    :to="'/new'"
-                    class="
                       inline-block
                       text-sm
-                      px-10
+                      px-4
                       py-2
                       cursor-pointer
                       leading-none
                       border
                       rounded
                       text-white
-                      border-dark
-                      bg-gray-800
+                      border-white
                       hover:border-transparent
                       hover:text-gray-800
-                      hover:border-gray-800
                       hover:bg-white
-
                       mt-4
                       lg:mt-0
                     "
                   >
-                  
-                    <span>Create new</span>
-                  </router-link> -->
+                    <span>Create New </span>
+                  </router-link>
                   <div></div>
                 </div>
               </div>
@@ -912,7 +703,8 @@
 
 <script>
 import { EmailEditor } from "../components";
-import sample from "../data/sample.json";
+// import sample from "../data/sample.json";
+// import test from "../data/test.json";
 import axios from "axios";
 export default {
   name: "Example",
@@ -922,11 +714,16 @@ export default {
   data() {
     return {
       title: "",
+      titleEdit: localStorage.getItem("templateTitle"),
       user: localStorage.getItem("data"),
+      uhtml: JSON.parse(localStorage.getItem("templateHTML")),
       appearance: {
-        theme: "light",
+        theme: "dark",
       },
     };
+  },
+  created() {
+    // this.editorLoaded(sample)
   },
   methods: {
     hide() {
@@ -935,58 +732,18 @@ export default {
     show() {
       document.getElementById("modal").style.display = "block";
     },
-    hide1() {
-      document.getElementById("modal1").style.display = "none";
-    },
-    show1() {
-      document.getElementById("modal1").style.display = "block";
-    },
-    // showPreview(event) {
-    //   if (event.target.files.length > 0) {
-    //     let file = event.target.files[0];
-    //     var src = URL.createObjectURL(file);
-    //     var preview = document.getElementById("file-ip-1-preview");
-    //     preview.src = src;
-    //     preview.style.display = "block";
-    //     console.log(file);
-    //     let formdata = new FormData();
-    //     formdata.append("user_id", localStorage.getItem("userID"));
-    //     formdata.append("image", file);
-    //     this.sendImage(formdata);
-    //   }
-    // },
-
-    // sendImages(event) {
-    //   if (event.target.files.length > 0) {
-    //     let file = event.target.files[0];
-    //     console.log(file);
-    //     let formdata = new FormData();
-    //     formdata.append("user_id", localStorage.getItem("userID"));
-    //     formdata.append("image", file);
-    //     this.sendImage(formdata);
-    //   }
-    // },
-
     // called when the editor is created
     editorLoaded() {
       console.log("editorLoaded");
-      this.$refs.emailEditor.editor.loadDesign(sample);
+      this.$refs.emailEditor.editor.loadDesign(JSON.parse(this.uhtml));
     },
-
     // called when the editor has finished loading
     editorReady() {
       console.log("editorReady");
     },
     saveDesign() {
       this.$refs.emailEditor.editor.saveDesign((design) => {
-        setTimeout(function () {
-          const collection = document.getElementsByClassName(
-            "blockbuilder-branding"
-          );
-          console.log(collection);
-        }, 100);
-        console.log("saveDesign", JSON.stringify(design), null, "\t");
-        this.exportHtml();
+        console.log("saveDesign", JSON.stringify(design));
         let html = JSON.stringify(design, null, "\t");
         this.send(html);
 
@@ -1001,18 +758,16 @@ export default {
       });
     },
     async send(html) {
-      await axios.post("createEmail", {
+      var titleE = document.getElementById("title").value;
+      await axios.put(`templateUpdate/${localStorage.getItem("templateID")}`, {
         user_id: localStorage.getItem("userID"),
         html: html,
-        title: this.title,
+        title: titleE,
       });
     },
-    // async sendImage(data) {
-    //   await axios.post("image-upload", data);
-    // },
     exportHtml() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
-        console.log("exportHtml", data.html);
+        console.log("exportHtml", data);
       });
     },
     handleClick() {
@@ -1067,47 +822,5 @@ body {
   border: 0px;
   max-width: 150px;
   cursor: pointer;
-}
-.form-input {
-  width: 350px;
-  padding: 20px;
-  background: #fff;
-  box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
-    3px 3px 7px rgba(94, 104, 121, 0.377);
-}
-.form-input img {
-  width: 100%;
-  display: none;
-  margin-bottom: 30px;
-}
-.form-input input {
-  display: none;
-}
-
-.form-input label {
-  display: block;
-  width: 60%;
-  height: 45px;
-  margin-left: 20%;
-  line-height: 50px;
-  text-align: center;
-  background: #1172c2;
-  color: #fff;
-  font-size: 12px;
-  font-family: "Open Sans", sans-serif;
-  text-transform: Uppercase;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.center {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#cont{
-  margin-left: 2rem;
-  margin-top: 1rem;
 }
 </style>

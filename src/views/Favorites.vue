@@ -186,7 +186,7 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
+                    <svg xmlns="http://www.w3.org/2000/svg" 
                 width="16" 
                 height="16" 
                 fill="currentColor" 
@@ -225,11 +225,14 @@
                 overflow-hidden
                 p-2
                 justify-between
-                text-white
-                bg-gray-600
+                text-gray-800
+                hover:text-white hover:bg-gray-400
                 cursor-pointer
                 items-center
                 mb-4
+                transition
+                duration-50
+                ease-in-out
               "
             >
               <div class="flex items-center">
@@ -253,10 +256,10 @@
                 <span class="text-sm ml-2">Blocks</span>
               </div>
             </router-link>
-               <router-link
+              <router-link
               :to="'/favorites'"
               class="
-                 flex
+                flex
                 w-full
                 bg-white
                 rounded-xl
@@ -264,18 +267,15 @@
                 overflow-hidden
                 p-2
                 justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
+                text-white
+                bg-gray-600
                 cursor-pointer
                 items-center
                 mb-4
-                transition
-                duration-50
-                ease-in-out
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
+                   <svg xmlns="http://www.w3.org/2000/svg" 
                 width="16" height="16" 
                 fill="currentColor" 
                 class="bi bi-heart" 
@@ -351,7 +351,7 @@
       <!-- Remove class [ h-64 ] when adding a card block -->
       <div class="max-w-max mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <h1 class="text-1xl font-bold text-gray-900">
-          Your Email Template Blocks
+          Your Favorite Email Templates
         </h1>
         <hr class="m-5" />
         <div class="max-w-max" align="center">
@@ -446,6 +446,11 @@
                   id="cardC"
                 >
                   <div class="relative">
+                    <!-- <img
+                            class="w-6 ml-7 float-left"
+                            v-bind:src="`http://127.0.0.1:8000/api/getImage/${img.image}`"
+                            alt="Sunset in the mountains"
+                        /> -->
                     <div class="flex">
                       <button
                         class="
@@ -514,11 +519,11 @@
                       </button>
                     </div>
                   </div>
-                  <div class="px-6 py-4 mt-12">
-                    <div class="font-bold text-gray-800 text-md mb-2 text-justify">
+                  <div class="px-6 py-4 mt-6">
+                    <div class="font-bold text-xl mb-2 text-justify">
                       {{ item.title }}
                     </div>
-                    <p class="text-gray-600 text-xs m-2 text-justify">
+                    <p class="text-gray-700 text-xs m-2 text-justify">
                       Posted on:<span class="text-xs"
                         >&nbsp;{{ getHumanDate(item.created_at) }}
                       </span>
@@ -550,7 +555,7 @@
                         "
                         class=""
                       >
-                        View Template
+                        VIEW THE TEMPLATE
                       </p>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

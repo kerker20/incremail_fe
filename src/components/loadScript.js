@@ -38,6 +38,7 @@ export const loadScript = (callback) => {
     embedScript.onload = () => {
       loaded = true;
       runCallbacks();
+      
     };
     document.head.appendChild(embedScript);
   } else {
