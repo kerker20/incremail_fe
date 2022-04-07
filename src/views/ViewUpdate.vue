@@ -440,31 +440,32 @@
                         <span>Update Design</span>
                       </button>
                       <button
-                        class="
-                          bg-gray-300
-                          hover:bg-gray-400
-                          text-gray-800
-                          ml-3
-                          font-bold
-                          py-1
-                          px-3
-                          rounded
-                          inline-flex
-                          items-center
-                        "
-                        v-on:click="exportHtml"
+                      @click="show1"
+                      class="
+                        bg-gray-300
+                        hover:bg-gray-400
+                        text-gray-800
+                        ml-3
+                        font-bold
+                        py-1
+                        px-3
+                        rounded
+                        inline-flex
+                        items-center
+                      "
+                      v-on:click="exportHtml"
+                    >
+                      <svg
+                        style="width: 24px; height: 24px"
+                        viewBox="0 0 24 24"
                       >
-                        <svg
-                          style="width: 24px; height: 24px"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
-                          />
-                        </svg>
-                        <span> Export HTML</span>
-                      </button>
+                        <path
+                          fill="currentColor"
+                          d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
+                        />
+                      </svg>
+                      <span>Send To</span>
+                    </button>
                     </div>
                   </a>
 
@@ -632,6 +633,194 @@
                   </div>
                 </div>
 
+                 <div
+                    id="modal1"
+                    tabindex="-1"
+                    class="
+                      hidden
+                      content-center
+                      overflow-y-auto overflow-x-hidden
+                      absolute
+                      ml-52
+                      z-50
+                      md:inset-0
+                      h-modal
+                      md:h-full
+                      justify-center
+                      items-center
+                    "
+                    aria-hidden="true"
+                  >
+                    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                      <div
+                        class="
+                          relative
+                          bg-white
+                          rounded-lg
+                          shadow
+                          dark:bg-gray-700
+                        "
+                      >
+                        <div class="flex justify-end p-2">
+                          <button
+                            type="button"
+                            class="
+                              text-gray-400
+                              bg-transparent
+                              hover:bg-gray-200 hover:text-gray-900
+                              rounded-lg
+                              text-sm
+                              p-1.5
+                              ml-auto
+                              inline-flex
+                              items-center
+                              dark:hover:bg-gray-800 dark:hover:text-white
+                            "
+                            data-modal-toggle="popup-modal"
+                          >
+                            <svg
+                              @click="hide1"
+                              class="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="p-6 pt-0 text-center">
+                          <form
+                            class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
+                            action="#"
+                          >
+                            <div>
+                              <label
+                                for="email"
+                                class="
+                                  block
+                                  mb-2
+                                  required
+                                  text-sm
+                                  font-medium
+                                  text-gray-900 text-left
+                                  dark:text-gray-300
+                                "
+                                >Send To Email Recipient</label
+                              >
+                              <input
+                                type="title"
+                                name="title"
+                                id="title"
+                                class="
+                                  bg-gray-50
+                                  border border-gray-300
+                                  text-gray-900 text-sm
+                                  rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500
+                                  block
+                                  w-full
+                                  p-2.5
+                                  dark:bg-gray-600
+                                  dark:border-gray-500
+                                  dark:placeholder-gray-400
+                                  dark:text-white
+                                "
+                                v-model="title"
+                                placeholder="Recipient"
+                                required
+                              />
+                            </div>
+                            <!-- <div class="center">
+                              <div class="form-input">
+                                <div class="preview">
+                                  <img id="file-ip-1-preview" />
+                                </div>
+                                <label for="file-ip-1">Upload Image</label>
+                                <input
+                                  type="file"
+                                  id="file-ip-1"
+                                  accept="image/*"
+                                  v-on:change="showPreview"
+                                />
+                              </div>
+                            </div> -->
+                          </form>
+                          <button
+                            v-on:click="saveDesign"
+                            data-modal-toggle="popup-modal"
+                            type="button"
+                            class="
+                              text-white
+                              bg-gray-600
+                              hover:bg-gray-800
+                              focus:ring-4
+                              focus:outline-none
+                              focus:ring-gray-300
+                              dark:focus:ring-gray-800
+                              font-medium
+                              rounded-lg
+                              text-sm
+                              inline-flex
+                              items-center
+                              px-5
+                              py-2.5
+                              text-center
+                              mr-2
+                            "
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-send"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"
+                              />
+                            </svg>
+                            &nbsp;Send
+                          </button>
+                          <button
+                            @click="hide1"
+                            data-modal-toggle="popup-modal"
+                            type="button"
+                            class="
+                              text-gray-500
+                              bg-white
+                              hover:bg-gray-100
+                              focus:ring-4
+                              focus:outline-none
+                              focus:ring-gray-200
+                              rounded-lg
+                              border border-gray-200
+                              text-sm
+                              font-medium
+                              px-5
+                              py-2.5
+                              hover:text-gray-900
+                              focus:z-10
+                              dark:bg-gray-700
+                              dark:text-gray-300
+                              dark:border-gray-500
+                              dark:hover:text-white
+                              dark:hover:bg-gray-600
+                              dark:focus:ring-gray-600
+                            "
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 <div>
                   <router-link
                     :to="'/new'"
@@ -697,6 +886,12 @@ export default {
     // this.editorLoaded(sample)
   },
   methods: {
+    hide1() {
+      document.getElementById("modal1").style.display = "none";
+    },
+    show1() {
+      document.getElementById("modal1").style.display = "block";
+    },
     hide() {
       document.getElementById("modal").style.display = "none";
     },

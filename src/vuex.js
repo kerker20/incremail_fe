@@ -7,6 +7,7 @@ Vue.use(Vuex);
 const state = {
     user: null,
     data: [],
+    fav: []
 }
 
 const store = new Vuex.Store({
@@ -17,6 +18,9 @@ const store = new Vuex.Store({
         },
         data:(state) => {
             return state.data;
+        },
+        fav:(state) => {
+            return state.fav;
         },
     
       
@@ -34,6 +38,15 @@ const store = new Vuex.Store({
                 console.log(error);
             }
           },
+          async loadFav({ commit }, id) {
+            try {
+                const response = await axios.get('favoriteTemplate/'+ id);
+                 commit('setFav', response.data)
+              }
+             catch (error) {
+                console.log(error);
+            }
+          },
     
     },
     mutations:{
@@ -42,6 +55,9 @@ const store = new Vuex.Store({
         },
         setData(state, data) {
             state.data = data
+        },
+        setFav(state, fav) {
+            state.fav = fav
         },
 
        

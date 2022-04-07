@@ -1,6 +1,6 @@
 <template>
   <main>
-      <nav
+    <nav
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
       <div
@@ -186,13 +186,17 @@
               "
             >
               <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                fill="currentColor" 
-                class="bi bi-envelope" 
-                viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-envelope"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
+                  />
                 </svg>
                 <!-- <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -256,7 +260,7 @@
                 <span class="text-sm ml-2">Blocks</span>
               </div>
             </router-link>
-              <router-link
+            <router-link
               :to="'/favorites'"
               class="
                 flex
@@ -275,12 +279,17 @@
               "
             >
               <div class="flex items-center">
-                   <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" height="16" 
-                fill="currentColor" 
-                class="bi bi-heart" 
-                viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-heart"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                  />
                 </svg>
                 <!-- <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -409,8 +418,8 @@
             >
           </div>
           <!-- Replace with your content -->
-          <div v-if="favorites.length == 0" @click="check(favorites.length)">
-             <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
+          <div v-if="data.length == 0" @click="check(data.length)">
+            <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
             <div
               class="
                 max-w-md
@@ -437,48 +446,46 @@
           <div id="wrap">
             <div
               class="flex justify-start card"
-              v-for="item in favorites"
+              v-for="item in data"
               v-bind:key="item.id"
             >
               <div>
                 <div
-                  class="max-w-xs rounded overflow-hidden shadow-lg mx-2 my-2 bg-white"
+                  class="
+                    max-w-xs
+                    rounded
+                    overflow-hidden
+                    shadow-lg
+                    mx-2
+                    my-2
+                    bg-white
+                  "
                   id="cardC"
                 >
                   <div class="relative">
-                    <!-- <img
-                            class="w-6 ml-7 float-left"
-                            v-bind:src="`http://127.0.0.1:8000/api/getImage/${img.image}`"
-                            alt="Sunset in the mountains"
-                        /> -->
                     <div class="flex">
-                      <button
-                        class="
-                          hover:bg-red-500 hover:text-white
-                          py-2
-                          px-3
-                          transition
-                          duration-150
-                          ease-in-out
-                          rounded-full
-                          absolute
-                          top-3
-                          left-3
-                        "
-                      >
+                      <div class="absolute p-7">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
+                          width="18"
+                          height="18"
                           fill="currentColor"
-                          class="bi bi-heart"
+                          class="
+                            bi bi-heart-fill
+                            text-red-500
+                            hover:text-gray-500
+                            transition
+                            duration-50
+                            ease-in-out
+                          "
                           viewBox="0 0 16 16"
                         >
                           <path
-                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                            fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                           />
                         </svg>
-                      </button>
+                      </div>
                     </div>
                     <div class="flex">
                       <button
@@ -519,19 +526,20 @@
                       </button>
                     </div>
                   </div>
-                  <div class="px-6 py-4 mt-6">
-                    <div class="font-bold text-xl mb-2 text-justify">
+                  <div class="px-6 py-4 mt-12">
+                    <div
+                      class="font-bold text-gray-800 text-md mb-2 text-justify"
+                    >
                       {{ item.title }}
                     </div>
-                    <p class="text-gray-700 text-xs m-2 text-justify">
+                    <p class="text-gray-600 text-xs m-2 text-justify">
                       Posted on:<span class="text-xs"
                         >&nbsp;{{ getHumanDate(item.created_at) }}
                       </span>
                     </p>
-                    <hr>
-                    
+                    <hr />
                   </div>
-                 
+
                   <div class="px-6 pt-4 pb-2">
                     <button
                       class="
@@ -555,7 +563,7 @@
                         "
                         class=""
                       >
-                        VIEW THE TEMPLATE
+                        View Template
                       </p>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -592,21 +600,14 @@ export default {
   name: "Mails",
   data() {
     return {
-      user:localStorage.getItem("data"),
-      images: undefined,
+      user: localStorage.getItem("data"),
+      favorites: undefined,
     };
   },
   methods: {
-    check(favorites) {
-      console.log(favorites);
+    check(data) {
+      console.log(data);
     },
-    // showImage(){
-    //     axios.get('showImage/' + localStorage.getItem('userID'))
-    //     .then((res) =>{
-    //         this.images = res.data;
-    //         console.log(res.data);
-    //     })
-    // },
     setID: function (id) {
       localStorage.setItem("templateID", id);
     },
@@ -638,16 +639,13 @@ export default {
       }, 300);
     },
   },
-  // mounted() {
-  //     this.showImage()
-  // },
   computed: {
-    favorites() {
-      return this.$store.getters.favorites;
+    data() {
+      return this.$store.getters.fav;
     },
   },
   created() {
-    this.$store.dispatch("loadFavorites", localStorage.getItem("userID"));
+    this.$store.dispatch("loadFav", localStorage.getItem("userID"));
   },
 };
 </script>
@@ -658,7 +656,6 @@ export default {
   display: inline-block;
 }
 #cardC {
-
   background-size: contain;
   background-repeat: no-repeat;
   /* background-image: -webkit-linear-gradient(45deg, #ffffff 50%, #cecece 50%); */
@@ -666,5 +663,4 @@ export default {
 /* .box{
   background-image: url('../assets/dash.png')
 } */
-
 </style>

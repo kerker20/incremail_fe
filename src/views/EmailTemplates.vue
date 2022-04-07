@@ -4,7 +4,7 @@
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
       <div
-        id="toast"
+        id="toast1"
         class="
           absolute
           right-0
@@ -53,7 +53,7 @@
           </svg>
         </div>
         <span class="ml-3 text-sm font-normal"
-          >Email Template Successfully Saved!</span
+          >Email Template Successfully Moved to Favorites!</span
         >
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
@@ -448,6 +448,7 @@
                   <div class="relative">
                     <div class="flex">
                       <button
+                        @click="favTemplate(item.id)"
                         class="
                           hover:bg-red-500 hover:text-white
                           py-2
@@ -613,6 +614,19 @@ export default {
       if (response) {
         var ele = document.getElementById("toast");
         document.getElementById("toast").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 6000);
+        setTimeout(function () {
+          window.location.href = "http://localhost:3001/emailTemplates";
+        }, 1000);
+      }
+    },
+    async favTemplate(id) {
+      const response = await axios.put(`updateFavorite/${id}`);
+      if (response) {
+        var ele = document.getElementById("toast1");
+        document.getElementById("toast1").style.display = "block";
         setTimeout(function () {
           ele.style.display = "none";
         }, 6000);
