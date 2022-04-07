@@ -4,7 +4,7 @@
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
       <div
-        id="toast"
+        id="toast1"
         class="
           absolute
           right-0
@@ -466,6 +466,8 @@
                     <div class="flex">
                       <div class="absolute p-7">
                         <svg
+                        @click="removeTemplate(item.id)"
+                        cursor="pointer"
                           xmlns="http://www.w3.org/2000/svg"
                           width="18"
                           height="18"
@@ -624,6 +626,20 @@ export default {
         }, 6000);
         setTimeout(function () {
           window.location.href = "http://localhost:3001/emailTemplates";
+        }, 1000);
+      }
+    },
+
+     async removeTemplate(id) {
+      const response = await axios.put(`removeFavorite/${id}`);
+      if (response) {
+        var ele = document.getElementById("toast1");
+        document.getElementById("toast1").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 6000);
+        setTimeout(function () {
+          window.location.href = "http://localhost:3001/favorites";
         }, 1000);
       }
     },
