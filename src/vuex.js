@@ -18,9 +18,8 @@ const store = new Vuex.Store({
         data:(state) => {
             return state.data;
         },
-        images:(state) => {
-            return state.images;
-        }
+    
+      
     },
     actions:{
         user(context, user){
@@ -35,15 +34,7 @@ const store = new Vuex.Store({
                 console.log(error);
             }
           },
-          async images({ commit }, id) {
-            try {
-                const response = await axios.get('showImage/'+ id);
-                 commit('setImage', response.images)
-              }
-             catch (error) {
-                console.log(error);
-            }
-          }
+    
     },
     mutations:{
         user(state, user){
@@ -52,9 +43,8 @@ const store = new Vuex.Store({
         setData(state, data) {
             state.data = data
         },
-        setImage(state, images) {
-            state.images = images
-        }
+
+       
     },
 });
 

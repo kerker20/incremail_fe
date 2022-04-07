@@ -409,7 +409,7 @@
             >
           </div>
           <!-- Replace with your content -->
-          <div v-if="data.length == 0" @click="check(data.length)">
+          <div v-if="favorites.length == 0" @click="check(favorites.length)">
              <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
             <div
               class="
@@ -437,7 +437,7 @@
           <div id="wrap">
             <div
               class="flex justify-start card"
-              v-for="item in data"
+              v-for="item in favorites"
               v-bind:key="item.id"
             >
               <div>
@@ -597,8 +597,8 @@ export default {
     };
   },
   methods: {
-    check(data) {
-      console.log(data);
+    check(favorites) {
+      console.log(favorites);
     },
     // showImage(){
     //     axios.get('showImage/' + localStorage.getItem('userID'))
@@ -642,12 +642,12 @@ export default {
   //     this.showImage()
   // },
   computed: {
-    data() {
-      return this.$store.getters.data;
+    favorites() {
+      return this.$store.getters.favorites;
     },
   },
   created() {
-    this.$store.dispatch("loadData", localStorage.getItem("userID"));
+    this.$store.dispatch("loadFavorites", localStorage.getItem("userID"));
   },
 };
 </script>

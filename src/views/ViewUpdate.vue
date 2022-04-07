@@ -1,7 +1,7 @@
 <template>
   <main>
-    <nav
-      class="flex items-center justify-between flex-wrap bg-gray-800 sticky p-6"
+   <nav
+      class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
       <div
         id="toast"
@@ -53,10 +53,10 @@
           </svg>
         </div>
         <span class="ml-3 text-sm font-normal"
-          >Email Template Successfully Updated!</span
+          >Email Template Successfully Saved!</span
         >
       </div>
-      <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <svg
           class="fill-current h-8 w-8 mr-2"
           width="54"
@@ -68,7 +68,7 @@
             d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
           />
         </svg>
-        <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
+        <span class="font-semibold text-xl tracking-tight">IncreMail</span>
       </div>
       <div class="block lg:hidden">
         <button
@@ -94,48 +94,22 @@
           </svg>
         </button>
       </div>
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
-          <router-link
-            :to="'/'"
-            class="
-              block
-              mt-4
-              lg:inline-block lg:mt-0
-              text-white
-              hover:text-white
-              mr-4
-            "
-          >
-            Dashboard
-          </router-link>
-          <router-link
-            :to="'/mails'"
-            class="
-              block
-              mt-4
-              lg:inline-block lg:mt-0
-              text-white
-              hover:text-white
-              mr-4
-            "
-          >
-            Mails
-          </router-link>
-        </div>
-      </div>
       <div class="flex justify-end">
-        <div class="text-white" v-if="user">{{ user }}</div>
+        <img
+          class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80"
+        />
+        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
     <div class="flex flex-no-wrap bg-gray-200 h-screen">
-      <div
+     <div
         class="
-          w-50
+          w-44
           absolute
           sm:relative
-          bg-gray-800
+          bg-white
           shadow
           md:h-full
           flex-col
@@ -144,19 +118,27 @@
           sm:flex
         "
       >
-        <div class="px-8 max-w-md">
+        <div class="px-6 h-screen">
           <ul class="mt-4">
             <router-link
               :to="'/campaigns'"
               class="
                 flex
                 w-full
+                bg-white
+                rounded-xl
+                shadow-md
+                overflow-hidden
+                p-2
                 justify-between
-                text-gray-300
-                hover:text-gray-500
+                text-gray-800
+                hover:text-white hover:bg-gray-400
                 cursor-pointer
                 items-center
-                mb-6
+                mb-4
+                transition
+                duration-50
+                ease-in-out
               "
             >
               <div class="flex items-center">
@@ -187,12 +169,17 @@
               class="
                 flex
                 w-full
+                bg-white
+                rounded-xl
+                shadow-md
+                overflow-hidden
+                p-2
                 justify-between
-                text-gray-600
-                hover:text-gray-500
+                text-white
+                bg-gray-600
                 cursor-pointer
                 items-center
-                mb-6
+                mb-4
               "
             >
               <div class="flex items-center">
@@ -204,24 +191,7 @@
                 viewBox="0 0 16 16">
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
                 </svg>
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
-                <span class="text-sm ml-2 text-blue-500">Templates</span>
+                <span class="text-sm ml-2">Templates</span>
               </div>
             </router-link>
             <router-link
@@ -229,16 +199,23 @@
               class="
                 flex
                 w-full
+                bg-white
+                rounded-xl
+                shadow-md
+                overflow-hidden
+                p-2
                 justify-between
-                text-gray-600
-                hover:text-gray-500
+                text-gray-800
+                hover:text-white hover:bg-gray-400
                 cursor-pointer
                 items-center
-                mb-6
+                mb-4
+                transition
+                duration-50
+                ease-in-out
               "
             >
               <div class="flex items-center">
-                
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-stack"
@@ -256,24 +233,32 @@
                   <polyline points="4 12 12 16 20 12" />
                   <polyline points="4 16 12 20 20 16" />
                 </svg>
-                <span class="text-sm ml-2 text-gray-400">Blocks</span>
+                <span class="text-sm ml-2">Blocks</span>
               </div>
             </router-link>
               <router-link
               :to="'/favorites'"
               class="
-                flex
+                 flex
                 w-full
+                bg-white
+                rounded-xl
+                shadow-md
+                overflow-hidden
+                p-2
                 justify-between
-                text-gray-600
-                hover:text-gray-500
+                text-gray-800
+                hover:text-white hover:bg-gray-400
                 cursor-pointer
                 items-center
-                mb-6
+                mb-4
+                transition
+                duration-50
+                ease-in-out
               "
             >
               <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" 
+                  <svg xmlns="http://www.w3.org/2000/svg" 
                 width="16" height="16" 
                 fill="currentColor" 
                 class="bi bi-heart" 
@@ -297,7 +282,7 @@
                   <polyline points="4 12 12 16 20 12" />
                   <polyline points="4 16 12 20 20 16" />
                 </svg> -->
-                <span class="text-sm ml-2 text-gray-400">Favorites</span>
+                <span class="text-sm ml-2">Favorites</span>
               </div>
             </router-link>
             <router-link
@@ -305,11 +290,19 @@
               class="
                 flex
                 w-full
+                bg-white
+                rounded-xl
+                shadow-md
+                overflow-hidden
+                p-2
                 justify-between
-                text-gray-600
-                hover:text-gray-500
+                text-gray-800
+                hover:text-white hover:bg-gray-400
                 cursor-pointer
                 items-center
+                transition
+                duration-50
+                ease-in-out
               "
             >
               <div class="flex items-center">
@@ -331,31 +324,9 @@
                   />
                   <circle cx="12" cy="12" r="3" />
                 </svg>
-                <span class="text-sm ml-2 text-gray-400">Settings</span>
+                <span class="text-sm ml-2">Settings</span>
               </div>
             </router-link>
-            <div class="flex items-center mt-96" @click="handleClick">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="white"
-                class="bi bi-box-arrow-in-left"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
-                />
-              </svg>
-              <span class="text-sm ml-2 text-gray-400 cursor-pointer">
-                Logout</span
-              >
-            </div>
           </ul>
         </div>
       </div>
@@ -369,12 +340,12 @@
                 items-center
                 justify-between
                 flex-wrap
-                bg-gray-800
+                bg-white
                 p-6
                 h-20
               "
             >
-              <div class="flex items-center flex-shrink-0 text-white mr-6">
+              <div class="flex items-center flex-shrink-0 text-dark mr-6">
                 <svg
                   class="fill-current h-8 w-8 mr-2"
                   width="54"
@@ -423,9 +394,9 @@
                     class="
                       block
                       mt-4
-                      text-gray-50
+                      text-dark
                       lg:inline-block lg:mt-0
-                      hover:text-white
+                      hover:text-dark
                       mr-4
                     "
                   >
@@ -718,7 +689,7 @@ export default {
       user: localStorage.getItem("data"),
       uhtml: JSON.parse(localStorage.getItem("templateHTML")),
       appearance: {
-        theme: "dark",
+        theme: "light",
       },
     };
   },
