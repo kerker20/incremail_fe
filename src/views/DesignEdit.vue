@@ -95,10 +95,9 @@
         </button>
       </div>
       <div class="flex justify-end">
-        <img
-          class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80"
-        />
+         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
+           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
+         </div>
         <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
       </div>
     </nav>
@@ -678,7 +677,7 @@ export default {
     saveDesign() {
       this.$refs.emailEditor.editor.saveDesign((design) => {
         console.log("saveDesign", JSON.stringify(design));
-        let html = JSON.stringify(design);
+        let html = JSON.stringify(design, null, "\t");
         this.send(html);
 
         var ele = document.getElementById("toast");

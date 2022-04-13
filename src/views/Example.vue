@@ -1,8 +1,62 @@
 <template>
   <main>
+    <!-- <button class="btn">Button</button> -->
     <nav
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
+    <div
+        id="toastSend"
+        class="
+          absolute
+          right-0
+          top-0
+          m-5
+          flex
+          items-center
+          p-4
+          mb-4
+          w-full
+          max-w-xs
+          text-gray-500
+          bg-gray-200
+          rounded-lg
+          shadow
+          dark:text-gray-400 dark:bg-gray-800
+          hidden
+        "
+        role="alert"
+      >
+        <div
+          class="
+            inline-flex
+            flex-shrink-0
+            justify-center
+            items-center
+            w-8
+            h-8
+            text-green-500
+            bg-green-100
+            rounded-lg
+            dark:bg-green-800 dark:text-green-200
+          "
+        >
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >Email Template Successfully Send!</span
+        >
+      </div>
       <div
         id="toast"
         class="
@@ -94,11 +148,17 @@
           </svg>
         </button>
       </div>
-      <div class="flex justify-end">
+      <!-- <div class="flex justify-end">
         <img
           class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
           src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80"
         />
+        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
+      </div> -->
+       <div class="flex justify-end">
+         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
+           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
+         </div>
         <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
       </div>
     </nav>
@@ -445,7 +505,6 @@
                         inline-flex
                         items-center
                       "
-                      v-on:click="exportHtml"
                     >
                       <svg
                         style="width: 24px; height: 24px"
@@ -456,7 +515,7 @@
                           d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
                         />
                       </svg>
-                      <span>Send To</span>
+                      <span>Direct Send</span>
                     </button>
                   </div>
 
@@ -700,6 +759,7 @@
                           <form
                             class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
                             action="#"
+                            @submit="exportHtml"
                           >
                             <div>
                               <label
@@ -716,9 +776,9 @@
                                 >Send To Email Recipient</label
                               >
                               <input
-                                type="title"
-                                name="title"
-                                id="title"
+                                type="recipient"
+                                name="recipient"
+                                id="recipient"
                                 class="
                                   bg-gray-50
                                   border border-gray-300
@@ -733,8 +793,51 @@
                                   dark:placeholder-gray-400
                                   dark:text-white
                                 "
-                                v-model="title"
-                                placeholder="Recipient"
+                                placeholder="To"
+                                required
+                              />
+                               <input
+                                type="fromName"
+                                name="fromName"
+                                id="fromName"
+                                class="
+                                  bg-gray-50
+                                  border border-gray-300
+                                  text-gray-900 text-sm
+                                  rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500
+                                  block
+                                  w-full
+                                  p-2.5
+                                  dark:bg-gray-600
+                                  dark:border-gray-500
+                                  dark:placeholder-gray-400
+                                  dark:text-white
+                                  mt-3
+                                "
+                                placeholder="Sender Name"
+                                required
+                              />
+                                <input
+                                type="subject"
+                                name="subject"
+                                id="subject"
+                                class="
+                                  bg-gray-50
+                                  border border-gray-300
+                                  text-gray-900 text-sm
+                                  rounded-lg
+                                  focus:ring-blue-500 focus:border-blue-500
+                                  block
+                                  w-full
+                                  p-2.5
+                                  dark:bg-gray-600
+                                  dark:border-gray-500
+                                  dark:placeholder-gray-400
+                                  dark:text-white
+                                  mt-3
+                                "
+                                placeholder="Subject"
                                 required
                               />
                             </div>
@@ -752,11 +855,9 @@
                                 />
                               </div>
                             </div> -->
-                          </form>
-                          <button
-                            v-on:click="saveDesign"
+                             <button
                             data-modal-toggle="popup-modal"
-                            type="button"
+                            type="submit"
                             class="
                               text-white
                               bg-gray-600
@@ -790,7 +891,7 @@
                             </svg>
                             &nbsp;Send
                           </button>
-                          <button
+                           <button
                             @click="hide1"
                             data-modal-toggle="popup-modal"
                             type="button"
@@ -819,6 +920,7 @@
                           >
                             Cancel
                           </button>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -977,6 +1079,21 @@ export default {
     editorReady() {
       console.log("editorReady");
     },
+    sendEmail(html) {
+      const recipient = document.getElementById("recipient").value;
+      const fromName = document.getElementById("fromName").value;
+      const subject = document.getElementById("subject").value;
+      
+      const mailData = {
+        'recipient': recipient,
+        'fromName': fromName,
+        'subject': subject,
+        'html': html
+      }
+
+      console.log(mailData);
+      this.sendTemplate(mailData);
+    },
     saveDesign() {
       this.$refs.emailEditor.editor.saveDesign((design) => {
         setTimeout(function () {
@@ -990,10 +1107,10 @@ export default {
         let html = JSON.stringify(design, null, "\t");
         this.send(html);
 
-        var ele = document.getElementById("toast");
+        var save = document.getElementById("toast");
         document.getElementById("toast").style.display = "block";
         setTimeout(function () {
-          ele.style.display = "none";
+          save.style.display = "none";
         }, 3000);
         setTimeout(function () {
           window.location.href = "http://localhost:3001/emailTemplates";
@@ -1007,12 +1124,27 @@ export default {
         title: this.title,
       });
     },
+    async sendTemplate(data) {
+      var ele = document.getElementById("toastSend");
+        document.getElementById("toastSend").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 3000);
+        var element = document.getElementById("modal1");
+        setTimeout(function () {
+          element.style.display = "none";
+        }, 3000);
+      await axios.post("sendMail", data);
+    },
     // async sendImage(data) {
     //   await axios.post("image-upload", data);
     // },
-    exportHtml() {
+    exportHtml(e) {
+      e.preventDefault();
       this.$refs.emailEditor.editor.exportHtml((data) => {
-        console.log("exportHtml", data.html);
+
+        const html = data.html
+        this.sendEmail(html)
       });
     },
     handleClick() {
@@ -1109,5 +1241,10 @@ body {
 #cont{
   margin-left: 2rem;
   margin-top: 1rem;
+}
+.initial{
+  margin-left: 11px;
+  margin-top: 3px;
+  color: white;
 }
 </style>
