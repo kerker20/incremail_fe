@@ -1,6 +1,6 @@
 <template>
   <main>
-      <nav
+    <nav
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
       <div
@@ -94,10 +94,19 @@
           </svg>
         </button>
       </div>
-     <div class="flex justify-end">
-         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
-           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
-         </div>
+      <div class="flex justify-end">
+        <div
+          class="
+            inline-block
+            h-8
+            w-8
+            rounded-full
+            ring-2 ring-white
+            bg-gray-400
+          "
+        >
+          <p class="initial" v-if="user">{{ user.charAt(0) }}</p>
+        </div>
         <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
       </div>
     </nav>
@@ -185,31 +194,18 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                fill="currentColor" 
-                class="bi bi-envelope" 
-                viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-                </svg>
-                <!-- <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-envelope"
+                  viewBox="0 0 16 16"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
+                  />
+                </svg>
                 <span class="text-sm ml-2">Templates</span>
               </div>
             </router-link>
@@ -252,10 +248,10 @@
                 <span class="text-sm ml-2">Blocks</span>
               </div>
             </router-link>
-               <router-link
+            <router-link
               :to="'/favorites'"
               class="
-                 flex
+                flex
                 w-full
                 bg-white
                 rounded-xl
@@ -274,30 +270,19 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" height="16" 
-                fill="currentColor" 
-                class="bi bi-heart" 
-                viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                </svg>
-                <!-- <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-heart"
+                  viewBox="0 0 16 16"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                  />
+                </svg>
+
                 <span class="text-sm ml-2">Favorites</span>
               </div>
             </router-link>
@@ -348,6 +333,7 @@
       </div>
       <!-- Sidebar ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
+      
       <div class="max-w-max mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <h1 class="text-1xl font-bold text-gray-900">
           Your Email Template Blocks
@@ -409,28 +395,40 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-             <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
-            <div
-              class="
-                max-w-md
-                mx-auto
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                md:max-w-2xl
-              "
-            >
-              <div class="md:flex">
-                <div class="md:shrink-0">
-                  <img
-                    class="h-80 w-full object-cover md:h-full md:w-80"
-                    src="../assets/empty.png"
-                    alt="empty"
-                  />
+            <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
+            <section class="overflow-hidden text-gray-700">
+              <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+                <div class="flex flex-wrap -m-1 md:-m-2">
+                  <div class="flex flex-wrap w-1/3">
+                    <div class="w-full p-1 md:p-2">
+                      <img
+                        class="h-60 w-84 object-cover"
+                        src="../assets/load.png"
+                        alt="empty"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap w-1/3">
+                    <div class="w-full p-1 md:p-2">
+                      <img
+                        class="h-60 w-84 object-cover"
+                        src="../assets/load.png"
+                        alt="empty"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap w-1/3">
+                    <div class="w-full p-1 md:p-2">
+                      <img
+                        class="h-60 w-84 object-cover"
+                        src="../assets/load.png"
+                        alt="empty"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
           <div v-else></div>
           <div id="wrap">
@@ -441,7 +439,15 @@
             >
               <div>
                 <div
-                  class="max-w-xs rounded overflow-hidden shadow-lg mx-2 my-2 bg-white"
+                  class="
+                    max-w-xs
+                    rounded
+                    overflow-hidden
+                    shadow-lg
+                    mx-2
+                    my-2
+                    bg-white
+                  "
                   id="cardC"
                 >
                   <div class="relative">
@@ -515,18 +521,20 @@
                     </div>
                   </div>
                   <div class="px-6 py-4 mt-12">
-                    <div class="font-bold text-gray-800 text-md mb-2 text-justify">
+                    <div
+                      class="font-bold text-gray-800 text-md mb-2 text-justify"
+                    >
                       {{ item.title }}
                     </div>
+
                     <p class="text-gray-600 text-xs m-2 text-justify">
                       Posted on:<span class="text-xs"
                         >&nbsp;{{ getHumanDate(item.created_at) }}
                       </span>
                     </p>
-                    <hr>
-                    
+                    <hr />
                   </div>
-                 
+
                   <div class="px-6 pt-4 pb-2">
                     <button
                       class="
@@ -571,6 +579,7 @@
                   </div>
                 </div>
               </div>
+              
               <!-- end of fourth card -->
             </div>
           </div>
@@ -587,11 +596,15 @@ export default {
   name: "Mails",
   data() {
     return {
-      user:localStorage.getItem("data"),
+      user: localStorage.getItem("data"),
       images: undefined,
+      thumbnail: sample
     };
   },
   methods: {
+    jsredir(){
+      window.location.href = "../../public/sample.html";
+    },
     check(data) {
       console.log(data);
     },
@@ -666,7 +679,6 @@ export default {
   display: inline-block;
 }
 #cardC {
-
   background-size: contain;
   background-repeat: no-repeat;
   /* background-image: -webkit-linear-gradient(45deg, #ffffff 50%, #cecece 50%); */
@@ -674,5 +686,4 @@ export default {
 /* .box{
   background-image: url('../assets/dash.png')
 } */
-
 </style>

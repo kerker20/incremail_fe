@@ -203,7 +203,7 @@ export default {
         email.value = "";
         setTimeout(function () {
           window.location.href = "http://localhost:3001/";
-        }, 1000);
+        }, 3000);
       } else {
         document.getElementById("toast").style.display = "none";
       }

@@ -4,7 +4,7 @@
     <nav
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
-    <div
+      <div
         id="toastSend"
         class="
           absolute
@@ -124,41 +124,53 @@
         </svg>
         <span class="font-semibold text-xl tracking-tight">IncreMail</span>
       </div>
-      <div class="block lg:hidden">
+      <div class="flex justify-end">
         <button
+          id="dropdownDefault"
+          data-dropdown-toggle="dropdown"
+          type="button"
           class="
-            flex
-            items-center
-            px-3
-            py-2
-            border
-            rounded
-            text-teal-200
-            border-teal-400
-            hover:text-white hover:border-white
+            cursor-pointer
+            inline-block
+            h-8
+            w-8
+            rounded-full
+            ring-2 ring-white
+            bg-gray-400
           "
         >
-          <svg
-            class="fill-current h-3 w-3"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
+          <p class="initial mr-4 mb-1" v-if="user">{{ user.charAt(0) }}</p>
         </button>
-      </div>
-      <!-- <div class="flex justify-end">
-        <img
-          class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80"
-        />
-        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
-      </div> -->
-       <div class="flex justify-end">
-         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
-           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
-         </div>
+        <div
+          id="dropdown"
+          class="
+            hidden
+            absolute
+            w-28
+            bg-white
+            rounded
+            divide-y divide-gray-100
+            shadow
+            dark:bg-gray-700
+          "
+        >
+          <ul
+            class="py-1 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownDefault"
+          >
+            <li>
+              <button
+                @click="logout"
+                class="
+                  block
+                  py-2
+                  px-4
+                "
+                >Logout </button
+              >
+            </li>
+          </ul>
+        </div>
         <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
       </div>
     </nav>
@@ -243,13 +255,17 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                fill="currentColor" 
-                class="bi bi-envelope" 
-                viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-envelope"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
+                  />
                 </svg>
                 <span class="text-sm ml-2">Templates</span>
               </div>
@@ -296,10 +312,10 @@
                 <span class="text-sm ml-2">Blocks</span>
               </div>
             </router-link>
-              <router-link
+            <router-link
               :to="'/favorites'"
               class="
-                 flex
+                flex
                 w-full
                 bg-white
                 rounded-xl
@@ -318,30 +334,18 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" height="16" 
-                fill="currentColor" 
-                class="bi bi-heart" 
-                viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                </svg>
-                <!-- <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-heart"
+                  viewBox="0 0 16 16"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                  />
+                </svg>
                 <span class="text-sm ml-2">Favorites</span>
               </div>
             </router-link>
@@ -393,7 +397,7 @@
       <!-- Remove class [ h-64 ] when adding a card block -->
       <div class="container max-w-screen-2xl" id="cont">
         <div id="example" class="overflow-scroll">
-          <div class="container">
+          <div class="container mt-4">
             <nav
               class="
                 flex
@@ -418,8 +422,7 @@
                   />
                 </svg>
                 <span class="font-semibold text-xl tracking-tight"
-                  >Tailwind CSS</span
-                >
+                  >Incremail Newsletter</span>
               </div>
               <div class="block lg:hidden">
                 <button
@@ -796,7 +799,7 @@
                                 placeholder="To"
                                 required
                               />
-                               <input
+                              <input
                                 type="fromName"
                                 name="fromName"
                                 id="fromName"
@@ -818,7 +821,7 @@
                                 placeholder="Sender Name"
                                 required
                               />
-                                <input
+                              <input
                                 type="subject"
                                 name="subject"
                                 id="subject"
@@ -855,71 +858,71 @@
                                 />
                               </div>
                             </div> -->
-                             <button
-                            data-modal-toggle="popup-modal"
-                            type="submit"
-                            class="
-                              text-white
-                              bg-gray-600
-                              hover:bg-gray-800
-                              focus:ring-4
-                              focus:outline-none
-                              focus:ring-gray-300
-                              dark:focus:ring-gray-800
-                              font-medium
-                              rounded-lg
-                              text-sm
-                              inline-flex
-                              items-center
-                              px-5
-                              py-2.5
-                              text-center
-                              mr-2
-                            "
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              class="bi bi-send"
-                              viewBox="0 0 16 16"
+                            <button
+                              data-modal-toggle="popup-modal"
+                              type="submit"
+                              class="
+                                text-white
+                                bg-gray-600
+                                hover:bg-gray-800
+                                focus:ring-4
+                                focus:outline-none
+                                focus:ring-gray-300
+                                dark:focus:ring-gray-800
+                                font-medium
+                                rounded-lg
+                                text-sm
+                                inline-flex
+                                items-center
+                                px-5
+                                py-2.5
+                                text-center
+                                mr-2
+                              "
                             >
-                              <path
-                                d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"
-                              />
-                            </svg>
-                            &nbsp;Send
-                          </button>
-                           <button
-                            @click="hide1"
-                            data-modal-toggle="popup-modal"
-                            type="button"
-                            class="
-                              text-gray-500
-                              bg-white
-                              hover:bg-gray-100
-                              focus:ring-4
-                              focus:outline-none
-                              focus:ring-gray-200
-                              rounded-lg
-                              border border-gray-200
-                              text-sm
-                              font-medium
-                              px-5
-                              py-2.5
-                              hover:text-gray-900
-                              focus:z-10
-                              dark:bg-gray-700
-                              dark:text-gray-300
-                              dark:border-gray-500
-                              dark:hover:text-white
-                              dark:hover:bg-gray-600
-                              dark:focus:ring-gray-600
-                            "
-                          >
-                            Cancel
-                          </button>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-send"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"
+                                />
+                              </svg>
+                              &nbsp;Send
+                            </button>
+                            <button
+                              @click="hide1"
+                              data-modal-toggle="popup-modal"
+                              type="button"
+                              class="
+                                text-gray-500
+                                bg-white
+                                hover:bg-gray-100
+                                focus:ring-4
+                                focus:outline-none
+                                focus:ring-gray-200
+                                rounded-lg
+                                border border-gray-200
+                                text-sm
+                                font-medium
+                                px-5
+                                py-2.5
+                                hover:text-gray-900
+                                focus:z-10
+                                dark:bg-gray-700
+                                dark:text-gray-300
+                                dark:border-gray-500
+                                dark:hover:text-white
+                                dark:hover:bg-gray-600
+                                dark:focus:ring-gray-600
+                              "
+                            >
+                              Cancel
+                            </button>
                           </form>
                         </div>
                       </div>
@@ -969,33 +972,6 @@
                     </svg>
                     <span>&nbsp;Create New</span>
                   </router-link>
-                  <!-- <router-link
-                    :to="'/new'"
-                    class="
-                      inline-block
-                      text-sm
-                      px-10
-                      py-2
-                      cursor-pointer
-                      leading-none
-                      border
-                      rounded
-                      text-white
-                      border-dark
-                      bg-gray-800
-                      hover:border-transparent
-                      hover:text-gray-800
-                      hover:border-gray-800
-                      hover:bg-white
-
-                      mt-4
-                      lg:mt-0
-                    "
-                  >
-                  
-                    <span>Create new</span>
-                  </router-link> -->
-                  <div></div>
                 </div>
               </div>
             </nav>
@@ -1043,33 +1019,10 @@ export default {
     show1() {
       document.getElementById("modal1").style.display = "block";
     },
-    // showPreview(event) {
-    //   if (event.target.files.length > 0) {
-    //     let file = event.target.files[0];
-    //     var src = URL.createObjectURL(file);
-    //     var preview = document.getElementById("file-ip-1-preview");
-    //     preview.src = src;
-    //     preview.style.display = "block";
-    //     console.log(file);
-    //     let formdata = new FormData();
-    //     formdata.append("user_id", localStorage.getItem("userID"));
-    //     formdata.append("image", file);
-    //     this.sendImage(formdata);
-    //   }
-    // },
-
-    // sendImages(event) {
-    //   if (event.target.files.length > 0) {
-    //     let file = event.target.files[0];
-    //     console.log(file);
-    //     let formdata = new FormData();
-    //     formdata.append("user_id", localStorage.getItem("userID"));
-    //     formdata.append("image", file);
-    //     this.sendImage(formdata);
-    //   }
-    // },
-
-    // called when the editor is created
+    logout() {
+      localStorage.clear()
+      window.location.href = "http://localhost:3001/"
+    },
     editorLoaded() {
       console.log("editorLoaded");
       this.$refs.emailEditor.editor.loadDesign(sample);
@@ -1083,25 +1036,19 @@ export default {
       const recipient = document.getElementById("recipient").value;
       const fromName = document.getElementById("fromName").value;
       const subject = document.getElementById("subject").value;
-      
+
       const mailData = {
-        'recipient': recipient,
-        'fromName': fromName,
-        'subject': subject,
-        'html': html
-      }
+        recipient: recipient,
+        fromName: fromName,
+        subject: subject,
+        html: html,
+      };
 
       console.log(mailData);
       this.sendTemplate(mailData);
     },
     saveDesign() {
       this.$refs.emailEditor.editor.saveDesign((design) => {
-        setTimeout(function () {
-          const collection = document.getElementsByClassName(
-            "blockbuilder-branding"
-          );
-          console.log(collection);
-        }, 100);
         console.log("saveDesign", JSON.stringify(design), null, "\t");
         this.exportHtml();
         let html = JSON.stringify(design, null, "\t");
@@ -1126,25 +1073,23 @@ export default {
     },
     async sendTemplate(data) {
       var ele = document.getElementById("toastSend");
-        document.getElementById("toastSend").style.display = "block";
-        setTimeout(function () {
-          ele.style.display = "none";
-        }, 3000);
-        var element = document.getElementById("modal1");
-        setTimeout(function () {
-          element.style.display = "none";
-        }, 3000);
+      document.getElementById("toastSend").style.display = "block";
+      setTimeout(function () {
+        ele.style.display = "none";
+      }, 3000);
+      var element = document.getElementById("modal1");
+      setTimeout(function () {
+        element.style.display = "none";
+      }, 3000);
       await axios.post("sendMail", data);
     },
     // async sendImage(data) {
     //   await axios.post("image-upload", data);
     // },
-    exportHtml(e) {
-      e.preventDefault();
+    exportHtml() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
-
-        const html = data.html
-        this.sendEmail(html)
+        const html = data.html;
+        this.sendEmail(html);
       });
     },
     handleClick() {
@@ -1238,11 +1183,11 @@ body {
   align-items: center;
   justify-content: center;
 }
-#cont{
+#cont {
   margin-left: 2rem;
   margin-top: 1rem;
 }
-.initial{
+.initial {
   margin-left: 11px;
   margin-top: 3px;
   color: white;

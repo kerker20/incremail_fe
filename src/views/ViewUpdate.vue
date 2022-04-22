@@ -517,6 +517,10 @@
                       </svg>
                       <span>Direct Send</span>
                     </button>
+                    <button @click="exportHtmlZIP" class="bg-white text-gray-800 underline hover:underline-offset-1 font-bold px-4 rounded inline-flex items-center">
+  <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+  <span>Export Zip</span>
+</button>
                     </div>
                   </a>
 
@@ -916,27 +920,46 @@
                   </div>
 
                 <div>
-                  <router-link
+              <router-link
                     :to="'/new'"
                     class="
-                      inline-block
-                      text-sm
-                      px-4
-                      py-2
-                      cursor-pointer
-                      leading-none
-                      border
                       rounded
                       text-white
-                      border-white
+                      bg-gray-800
                       hover:border-transparent
                       hover:text-gray-800
                       hover:bg-white
-                      mt-4
-                      lg:mt-0
+                      ml-3
+                      text-sm
+                      font-bold
+                      py-1
+                      cursor-pointer
+                      px-3
+                      rounded
+                      inline-flex
+                      items-center
+                      transition
+                      duration-50
+                      ease-in-out
                     "
                   >
-                    <span>Create New </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      class="bi bi-pencil-square"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <span>&nbsp;Create New</span>
                   </router-link>
                   <div></div>
                 </div>
@@ -960,6 +983,7 @@ import { EmailEditor } from "../components";
 // import sample from "../data/sample.json";
 // import test from "../data/test.json";
 import axios from "axios";
+
 export default {
   name: "Example",
   components: {
@@ -1018,7 +1042,7 @@ export default {
     },
     saveDesign() {
       this.$refs.emailEditor.editor.saveDesign((design) => {
-        console.log("saveDesign", JSON.stringify(design));
+        // console.log("saveDesign", JSON.stringify(design));
         let html = JSON.stringify(design, null, "\t");
         this.send(html);
 
@@ -1058,6 +1082,20 @@ export default {
 
         const html = data.html
         this.sendEmail(html)
+      });
+    },
+    exportHtmlZIP() {
+      this.$refs.emailEditor.editor.exportHtml((data) => {
+         const html = data.html
+
+        const zip = new JSZip();
+        zip.file(`${localStorage.getItem("templateTitle")}.html`, html);
+
+        zip.generateAsync({type:'blob'})
+        .then((content) => {
+          saveAs(content, 'incremail_archive.zip')
+        })
+
       });
     },
     handleClick() {
