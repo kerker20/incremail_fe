@@ -539,7 +539,8 @@
                     <button
                       class="
                         bg-transparent
-                        hover:bg-gray-300
+                        hover:bg-blue-400
+                        hover:text-white
                         text-black
                         py-2
                         px-4
@@ -681,9 +682,6 @@ export default {
 #cardC {
   background-size: contain;
   background-repeat: no-repeat;
-  /* background-image: -webkit-linear-gradient(45deg, #ffffff 50%, #cecece 50%); */
 }
-/* .box{
-  background-image: url('../assets/dash.png')
-} */
+
 </style>

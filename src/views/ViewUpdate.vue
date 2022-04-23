@@ -1,9 +1,9 @@
 <template>
   <main>
-   <nav
+    <nav
       class="flex items-center justify-between flex-wrap bg-white sticky p-6"
     >
-     <div
+      <div
         id="toastSend"
         class="
           absolute
@@ -147,16 +147,25 @@
           </svg>
         </button>
       </div>
-     <div class="flex justify-end">
-         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
-           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
-         </div>
+      <div class="flex justify-end">
+        <div
+          class="
+            inline-block
+            h-8
+            w-8
+            rounded-full
+            ring-2 ring-white
+            bg-gray-400
+          "
+        >
+          <p class="initial" v-if="user">{{ user.charAt(0) }}</p>
+        </div>
         <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
     <div class="flex flex-no-wrap bg-gray-200 h-screen">
-     <div
+      <div
         class="
           w-44
           absolute
@@ -235,13 +244,17 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                fill="currentColor" 
-                class="bi bi-envelope" 
-                viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-envelope"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
+                  />
                 </svg>
                 <span class="text-sm ml-2">Templates</span>
               </div>
@@ -288,10 +301,10 @@
                 <span class="text-sm ml-2">Blocks</span>
               </div>
             </router-link>
-              <router-link
+            <router-link
               :to="'/favorites'"
               class="
-                 flex
+                flex
                 w-full
                 bg-white
                 rounded-xl
@@ -310,30 +323,18 @@
               "
             >
               <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                width="16" height="16" 
-                fill="currentColor" 
-                class="bi bi-heart" 
-                viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                </svg>
-                <!-- <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-heart"
+                  viewBox="0 0 16 16"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                  />
+                </svg>
                 <span class="text-sm ml-2">Favorites</span>
               </div>
             </router-link>
@@ -410,7 +411,7 @@
                   />
                 </svg>
                 <span class="font-semibold text-xl tracking-tight"
-                  >Tailwind CSS</span
+                  >Incremail</span
                 >
               </div>
               <div class="block lg:hidden">
@@ -449,10 +450,11 @@
                       text-dark
                       lg:inline-block lg:mt-0
                       hover:text-dark
-                      mr-4
+                      ml-4
+                      mb-2
                     "
                   >
-                    Start creating you own newsletters from Scratch
+                    Create your Own Now
                   </a>
                   <a
                     role="button"
@@ -470,7 +472,8 @@
                         @click="show"
                         class="
                           bg-gray-300
-                          hover:bg-gray-400
+                          hover:bg-gray-800
+                          hover:text-white
                           text-gray-800
                           font-bold
                           py-1
@@ -478,6 +481,9 @@
                           rounded
                           inline-flex
                           items-center
+                          transition
+                          duration-50
+                          ease-in-out
                         "
                       >
                         <svg
@@ -492,35 +498,58 @@
                         <span>Update Design</span>
                       </button>
                       <button
-                      @click="show1"
-                      class="
-                        bg-gray-300
-                        hover:bg-gray-400
-                        text-gray-800
-                        ml-3
-                        font-bold
-                        py-1
-                        px-3
-                        rounded
-                        inline-flex
-                        items-center
-                      "
-                    >
-                      <svg
-                        style="width: 24px; height: 24px"
-                        viewBox="0 0 24 24"
+                        @click="show1"
+                        class="
+                          bg-gray-300
+                          hover:bg-gray-800
+                          hover:text-white
+                          text-gray-800
+                          ml-3
+                          font-bold
+                          py-1
+                          px-3
+                          rounded
+                          inline-flex
+                          items-center
+                          transition
+                          duration-50
+                          ease-in-out
+                        "
                       >
-                        <path
-                          fill="currentColor"
-                          d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
-                        />
-                      </svg>
-                      <span>Direct Send</span>
-                    </button>
-                    <button @click="exportHtmlZIP" class="bg-white text-gray-800 underline hover:underline-offset-1 font-bold px-4 rounded inline-flex items-center">
-  <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-  <span>Export Zip</span>
-</button>
+                        <svg
+                          style="width: 24px; height: 24px"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z"
+                          />
+                        </svg>
+                        <span>Direct Send</span>
+                      </button>
+                      <button
+                        @click="exportHtmlZIP"
+                        class="
+                          bg-white
+                          hover:text-rose-900
+                          transition
+                          duration-50
+                          ease-in-out
+                          text-gray-800
+                          underline
+                          font-bold
+                          px-4
+                          rounded
+                          inline-flex
+                          items-center
+                        "
+                      >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-file-earmark-zip" viewBox="0 0 16 16">
+  <path d="M5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.11 0l-.929-.62a1 1 0 0 1-.415-1.074L5 8.438V7.5zm2 0H6v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.929-.62-.4-1.598A1 1 0 0 1 7 8.438V7.5z"/>
+  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1h-2v1h-1v1h1v1h-1v1h1v1H6V5H5V4h1V3H5V2h1V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+</svg>
+                        <span>Export Zip</span>
+                      </button>
                     </div>
                   </a>
 
@@ -688,153 +717,153 @@
                   </div>
                 </div>
 
-               <div
-                    id="modal1"
-                    tabindex="-1"
-                    class="
-                      hidden
-                      content-center
-                      overflow-y-auto overflow-x-hidden
-                      absolute
-                      ml-52
-                      z-50
-                      md:inset-0
-                      h-modal
-                      md:h-full
-                      justify-center
-                      items-center
-                    "
-                    aria-hidden="true"
-                  >
-                    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                      <div
-                        class="
-                          relative
-                          bg-white
-                          rounded-lg
-                          shadow
-                          dark:bg-gray-700
-                        "
-                      >
-                        <div class="flex justify-end p-2">
-                          <button
-                            type="button"
-                            class="
-                              text-gray-400
-                              bg-transparent
-                              hover:bg-gray-200 hover:text-gray-900
-                              rounded-lg
-                              text-sm
-                              p-1.5
-                              ml-auto
-                              inline-flex
-                              items-center
-                              dark:hover:bg-gray-800 dark:hover:text-white
-                            "
-                            data-modal-toggle="popup-modal"
+                <div
+                  id="modal1"
+                  tabindex="-1"
+                  class="
+                    hidden
+                    content-center
+                    overflow-y-auto overflow-x-hidden
+                    absolute
+                    ml-52
+                    z-50
+                    md:inset-0
+                    h-modal
+                    md:h-full
+                    justify-center
+                    items-center
+                  "
+                  aria-hidden="true"
+                >
+                  <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                    <div
+                      class="
+                        relative
+                        bg-white
+                        rounded-lg
+                        shadow
+                        dark:bg-gray-700
+                      "
+                    >
+                      <div class="flex justify-end p-2">
+                        <button
+                          type="button"
+                          class="
+                            text-gray-400
+                            bg-transparent
+                            hover:bg-gray-200 hover:text-gray-900
+                            rounded-lg
+                            text-sm
+                            p-1.5
+                            ml-auto
+                            inline-flex
+                            items-center
+                            dark:hover:bg-gray-800 dark:hover:text-white
+                          "
+                          data-modal-toggle="popup-modal"
+                        >
+                          <svg
+                            @click="hide1"
+                            class="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
                           >
-                            <svg
-                              @click="hide1"
-                              class="w-5 h-5"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
+                            <path
+                              fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="p-6 pt-0 text-center">
+                        <form
+                          class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
+                          action="#"
+                          @submit="exportHtml"
+                        >
+                          <div>
+                            <label
+                              for="email"
+                              class="
+                                block
+                                mb-2
+                                required
+                                text-sm
+                                font-medium
+                                text-gray-900 text-left
+                                dark:text-gray-300
+                              "
+                              >Send To Email Recipient</label
                             >
-                              <path
-                                fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="p-6 pt-0 text-center">
-                          <form
-                            class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
-                            action="#"
-                            @submit="exportHtml"
-                          >
-                            <div>
-                              <label
-                                for="email"
-                                class="
-                                  block
-                                  mb-2
-                                  required
-                                  text-sm
-                                  font-medium
-                                  text-gray-900 text-left
-                                  dark:text-gray-300
-                                "
-                                >Send To Email Recipient</label
-                              >
-                              <input
-                                type="recipient"
-                                name="recipient"
-                                id="recipient"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                "
-                                placeholder="To"
-                                required
-                              />
-                               <input
-                                type="fromName"
-                                name="fromName"
-                                id="fromName"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                  mt-3
-                                "
-                                placeholder="Sender Name"
-                                required
-                              />
-                                <input
-                                type="subject"
-                                name="subject"
-                                id="subject"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                  mt-3
-                                "
-                                placeholder="Subject"
-                                required
-                              />
-                            </div>
-                            <!-- <div class="center">
+                            <input
+                              type="recipient"
+                              name="recipient"
+                              id="recipient"
+                              class="
+                                bg-gray-50
+                                border border-gray-300
+                                text-gray-900 text-sm
+                                rounded-lg
+                                focus:ring-blue-500 focus:border-blue-500
+                                block
+                                w-full
+                                p-2.5
+                                dark:bg-gray-600
+                                dark:border-gray-500
+                                dark:placeholder-gray-400
+                                dark:text-white
+                              "
+                              placeholder="To"
+                              required
+                            />
+                            <input
+                              type="fromName"
+                              name="fromName"
+                              id="fromName"
+                              class="
+                                bg-gray-50
+                                border border-gray-300
+                                text-gray-900 text-sm
+                                rounded-lg
+                                focus:ring-blue-500 focus:border-blue-500
+                                block
+                                w-full
+                                p-2.5
+                                dark:bg-gray-600
+                                dark:border-gray-500
+                                dark:placeholder-gray-400
+                                dark:text-white
+                                mt-3
+                              "
+                              placeholder="Sender Name"
+                              required
+                            />
+                            <input
+                              type="subject"
+                              name="subject"
+                              id="subject"
+                              class="
+                                bg-gray-50
+                                border border-gray-300
+                                text-gray-900 text-sm
+                                rounded-lg
+                                focus:ring-blue-500 focus:border-blue-500
+                                block
+                                w-full
+                                p-2.5
+                                dark:bg-gray-600
+                                dark:border-gray-500
+                                dark:placeholder-gray-400
+                                dark:text-white
+                                mt-3
+                              "
+                              placeholder="Subject"
+                              required
+                            />
+                          </div>
+                          <!-- <div class="center">
                               <div class="form-input">
                                 <div class="preview">
                                   <img id="file-ip-1-preview" />
@@ -848,7 +877,7 @@
                                 />
                               </div>
                             </div> -->
-                             <button
+                          <button
                             data-modal-toggle="popup-modal"
                             type="submit"
                             class="
@@ -884,7 +913,7 @@
                             </svg>
                             &nbsp;Send
                           </button>
-                           <button
+                          <button
                             @click="hide1"
                             data-modal-toggle="popup-modal"
                             type="button"
@@ -913,14 +942,14 @@
                           >
                             Cancel
                           </button>
-                          </form>
-                        </div>
+                        </form>
                       </div>
                     </div>
                   </div>
+                </div>
 
                 <div>
-              <router-link
+                  <router-link
                     :to="'/new'"
                     class="
                       rounded
@@ -1029,13 +1058,13 @@ export default {
       const recipient = document.getElementById("recipient").value;
       const fromName = document.getElementById("fromName").value;
       const subject = document.getElementById("subject").value;
-      
+
       const mailData = {
-        'recipient': recipient,
-        'fromName': fromName,
-        'subject': subject,
-        'html': html
-      }
+        recipient: recipient,
+        fromName: fromName,
+        subject: subject,
+        html: html,
+      };
 
       console.log(mailData);
       this.sendTemplate(mailData);
@@ -1066,36 +1095,33 @@ export default {
     },
     async sendTemplate(data) {
       var ele = document.getElementById("toastSend");
-        document.getElementById("toastSend").style.display = "block";
-        setTimeout(function () {
-          ele.style.display = "none";
-        }, 3000);
-        var element = document.getElementById("modal1");
-        setTimeout(function () {
-          element.style.display = "none";
-        }, 3000);
+      document.getElementById("toastSend").style.display = "block";
+      setTimeout(function () {
+        ele.style.display = "none";
+      }, 3000);
+      var element = document.getElementById("modal1");
+      setTimeout(function () {
+        element.style.display = "none";
+      }, 3000);
       await axios.post("sendMail", data);
     },
-     exportHtml(e) {
+    exportHtml(e) {
       e.preventDefault();
       this.$refs.emailEditor.editor.exportHtml((data) => {
-
-        const html = data.html
-        this.sendEmail(html)
+        const html = data.html;
+        this.sendEmail(html);
       });
     },
     exportHtmlZIP() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
-         const html = data.html
+        const html = data.html;
 
         const zip = new JSZip();
         zip.file(`${localStorage.getItem("templateTitle")}.html`, html);
 
-        zip.generateAsync({type:'blob'})
-        .then((content) => {
-          saveAs(content, 'incremail_archive.zip')
-        })
-
+        zip.generateAsync({ type: "blob" }).then((content) => {
+          saveAs(content, "incremail_archive.zip");
+        });
       });
     },
     handleClick() {

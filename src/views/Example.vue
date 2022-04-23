@@ -452,12 +452,6 @@
                 class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
               >
                 <div class="text-sm lg:flex-grow">
-                  <a
-                    href="#responsive-header"
-                    class="block mt-4 text-dark lg:inline-block lg:mt-0 mr-4"
-                  >
-                    Start creating you own newsletters from Scratch
-                  </a>
 
                   <div
                     class="
@@ -466,14 +460,15 @@
                       text-gray-50
                       lg:inline-block lg:mt-0
                       hover:text-white
-                      mr-4
+                      ml-56
                     "
                   >
                     <button
                       @click="show"
                       class="
                         bg-gray-300
-                        hover:bg-gray-400
+                        hover:bg-gray-800
+                        hover:text-white
                         text-gray-800
                         font-bold
                         py-1
@@ -481,6 +476,9 @@
                         rounded
                         inline-flex
                         items-center
+                         transition
+                      duration-50
+                      ease-in-out
                       "
                     >
                       <svg
@@ -498,7 +496,8 @@
                       @click="show1"
                       class="
                         bg-gray-300
-                        hover:bg-gray-400
+                        hover:bg-gray-800
+                        hover:text-white
                         text-gray-800
                         ml-3
                         font-bold
@@ -507,6 +506,9 @@
                         rounded
                         inline-flex
                         items-center
+                         transition
+                      duration-50
+                      ease-in-out
                       "
                     >
                       <svg
@@ -520,6 +522,29 @@
                       </svg>
                       <span>Direct Send</span>
                     </button>
+                      <button
+                        @click="exportHtmlZIP"
+                        class="
+                          bg-white
+                          hover:text-rose-900
+                          transition
+                          duration-50
+                          ease-in-out
+                          text-gray-800
+                          underline
+                          font-bold
+                          px-4
+                          rounded
+                          inline-flex
+                          items-center
+                        "
+                      >
+                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-file-earmark-zip" viewBox="0 0 16 16">
+  <path d="M5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.11 0l-.929-.62a1 1 0 0 1-.415-1.074L5 8.438V7.5zm2 0H6v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.929-.62-.4-1.598A1 1 0 0 1 7 8.438V7.5z"/>
+  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1h-2v1h-1v1h1v1h-1v1h1v1H6V5H5V4h1V3H5V2h1V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+</svg>
+                        <span>&nbsp;Export Zip</span>
+                      </button>
                   </div>
 
                   <div
@@ -624,20 +649,6 @@
                                 required
                               />
                             </div>
-                            <!-- <div class="center">
-                              <div class="form-input">
-                                <div class="preview">
-                                  <img id="file-ip-1-preview" />
-                                </div>
-                                <label for="file-ip-1">Upload Image</label>
-                                <input
-                                  type="file"
-                                  id="file-ip-1"
-                                  accept="image/*"
-                                  v-on:change="showPreview"
-                                />
-                              </div>
-                            </div> -->
                           </form>
                           <button
                             v-on:click="saveDesign"
@@ -844,20 +855,6 @@
                                 required
                               />
                             </div>
-                            <!-- <div class="center">
-                              <div class="form-input">
-                                <div class="preview">
-                                  <img id="file-ip-1-preview" />
-                                </div>
-                                <label for="file-ip-1">Upload Image</label>
-                                <input
-                                  type="file"
-                                  id="file-ip-1"
-                                  accept="image/*"
-                                  v-on:change="showPreview"
-                                />
-                              </div>
-                            </div> -->
                             <button
                               data-modal-toggle="popup-modal"
                               type="submit"
@@ -1083,9 +1080,18 @@ export default {
       }, 3000);
       await axios.post("sendMail", data);
     },
-    // async sendImage(data) {
-    //   await axios.post("image-upload", data);
-    // },
+    exportHtmlZIP() {
+      this.$refs.emailEditor.editor.exportHtml((data) => {
+        const html = data.html;
+
+        const zip = new JSZip();
+        zip.file(`${localStorage.getItem("templateTitle")}.html`, html);
+
+        zip.generateAsync({ type: "blob" }).then((content) => {
+          saveAs(content, "incremail_archive.zip");
+        });
+      });
+    },
     exportHtml() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
         const html = data.html;
