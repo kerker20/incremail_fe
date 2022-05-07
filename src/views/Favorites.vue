@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-6"
+      class="flex items-center justify-between flex-wrap bg-white sticky p-4"
     >
       <div
         id="toast1"
@@ -56,19 +56,10 @@
           >Email Template Successfully Saved!</span
         >
       </div>
-      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
-        <svg
-          class="fill-current h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-          />
-        </svg>
-        <span class="font-semibold text-xl tracking-tight">IncreMail</span>
+       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
+        <img src="../../public/logo.png" alt="incremail logo" class="w-10 h-10">
+         &nbsp; &nbsp;
+        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
       </div>
       <div class="block lg:hidden">
         <button
@@ -94,18 +85,36 @@
           </svg>
         </button>
       </div>
-    <div class="flex justify-end">
-         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
-           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
-         </div>
-        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
+      <div class="flex justify-end">
+        <button
+        @click="showDrop"
+        id="dropShow"
+          type="button"
+          class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
+        >
+          <p class="initial mr-4 mb-1" v-if="user">{{ user.charAt(0) }}</p>
+        </button>
+        <div
+          id="dropdownShow"
+          class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul
+            class=" text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownDefault"
+          >
+            <li>
+              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
+               </li>
+          </ul>
+        </div>
+        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
-    <div class="flex flex-no-wrap bg-gray-200 h-screen">
+    <div class="flex flex-no-wrap bg-gray-100 h-screen">
       <div
         class="
-          w-44
+          w-40
           absolute
           sm:relative
           bg-white
@@ -254,7 +263,7 @@
                 p-2
                 justify-between
                 text-white
-                bg-gray-600
+                bg-gray-800
                 cursor-pointer
                 items-center
                 mb-4
@@ -390,9 +399,8 @@
               class="
                 max-w-md
                 mx-auto
-                bg-white
+                bg-transparent
                 rounded-xl
-                shadow-md
                 overflow-hidden
                 md:max-w-2xl
               "
@@ -400,7 +408,7 @@
               <div class="md:flex">
                 <div class="md:shrink-0">
                   <img
-                    class="h-80 w-full object-cover md:h-full md:w-80"
+                    class="h-96 w-full object-cover"
                     src="../assets/empty.png"
                     alt="empty"
                   />
@@ -445,6 +453,9 @@
                             transition
                             duration-50
                             ease-in-out
+                            absolute
+                            mb-8
+                            animate-bounce
                           "
                           viewBox="0 0 16 16"
                         >
@@ -500,51 +511,45 @@
                     >
                       {{ item.title }}
                     </div>
-                    <p class="text-gray-600 text-xs m-2 text-justify">
-                      Posted on:<span class="text-xs"
+                    <hr />
+                    <p
+                      class="text-gray-600 text-right m-2 text-justify"
+                      id="date"
+                    >
+                      Posted on:<span class="text-xs" id="date"
                         >&nbsp;{{ getHumanDate(item.created_at) }}
                       </span>
                     </p>
-                    <hr />
                   </div>
 
-                  <div class="px-6 pt-4 pb-2">
+                   <div class="px-6 pt-4 pb-5">
                     <button
-                      class="
-                        bg-transparent
-                        hover:bg-gray-300
-                        text-black
-                        py-2
-                        px-4
-                        rounded
-                        inline-flex
-                        items-center
-                        transition
-                        duration-150
-                        ease-in-out
-                      "
+                      class="bg-gray-800 h-8 text-white hover:bg-white hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
                     >
                       <p
                         @click="
                           setID(item.id);
                           setHTMLID(item.id);
                         "
-                        class=""
+                        class="text-xs"
                       >
                         View Template
                       </p>
+                      &nbsp;
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
+                        id="eye"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-eye"
+                        viewBox="0 0 16 16"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                        />
+                        <path
+                          d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
                         />
                       </svg>
                     </button>
@@ -573,6 +578,13 @@ export default {
     };
   },
   methods: {
+     showDrop() {
+      document.getElementById("dropdownShow").classList.toggle("show");
+    },
+     logout() {
+      localStorage.clear();
+      window.location.href = "http://localhost:3001/";
+    },
     check(data) {
       console.log(data);
     },
@@ -616,9 +628,14 @@ export default {
       var htmlTitle = dataHTML.data.title;
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
+      // document.getElementById("loading").style.display = "block";
+      // document.getElementById("eye").style.display = "none";
+      // setTimeout(function () {
+      //   document.getElementById("loading").style.display = "none";
+      // }, 5000);
       setTimeout(function () {
         window.location.href = "http://localhost:3001/emailView";
-      }, 300);
+      }, 4000);
     },
   },
   computed: {
@@ -642,7 +659,11 @@ export default {
   background-repeat: no-repeat;
   /* background-image: -webkit-linear-gradient(45deg, #ffffff 50%, #cecece 50%); */
 }
-/* .box{
-  background-image: url('../assets/dash.png')
-} */
+#date {
+  font-size: 10px;
+}
+
+.show{
+  display: block;
+}
 </style>

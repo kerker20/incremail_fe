@@ -55,6 +55,50 @@
         >
       </div>
       <div
+        id="toast-error"
+        class="
+          absolute
+          right-0
+          top-0
+          m-5
+          flex
+          items-center
+          p-4
+          mb-4
+          w-full
+          max-w-xs
+           text-gray-500
+          bg-gray-200
+          rounded-lg
+          shadow
+          dark:text-gray-400 dark:bg-gray-800
+          hidden
+        "
+        role="alert"
+      >
+        <div
+          class="
+            inline-flex
+            flex-shrink-0
+            justify-center
+            items-center
+            w-8
+            h-8
+            text-white-500
+            bg-rose-200
+            rounded-lg
+            dark:bg-rose-500 dark:text-green-200
+          "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+</svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >Email Address is <span class="text-rose-500">not Found!</span></span
+        >
+      </div>
+      <div
         class="
           max-w-md
           mx-auto
@@ -66,7 +110,10 @@
         "
       >
         <div class="md:flex">
-          <div class="p-8 md:max-w-sm mx-auto">
+          <div class="p-8 md:max-w-sm mx-auto"> 
+            <svg xmlns="http://www.w3.org/2000/svg" @click="back" width="16" height="16" fill="currentColor" class="bi bi-arrow-left cursor-pointer hover:text-blue-400" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+</svg>
             <h6 class="text-2xl mt-3 text-center font-extrabold text-gray-900">
               Forgot Password
             </h6>
@@ -183,29 +230,45 @@ export default {
     };
   },
   methods: {
+    back(){
+      window.location.href = "http://localhost:3001/"
+    },
     async handleSubmit() {
-      var element = document.getElementById("loader");
-      element.classList.add("animate-spin");
-      const response = await axios.post("forgot", {
+      try {
+        var element = document.getElementById("loader");
+        element.classList.add("animate-spin");
+        const response = await axios.post("forgot", {
         email: this.email,
       });
-      if (response) {
-        var ele = document.getElementById("toast");
+       var ele = document.getElementById("toast");
         document.getElementById("toast").style.display = "block";
         setTimeout(function () {
           ele.style.display = "none";
-        }, 6000);
+        }, 3000);
 
         setTimeout(function () {
           element.classList.remove("animate-spin");
-        }, 6000);
+        }, 1000);
         const email = document.getElementById("email-address");
         email.value = "";
+        // setTimeout(function () {
+        //   window.location.href = "http://localhost:3001/";
+        // }, 3000);
+
+
+      } catch (error) {
+         var ele = document.getElementById("toast-error");
+        document.getElementById("toast-error").style.display = "block";
         setTimeout(function () {
-          window.location.href = "http://localhost:3001/";
+          ele.style.display = "none";
         }, 3000);
-      } else {
-        document.getElementById("toast").style.display = "none";
+
+        setTimeout(function () {
+          element.classList.remove("animate-spin");
+        }, 1000);
+         setTimeout(function () {
+          window.location.href = "http://localhost:3001/forgot";
+        }, 3000);
       }
     },
   },

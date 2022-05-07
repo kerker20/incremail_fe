@@ -13,7 +13,7 @@ export default {
 <style>
 #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  background-color: gray;
+  background-color: rgb(107 114 128);
 }
 span.brand {
     display: none;

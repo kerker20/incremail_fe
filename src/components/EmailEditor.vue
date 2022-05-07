@@ -1,9 +1,11 @@
 <template>
   <div
+    onLoad="hide"
     v-bind:id="id"
     class="unlayer-editor"
     v-bind:style="{ minHeight: minHeight }"
-  ></div>
+  >
+  </div>
 </template>
 
 <script>
@@ -35,6 +37,10 @@ export default {
     loadScript(this.loadEditor.bind(this));
   },
   methods: {
+    hide() {
+      
+document.querySelector("#editor > div > div > div > div > div > div > div.sc-jifIRw.kIFJtK.blockbuilder-preferences.right > div > div > div.sc-cbDGPM.gCuogY.blockbuilder-tools-panel.bootstrap > a").style.display = "none"
+    },
     loadEditor() {
       const options = this.options || {};
 
@@ -94,6 +100,9 @@ export default {
   display: none;
 }
 #cont::-webkit-scrollbar {
+  display: none;
+}
+span.brand{
   display: none;
 }
 </style>

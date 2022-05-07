@@ -1,43 +1,15 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-6"
+      class="flex items-center justify-between flex-wrap bg-white sticky p-4"
     >
       <div
         id="toast1"
-        class="
-          absolute
-          right-0
-          top-0
-          m-5
-          flex
-          items-center
-          p-4
-          mb-4
-          w-full
-          max-w-xs
-          text-gray-500
-          bg-gray-200
-          rounded-lg
-          shadow
-          dark:text-gray-400 dark:bg-gray-800
-          hidden
-        "
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
-          class="
-            inline-flex
-            flex-shrink-0
-            justify-center
-            items-center
-            w-8
-            h-8
-            text-green-500
-            bg-green-100
-            rounded-lg
-            dark:bg-green-800 dark:text-green-200
-          "
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
         >
           <svg
             class="w-5 h-5"
@@ -53,36 +25,21 @@
           </svg>
         </div>
         <span class="ml-3 text-sm font-normal"
-          >Email Template Successfully Moved to Favorites!</span
+          >Successfully Moved to Favorites!</span
         >
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
-        <svg
-          class="fill-current h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-          />
-        </svg>
-        <span class="font-semibold text-xl tracking-tight">IncreMail</span>
+        <img
+          src="../../public/logo.png"
+          alt="incremail logo"
+          class="w-10 h-10"
+        />
+        &nbsp; &nbsp;
+        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
       </div>
       <div class="block lg:hidden">
         <button
-          class="
-            flex
-            items-center
-            px-3
-            py-2
-            border
-            rounded
-            text-teal-200
-            border-teal-400
-            hover:text-white hover:border-white
-          "
+          class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
         >
           <svg
             class="fill-current h-3 w-3"
@@ -94,60 +51,41 @@
           </svg>
         </button>
       </div>
-      <div class="flex justify-end">
-        <div
-          class="
-            inline-block
-            h-8
-            w-8
-            rounded-full
-            ring-2 ring-white
-            bg-gray-400
-          "
+     <div class="flex justify-end">
+        <button
+        @click="showDrop"
+        id="dropShow"
+          type="button"
+          class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
-          <p class="initial" v-if="user">{{ user.charAt(0) }}</p>
+          <p class="initial mr-4 mb-1" v-if="user">{{ user.charAt(0) }}</p>
+        </button>
+        <div
+          id="dropdownShow"
+          class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul
+            class=" text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownDefault"
+          >
+            <li>
+              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
+               </li>
+          </ul>
         </div>
-        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
+        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
-    <div class="flex flex-no-wrap bg-gray-200 h-screen">
+    <div class="flex flex-no-wrap bg-gray-100 h-screen">
       <div
-        class="
-          w-44
-          absolute
-          sm:relative
-          bg-white
-          shadow
-          md:h-full
-          flex-col
-          justify-between
-          hidden
-          sm:flex
-        "
+        class="w-44 absolute sm:relative bg-white shadow md:h-full flex-col justify-between hidden sm:flex"
       >
         <div class="px-6 h-screen">
           <ul class="mt-4">
             <router-link
               :to="'/campaigns'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -174,24 +112,7 @@
             </router-link>
             <router-link
               :to="'/example'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -211,21 +132,7 @@
             </router-link>
             <router-link
               :to="'/emailTemplates'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-white
-                bg-gray-600
-                cursor-pointer
-                items-center
-                mb-4
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-white bg-gray-800 cursor-pointer items-center mb-4"
             >
               <div class="flex items-center">
                 <svg
@@ -250,24 +157,7 @@
             </router-link>
             <router-link
               :to="'/favorites'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -288,23 +178,7 @@
             </router-link>
             <router-link
               :to="'/settings'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -333,48 +207,17 @@
       </div>
       <!-- Sidebar ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
-      
-      <div class="max-w-max mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-1xl font-bold text-gray-900">
-          Your Email Template Blocks
-        </h1>
+
+      <div class="flex justify-center w-full h-full shadow-lg mx-auto">
         <hr class="m-5" />
         <div class="max-w-max" align="center">
           <div
             id="toast"
-            class="
-              absolute
-              right-0
-              top-0
-              m-5
-              flex
-              items-center
-              p-4
-              mb-4
-              w-full
-              max-w-xs
-              text-gray-500
-              bg-gray-200
-              rounded-lg
-              shadow
-              dark:text-gray-400 dark:bg-gray-800
-              hidden
-            "
+            class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
             role="alert"
           >
             <div
-              class="
-                inline-flex
-                flex-shrink-0
-                justify-center
-                items-center
-                w-8
-                h-8
-                text-green-500
-                bg-green-100
-                rounded-lg
-                dark:bg-green-800 dark:text-green-200
-              "
+              class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
             >
               <svg
                 class="w-5 h-5"
@@ -395,11 +238,11 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-            <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
+            <p class="mt-12 mb-3 subpixel-antialiased">No Email Templates Found</p>
             <section class="overflow-hidden text-gray-700">
               <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
                 <div class="flex flex-wrap -m-1 md:-m-2">
-                  <div class="flex flex-wrap w-1/3">
+                  <div class="flex flex-wrap w-1/3 shadow-md">
                     <div class="w-full p-1 md:p-2">
                       <img
                         class="h-60 w-84 object-cover"
@@ -408,7 +251,7 @@
                       />
                     </div>
                   </div>
-                  <div class="flex flex-wrap w-1/3">
+                  <div class="flex flex-wrap w-1/3 shadow-md">
                     <div class="w-full p-1 md:p-2">
                       <img
                         class="h-60 w-84 object-cover"
@@ -417,7 +260,7 @@
                       />
                     </div>
                   </div>
-                  <div class="flex flex-wrap w-1/3">
+                  <div class="flex flex-wrap w-1/3 shadow-md">
                     <div class="w-full p-1 md:p-2">
                       <img
                         class="h-60 w-84 object-cover"
@@ -437,35 +280,16 @@
               v-for="item in data"
               v-bind:key="item.id"
             >
-              <div>
+              <div class="mt-16">
                 <div
-                  class="
-                    max-w-xs
-                    rounded
-                    overflow-hidden
-                    shadow-lg
-                    mx-2
-                    my-2
-                    bg-white
-                  "
+                  class="max-w-xs rounded overflow-hidden shadow-lg mx-2 my-2 bg-white hover:shadow-xl transition duration-50 ease-in-out"
                   id="cardC"
                 >
                   <div class="relative">
                     <div class="flex">
                       <button
                         @click="favTemplate(item.id)"
-                        class="
-                          hover:bg-red-500 hover:text-white
-                          py-2
-                          px-3
-                          transition
-                          duration-150
-                          ease-in-out
-                          rounded-full
-                          absolute
-                          top-3
-                          left-3
-                        "
+                        class="hover:bg-red-500 hover:text-white py-2 px-3 transition duration-150 ease-in-out rounded-full absolute top-3 left-3"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -483,31 +307,12 @@
                     </div>
                     <div class="flex">
                       <button
-                        class="
-                          bg-neutral-300
-                          hover:bg-gray-700 hover:text-white
-                          py-2
-                          px-3
-                          transition
-                          duration-150
-                          ease-in-out
-                          rounded-full
-                          absolute
-                          top-3
-                          right-3
-                        "
+                        class="bg-neutral-300 hover:bg-gray-700 hover:text-white py-2 px-3 transition duration-150 ease-in-out rounded-full absolute top-3 right-3"
                       >
                         <svg
                           @click="deleteTemplate(item.id)"
                           xmlns="http://www.w3.org/2000/svg"
-                          class="
-                            h-5
-                            w-5
-                            hover:text-white
-                            transition
-                            duration-50
-                            ease-in-out
-                          "
+                          class="h-5 w-5 hover:text-white transition duration-50 ease-in-out"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -526,53 +331,45 @@
                     >
                       {{ item.title }}
                     </div>
-
-                    <p class="text-gray-600 text-xs m-2 text-justify">
-                      Posted on:<span class="text-xs"
+                    <hr />
+                    <p
+                      class="text-gray-600 text-right m-2 text-justify"
+                      id="date"
+                    >
+                      Posted on:<span class="text-xs" id="date"
                         >&nbsp;{{ getHumanDate(item.created_at) }}
                       </span>
                     </p>
-                    <hr />
                   </div>
 
-                  <div class="px-6 pt-4 pb-2">
+                  <div class="px-6 pt-4 pb-5">
                     <button
-                      class="
-                        bg-transparent
-                        hover:bg-blue-400
-                        hover:text-white
-                        text-black
-                        py-2
-                        px-4
-                        rounded
-                        inline-flex
-                        items-center
-                        transition
-                        duration-150
-                        ease-in-out
-                      "
+                      class="bg-gray-800 h-8 text-white hover:bg-white hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
                     >
                       <p
                         @click="
                           setID(item.id);
                           setHTMLID(item.id);
                         "
-                        class=""
+                        class="text-xs"
                       >
                         View Template
                       </p>
+                      &nbsp;
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
+                        id="eye"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-eye"
+                        viewBox="0 0 16 16"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                        />
+                        <path
+                          d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
                         />
                       </svg>
                     </button>
@@ -580,7 +377,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <!-- end of fourth card -->
             </div>
           </div>
@@ -599,12 +396,19 @@ export default {
     return {
       user: localStorage.getItem("data"),
       images: undefined,
-      thumbnail: sample
+      // thumbnail: sample,
     };
   },
   methods: {
-    jsredir(){
+    jsredir() {
       window.location.href = "../../public/sample.html";
+    },
+    showDrop() {
+      document.getElementById("dropdownShow").classList.toggle("show");
+    },
+     logout() {
+      localStorage.clear();
+      window.location.href = "http://localhost:3001/";
     },
     check(data) {
       console.log(data);
@@ -655,9 +459,14 @@ export default {
       var htmlTitle = dataHTML.data.title;
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
+      // document.getElementById("loading").style.display = "block";
+      // document.getElementById("eye").style.display = "none";
+      //  setTimeout(function () {
+      //   document.getElementById("loading").style.display = "none";
+      // }, 5000);
       setTimeout(function () {
         window.location.href = "http://localhost:3001/emailView";
-      }, 300);
+      }, 100);
     },
   },
   // mounted() {
@@ -683,5 +492,10 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
 }
-
+#date {
+  font-size: 10px;
+}
+.show{
+  display: block;
+}
 </style>

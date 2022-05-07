@@ -1,49 +1,18 @@
 <template>
-  <div class="flex justify-center bg-gray">
+  <div class="flex justify-center bg-gray-500">
     <div class="w-full h-full rounded" id="sign">
       <div
-        class="
-          max-w-md
-          mx-auto
-          bg-gray-50
-          rounded-xl
-          shadow-md
-          overflow-hidden
-          md:max-w-3xl
-        "
+        class="max-w-md mx-auto bg-gray-50 rounded-xl shadow-md overflow-hidden md:max-w-3xl"
       >
         <div class="md:flex">
           <div class="p-8 md:max-w-sm mx-auto">
             <div
               id="toast-danger"
-              class="
-                flex
-                items-center
-                w-80
-                p-2
-                text-gray-500
-                bg-white
-                rounded-lg
-                shadow
-                dark:text-gray-400 dark:bg-gray-800
-                absolute
-                hidden
-              "
+              class="flex items-center w-80 p-2 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 absolute hidden"
               role="alert"
             >
               <div
-                class="
-                  inline-flex
-                  items-center
-                  justify-center
-                  flex-shrink-0
-                  w-8
-                  h-8
-                  text-red-500
-                  bg-red-100
-                  rounded-lg
-                  dark:bg-red-800 dark:text-red-200
-                "
+                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200"
               >
                 <svg
                   class="w-5 h-5"
@@ -66,7 +35,7 @@
               Don't have an account?
               <router-link
                 :to="'/register'"
-                class="font-medium text-indigo-400 hover:text-rose-500"
+                class="font-medium text-indigo-400 hover:text-blue-700"
                 >Register an Account</router-link
               >
             </div>
@@ -103,19 +72,7 @@
                     type="email"
                     autocomplete="off"
                     required=""
-                    class="
-                      appearance-none
-                      rounded
-                      block
-                      w-full
-                      px-7
-                      py-3
-                      bg-neutral-200
-                      border border-gray-300
-                      placeholder-gray-500
-                      focus:z-10
-                      sm:text-sm
-                    "
+                    class="appearance-none rounded block w-full px-7 py-3 bg-neutral-200 border border-gray-300 placeholder-gray-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
@@ -145,57 +102,20 @@
                     type="password"
                     autocomplete="current-password"
                     required=""
-                    class="
-                      appearance-none
-                      rounded
-                      block
-                      w-full
-                      px-7
-                      py-3
-                      bg-neutral-200
-                      border border-gray-300
-                      placeholder-gray-500
-                      text-gray-900
-                      focus:z-10
-                      sm:text-sm
-                    "
+                    class="appearance-none rounded block w-full px-7 py-3 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm"
                     placeholder="Password"
                   />
                 </div>
               </div>
               <router-link
                 :to="'/forgot'"
-                class="
-                  content-end
-                  text-xs text-neutral-600
-                  hover:text-indigo-500
-                  underline
-                "
+                class="content-end text-xs text-neutral-600 hover:text-indigo-500 underline"
                 >Forgot your password?</router-link
               >
               <div>
                 <button
                   type="submit"
-                  class="
-                    group
-                    relative
-                    w-full
-                    flex
-                    justify-center
-                    py-2
-                    px-4
-                    border border-transparent
-                    text-sm
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-gray-600
-                    hover:bg-gray-700
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-offset-2
-                    focus:ring-indigo-500
-                  "
+                  class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span id="loader" class="mr-2">
                     <svg
@@ -217,9 +137,18 @@
                   </span>
                   Sign in
                 </button>
+                <div class="flex align-center justify-center">
+                   <div
+                  class="g-signin2 mt-5"
+                  id="google-signin-button"
+                  data-onsuccess="onSignIn"
+                  data-theme="dark"
+                ></div>
+                </div>
               </div>
             </form>
           </div>
+
           <div class="md:shrink-0">
             <img
               class="md:max-w-md"
@@ -232,7 +161,7 @@
     </div>
   </div>
 </template>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
 import axios from "axios";
 export default {
@@ -243,6 +172,11 @@ export default {
       password: "",
       error: "",
     };
+  },
+  mounted() {
+    gapi.signin2.render("google-signin-button", {
+      onsuccess: this.onSignIn,
+    });
   },
   methods: {
     async handleSubmit() {
@@ -272,7 +206,32 @@ export default {
         this.error = "Invalid credentials in password/email!";
       }
     },
+
+    onSignIn(googleUser) {
+      // Useful data for your client-side scripts:
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log("Full Name: " + profile.getName());
+      console.log("Given Name: " + profile.getGivenName());
+      console.log("Family Name: " + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+      localStorage.setItem("data", profile.getName());
+
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+      window.location.href = "http://localhost:3001/example";
+    },
+
+    signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log("User signed out.");
+      });
+    },
   },
+
 };
 </script>
 <style scoped>

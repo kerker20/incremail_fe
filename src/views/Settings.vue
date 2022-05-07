@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-6"
+      class="flex items-center justify-between flex-wrap bg-white sticky p-4"
     >
       <div
         id="toast"
@@ -56,19 +56,10 @@
           >Email Template Successfully Saved!</span
         >
       </div>
-      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
-        <svg
-          class="fill-current h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-          />
-        </svg>
-        <span class="font-semibold text-xl tracking-tight">IncreMail</span>
+     <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
+        <img src="../../public/logo.png" alt="incremail logo" class="w-10 h-10">
+         &nbsp; &nbsp;
+        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
       </div>
       <div class="block lg:hidden">
         <button
@@ -94,18 +85,36 @@
           </svg>
         </button>
       </div>
-     <div class="flex justify-end">
-         <div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400">
-           <p class="initial" v-if="user">{{user.charAt(0)}}</p>
-         </div>
-        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
+      <div class="flex justify-end">
+        <button
+        @click="showDrop"
+        id="dropShow"
+          type="button"
+          class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
+        >
+          <p class="initial mr-4 mb-1" v-if="user">{{ user.charAt(0) }}</p>
+        </button>
+        <div
+          id="dropdownShow"
+          class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul
+            class=" text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownDefault"
+          >
+            <li>
+              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
+               </li>
+          </ul>
+        </div>
+        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
     <div class="flex flex-no-wrap bg-gray-200 h-screen">
       <div
         class="
-          w-44
+          w-40
           absolute
           sm:relative
           bg-white
@@ -193,23 +202,6 @@
                 viewBox="0 0 16 16">
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
                 </svg>
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
                 <span class="text-sm ml-2">Templates</span>
               </div>
             </router-link>
@@ -284,23 +276,6 @@
                 viewBox="0 0 16 16">
               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                 </svg>
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-stack"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                  <polyline points="4 12 12 16 20 12" />
-                  <polyline points="4 16 12 20 20 16" />
-                </svg> -->
                 <span class="text-sm ml-2">Favorites</span>
               </div>
             </router-link>
@@ -316,7 +291,7 @@
                 p-2
                 justify-between
                 text-white
-                bg-gray-600
+                bg-gray-800
                 cursor-pointer
                 items-center
                 mb-4
@@ -466,7 +441,7 @@
                       font-medium
                       rounded-md
                       text-white
-                      bg-gray-600
+                      bg-gray-800
                       hover:bg-gray-700
                       focus:outline-none
                       focus:ring-2
@@ -496,6 +471,13 @@ export default {
     };
   },
   methods: {
+    showDrop() {
+      document.getElementById("dropdownShow").classList.toggle("show");
+    },
+     logout() {
+      localStorage.clear();
+      window.location.href = "http://localhost:3001/";
+    },
     sidebarHandler() {
       var sideBar = document.getElementById("mobile-nav");
       sideBar.style.transform = "translateX(-260px)";
@@ -533,4 +515,7 @@ export default {
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;1,400&family=Poppins:wght@200;400&display=swap");
+.show{
+  display: block;
+}
 </style>

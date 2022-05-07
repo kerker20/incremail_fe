@@ -2,43 +2,15 @@
   <main>
     <!-- <button class="btn">Button</button> -->
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-6"
+      class="flex items-center justify-between flex-wrap bg-white sticky p-4"
     >
       <div
         id="toastSend"
-        class="
-          absolute
-          right-0
-          top-0
-          m-5
-          flex
-          items-center
-          p-4
-          mb-4
-          w-full
-          max-w-xs
-          text-gray-500
-          bg-gray-200
-          rounded-lg
-          shadow
-          dark:text-gray-400 dark:bg-gray-800
-          hidden
-        "
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
-          class="
-            inline-flex
-            flex-shrink-0
-            justify-center
-            items-center
-            w-8
-            h-8
-            text-green-500
-            bg-green-100
-            rounded-lg
-            dark:bg-green-800 dark:text-green-200
-          "
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
         >
           <svg
             class="w-5 h-5"
@@ -59,39 +31,11 @@
       </div>
       <div
         id="toast"
-        class="
-          absolute
-          right-0
-          top-0
-          m-5
-          flex
-          items-center
-          p-4
-          mb-4
-          w-full
-          max-w-xs
-          text-gray-500
-          bg-gray-200
-          rounded-lg
-          shadow
-          dark:text-gray-400 dark:bg-gray-800
-          hidden
-        "
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
-          class="
-            inline-flex
-            flex-shrink-0
-            justify-center
-            items-center
-            w-8
-            h-8
-            text-green-500
-            bg-green-100
-            rounded-lg
-            dark:bg-green-800 dark:text-green-200
-          "
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
         >
           <svg
             class="w-5 h-5"
@@ -111,107 +55,50 @@
         >
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
-        <svg
-          class="fill-current h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-          />
-        </svg>
-        <span class="font-semibold text-xl tracking-tight">IncreMail</span>
+        <img
+          src="../../public/logo.png"
+          alt="incremail logo"
+          class="w-10 h-10"
+        />
+        &nbsp; &nbsp;
+        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
       </div>
       <div class="flex justify-end">
         <button
-          id="dropdownDefault"
-          data-dropdown-toggle="dropdown"
+        @click="showDrop"
+        id="dropShow"
           type="button"
-          class="
-            cursor-pointer
-            inline-block
-            h-8
-            w-8
-            rounded-full
-            ring-2 ring-white
-            bg-gray-400
-          "
+          class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
           <p class="initial mr-4 mb-1" v-if="user">{{ user.charAt(0) }}</p>
+          <p class="initial mr-4 mb-1" v-else>{{ user.charAt(0) }}</p>
         </button>
         <div
-          id="dropdown"
-          class="
-            hidden
-            absolute
-            w-28
-            bg-white
-            rounded
-            divide-y divide-gray-100
-            shadow
-            dark:bg-gray-700
-          "
+          id="dropdownShow"
+          class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class="py-1 text-sm text-gray-700 dark:text-gray-200"
+            class=" text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
-              <button
-                @click="logout"
-                class="
-                  block
-                  py-2
-                  px-4
-                "
-                >Logout </button
-              >
-            </li>
+              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
+               </li>
           </ul>
         </div>
-        <div class="text-gray-800 mt-1 ml-4" v-if="user">{{ user }}</div>
+        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
     <div class="flex flex-no-wrap bg-gray-200 h-screen">
       <div
-        class="
-          w-44
-          absolute
-          sm:relative
-          bg-white
-          shadow
-          md:h-full
-          flex-col
-          justify-between
-          hidden
-          sm:flex
-        "
+        class="w-44 absolute sm:relative bg-white shadow md:h-full flex-col justify-between hidden sm:flex"
       >
         <div class="px-6 h-screen">
           <ul class="mt-4">
             <router-link
               :to="'/campaigns'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -238,21 +125,7 @@
             </router-link>
             <router-link
               :to="'/example'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-white
-                bg-gray-600
-                cursor-pointer
-                items-center
-                mb-4
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-white bg-gray-800 cursor-pointer items-center mb-4"
             >
               <div class="flex items-center">
                 <svg
@@ -272,24 +145,7 @@
             </router-link>
             <router-link
               :to="'/emailTemplates'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -314,24 +170,7 @@
             </router-link>
             <router-link
               :to="'/favorites'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -351,23 +190,7 @@
             </router-link>
             <router-link
               :to="'/settings'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -397,89 +220,33 @@
       <!-- Remove class [ h-64 ] when adding a card block -->
       <div class="container max-w-screen-2xl" id="cont">
         <div id="example" class="overflow-scroll">
-          <div class="container mt-4">
+          <div class="container mt-2">
             <nav
-              class="
-                flex
-                items-center
-                justify-between
-                flex-wrap
-                bg-white
-                p-6
-                h-20
-              "
+              class="flex items-center justify-between flex-wrap bg-white p-6 h-20"
             >
-              <div class="flex items-center flex-shrink-0 text-dark mr-6">
-                <svg
-                  class="fill-current h-8 w-8 mr-2"
-                  width="54"
-                  height="54"
-                  viewBox="0 0 54 54"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-                  />
-                </svg>
+              <div
+                class="flex items-center flex-shrink-0 text-gray-800 mr-6"
+              >
+                <img
+                  src="../../public/logo.png"
+                  alt="incremail logo"
+                  class="w-10 h-10"
+                />
+                &nbsp; &nbsp;
                 <span class="font-semibold text-xl tracking-tight"
-                  >Incremail Newsletter</span>
-              </div>
-              <div class="block lg:hidden">
-                <button
-                  class="
-                    flex
-                    items-center
-                    px-3
-                    py-2
-                    border
-                    rounded
-                    text-teal-200
-                    border-teal-400
-                    hover:text-white hover:border-white
-                  "
+                  >IncreMail Newsletter</span
                 >
-                  <svg
-                    class="fill-current h-3 w-3"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title>Menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                  </svg>
-                </button>
               </div>
               <div
                 class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
               >
                 <div class="text-sm lg:flex-grow">
-
                   <div
-                    class="
-                      block
-                      mt-4
-                      text-gray-50
-                      lg:inline-block lg:mt-0
-                      hover:text-white
-                      ml-56
-                    "
+                    class="block mt-4 text-gray-50 lg:inline-block lg:mt-0 hover:text-white ml-56"
                   >
                     <button
                       @click="show"
-                      class="
-                        bg-gray-300
-                        hover:bg-gray-800
-                        hover:text-white
-                        text-gray-800
-                        font-bold
-                        py-1
-                        px-3
-                        rounded
-                        inline-flex
-                        items-center
-                         transition
-                      duration-50
-                      ease-in-out
-                      "
+                      class="bg-gray-300 hover:bg-gray-800 hover:text-white text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center transition duration-50 ease-in-out"
                     >
                       <svg
                         style="width: 24px; height: 24px"
@@ -494,22 +261,7 @@
                     </button>
                     <button
                       @click="show1"
-                      class="
-                        bg-gray-300
-                        hover:bg-gray-800
-                        hover:text-white
-                        text-gray-800
-                        ml-3
-                        font-bold
-                        py-1
-                        px-3
-                        rounded
-                        inline-flex
-                        items-center
-                         transition
-                      duration-50
-                      ease-in-out
-                      "
+                      class="bg-gray-300 hover:bg-gray-800 hover:text-white text-gray-800 ml-3 font-bold py-1 px-3 rounded inline-flex items-center transition duration-50 ease-in-out"
                     >
                       <svg
                         style="width: 24px; height: 24px"
@@ -522,74 +274,43 @@
                       </svg>
                       <span>Direct Send</span>
                     </button>
-                      <button
-                        @click="exportHtmlZIP"
-                        class="
-                          bg-white
-                          hover:text-rose-900
-                          transition
-                          duration-50
-                          ease-in-out
-                          text-gray-800
-                          underline
-                          font-bold
-                          px-4
-                          rounded
-                          inline-flex
-                          items-center
-                        "
+                    <button
+                      @click="exportHtmlZIP"
+                      class="bg-white hover:text-rose-900 transition duration-50 ease-in-out text-gray-800 underline font-bold px-4 rounded inline-flex items-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        fill="currentColor"
+                        class="bi bi-file-earmark-zip animate-bounce"
+                        viewBox="0 0 16 16"
                       >
-                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-file-earmark-zip" viewBox="0 0 16 16">
-  <path d="M5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.11 0l-.929-.62a1 1 0 0 1-.415-1.074L5 8.438V7.5zm2 0H6v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.929-.62-.4-1.598A1 1 0 0 1 7 8.438V7.5z"/>
-  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1h-2v1h-1v1h1v1h-1v1h1v1H6V5H5V4h1V3H5V2h1V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-</svg>
-                        <span>&nbsp;Export Zip</span>
-                      </button>
+                        <path
+                          d="M5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.11 0l-.929-.62a1 1 0 0 1-.415-1.074L5 8.438V7.5zm2 0H6v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.929-.62-.4-1.598A1 1 0 0 1 7 8.438V7.5z"
+                        />
+                        <path
+                          d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1h-2v1h-1v1h1v1h-1v1h1v1H6V5H5V4h1V3H5V2h1V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"
+                        />
+                      </svg>
+                      <span>&nbsp;Export Zip</span>
+                    </button>
                   </div>
 
                   <div
                     id="modal"
                     tabindex="-1"
-                    class="
-                      hidden
-                      content-center
-                      overflow-y-auto overflow-x-hidden
-                      absolute
-                      ml-52
-                      z-50
-                      md:inset-0
-                      h-modal
-                      md:h-full
-                      justify-center
-                      items-center
-                    "
+                    class="hidden content-center overflow-y-auto overflow-x-hidden absolute ml-52 z-50 md:inset-0 h-modal md:h-full justify-center items-center"
                     aria-hidden="true"
                   >
                     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                       <div
-                        class="
-                          relative
-                          bg-white
-                          rounded-lg
-                          shadow
-                          dark:bg-gray-700
-                        "
+                        class="relative bg-white rounded-lg shadow dark:bg-gray-700"
                       >
                         <div class="flex justify-end p-2">
                           <button
                             type="button"
-                            class="
-                              text-gray-400
-                              bg-transparent
-                              hover:bg-gray-200 hover:text-gray-900
-                              rounded-lg
-                              text-sm
-                              p-1.5
-                              ml-auto
-                              inline-flex
-                              items-center
-                              dark:hover:bg-gray-800 dark:hover:text-white
-                            "
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                             data-modal-toggle="popup-modal"
                           >
                             <svg
@@ -610,100 +331,60 @@
                         <div class="p-6 pt-0 text-center">
                           <form
                             class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
-                            action="#"
+                            @submit="saveDesign"
                           >
                             <div>
                               <label
                                 for="email"
-                                class="
-                                  block
-                                  mb-2
-                                  required
-                                  text-sm
-                                  font-medium
-                                  text-gray-900 text-left
-                                  dark:text-gray-300
-                                "
+                                class="block mb-2 required text-sm font-medium text-gray-900 text-left dark:text-gray-300"
                                 >Enter Template Title</label
                               >
                               <input
                                 type="title"
                                 name="title"
                                 id="title"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 v-model="title"
                                 placeholder="Template Title"
                                 required
                               />
                             </div>
+                            <button
+                              data-modal-toggle="popup-modal"
+                              type="submit"
+                              class="text-white bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+                            >
+                              Submit &nbsp;
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="15"
+                                fill="currentColor"
+                                id="loading"
+                                class="bi bi-clipboard-check animate-bounce hidden"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                                />
+                                <path
+                                  d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+                                />
+                                <path
+                                  d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+                                />
+                              </svg>
+                            </button>
+                            <button
+                              @click="hide"
+                              data-modal-toggle="popup-modal"
+                              type="button"
+                              class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                            >
+                              Cancel
+                            </button>
                           </form>
-                          <button
-                            v-on:click="saveDesign"
-                            data-modal-toggle="popup-modal"
-                            type="button"
-                            class="
-                              text-white
-                              bg-gray-600
-                              hover:bg-gray-800
-                              focus:ring-4
-                              focus:outline-none
-                              focus:ring-gray-300
-                              dark:focus:ring-gray-800
-                              font-medium
-                              rounded-lg
-                              text-sm
-                              inline-flex
-                              items-center
-                              px-5
-                              py-2.5
-                              text-center
-                              mr-2
-                            "
-                          >
-                            Submit
-                          </button>
-                          <button
-                            @click="hide"
-                            data-modal-toggle="popup-modal"
-                            type="button"
-                            class="
-                              text-gray-500
-                              bg-white
-                              hover:bg-gray-100
-                              focus:ring-4
-                              focus:outline-none
-                              focus:ring-gray-200
-                              rounded-lg
-                              border border-gray-200
-                              text-sm
-                              font-medium
-                              px-5
-                              py-2.5
-                              hover:text-gray-900
-                              focus:z-10
-                              dark:bg-gray-700
-                              dark:text-gray-300
-                              dark:border-gray-500
-                              dark:hover:text-white
-                              dark:hover:bg-gray-600
-                              dark:focus:ring-gray-600
-                            "
-                          >
-                            Cancel
-                          </button>
                         </div>
                       </div>
                     </div>
@@ -712,46 +393,17 @@
                   <div
                     id="modal1"
                     tabindex="-1"
-                    class="
-                      hidden
-                      content-center
-                      overflow-y-auto overflow-x-hidden
-                      absolute
-                      ml-52
-                      z-50
-                      md:inset-0
-                      h-modal
-                      md:h-full
-                      justify-center
-                      items-center
-                    "
+                    class="hidden content-center overflow-y-auto overflow-x-hidden absolute ml-52 z-50 md:inset-0 h-modal md:h-full justify-center items-center"
                     aria-hidden="true"
                   >
                     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                       <div
-                        class="
-                          relative
-                          bg-white
-                          rounded-lg
-                          shadow
-                          dark:bg-gray-700
-                        "
+                        class="relative bg-white rounded-lg shadow dark:bg-gray-700"
                       >
                         <div class="flex justify-end p-2">
                           <button
                             type="button"
-                            class="
-                              text-gray-400
-                              bg-transparent
-                              hover:bg-gray-200 hover:text-gray-900
-                              rounded-lg
-                              text-sm
-                              p-1.5
-                              ml-auto
-                              inline-flex
-                              items-center
-                              dark:hover:bg-gray-800 dark:hover:text-white
-                            "
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                             data-modal-toggle="popup-modal"
                           >
                             <svg
@@ -778,35 +430,14 @@
                             <div>
                               <label
                                 for="email"
-                                class="
-                                  block
-                                  mb-2
-                                  required
-                                  text-sm
-                                  font-medium
-                                  text-gray-900 text-left
-                                  dark:text-gray-300
-                                "
+                                class="block mb-2 required text-sm font-medium text-gray-900 text-left dark:text-gray-300"
                                 >Send To Email Recipient</label
                               >
                               <input
                                 type="recipient"
                                 name="recipient"
                                 id="recipient"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="To"
                                 required
                               />
@@ -814,21 +445,7 @@
                                 type="fromName"
                                 name="fromName"
                                 id="fromName"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                  mt-3
-                                "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mt-3"
                                 placeholder="Sender Name"
                                 required
                               />
@@ -836,21 +453,7 @@
                                 type="subject"
                                 name="subject"
                                 id="subject"
-                                class="
-                                  bg-gray-50
-                                  border border-gray-300
-                                  text-gray-900 text-sm
-                                  rounded-lg
-                                  focus:ring-blue-500 focus:border-blue-500
-                                  block
-                                  w-full
-                                  p-2.5
-                                  dark:bg-gray-600
-                                  dark:border-gray-500
-                                  dark:placeholder-gray-400
-                                  dark:text-white
-                                  mt-3
-                                "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mt-3"
                                 placeholder="Subject"
                                 required
                               />
@@ -858,65 +461,31 @@
                             <button
                               data-modal-toggle="popup-modal"
                               type="submit"
-                              class="
-                                text-white
-                                bg-gray-600
-                                hover:bg-gray-800
-                                focus:ring-4
-                                focus:outline-none
-                                focus:ring-gray-300
-                                dark:focus:ring-gray-800
-                                font-medium
-                                rounded-lg
-                                text-sm
-                                inline-flex
-                                items-center
-                                px-5
-                                py-2.5
-                                text-center
-                                mr-2
-                              "
+                              @click="passDesignDataCampaign"
+                              class="text-white bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
                             >
-                              <svg
+                              Send &nbsp;<svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
                                 height="16"
                                 fill="currentColor"
-                                class="bi bi-send"
+                                class="bi bi-envelope-check-fill animate-bounce hidden"
+                                id="mail"
                                 viewBox="0 0 16 16"
                               >
                                 <path
-                                  d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"
+                                  d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207L16 4.697Z"
+                                />
+                                <path
+                                  d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"
                                 />
                               </svg>
-                              &nbsp;Send
                             </button>
                             <button
                               @click="hide1"
                               data-modal-toggle="popup-modal"
                               type="button"
-                              class="
-                                text-gray-500
-                                bg-white
-                                hover:bg-gray-100
-                                focus:ring-4
-                                focus:outline-none
-                                focus:ring-gray-200
-                                rounded-lg
-                                border border-gray-200
-                                text-sm
-                                font-medium
-                                px-5
-                                py-2.5
-                                hover:text-gray-900
-                                focus:z-10
-                                dark:bg-gray-700
-                                dark:text-gray-300
-                                dark:border-gray-500
-                                dark:hover:text-white
-                                dark:hover:bg-gray-600
-                                dark:focus:ring-gray-600
-                              "
+                              class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                             >
                               Cancel
                             </button>
@@ -930,26 +499,7 @@
                 <div>
                   <router-link
                     :to="'/new'"
-                    class="
-                      rounded
-                      text-white
-                      bg-gray-800
-                      hover:border-transparent
-                      hover:text-gray-800
-                      hover:bg-white
-                      ml-3
-                      text-sm
-                      font-bold
-                      py-1
-                      cursor-pointer
-                      px-3
-                      rounded
-                      inline-flex
-                      items-center
-                      transition
-                      duration-50
-                      ease-in-out
-                    "
+                    class="rounded text-white bg-gray-800 hover:border-transparent hover:text-gray-800 hover:bg-white ml-3 text-sm font-bold py-1 cursor-pointer px-3 rounded inline-flex items-center transition duration-50 ease-in-out"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -984,7 +534,7 @@
     </div>
   </main>
 </template>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
 import { EmailEditor } from "../components";
 import sample from "../data/sample.json";
@@ -1001,24 +551,44 @@ export default {
       appearance: {
         theme: "light",
       },
+      design_html: null
     };
   },
+  mounted() {
+    gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+  },
   methods: {
+
+    showDrop() {
+      document.getElementById("dropdownShow").classList.toggle("show");
+    },
     hide() {
       document.getElementById("modal").style.display = "none";
     },
     show() {
+      this.$refs.emailEditor.editor.exportHtml((data) => {
+        this.design_html = data.html;
+      });
       document.getElementById("modal").style.display = "block";
     },
     hide1() {
       document.getElementById("modal1").style.display = "none";
     },
     show1() {
+       this.$refs.emailEditor.editor.exportHtml((data) => {
+        this.design_html = data.html;
+      });
       document.getElementById("modal1").style.display = "block";
     },
     logout() {
-      localStorage.clear()
-      window.location.href = "http://localhost:3001/"
+       var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        console.log("User signed out.");
+      });
+      localStorage.clear();
+      window.location.href = "http://localhost:3001/";
     },
     editorLoaded() {
       console.log("editorLoaded");
@@ -1040,16 +610,51 @@ export default {
         subject: subject,
         html: html,
       };
-
-      console.log(mailData);
       this.sendTemplate(mailData);
     },
-    saveDesign() {
+
+
+     storeCampaignData(design) {
+      const recipient = document.getElementById("recipient").value;
+      const subject = document.getElementById("subject").value;
+      const des = this.design_html
+
+      const mailData = {
+        user_id: localStorage.getItem("userID"),
+        sender: recipient, //(to)
+        subject: subject,
+        html: design,
+        design_html: des
+
+      };
+      console.log(mailData);
+      this.sendCampaignData(mailData);
+    },
+
+    async sendCampaignData(data){
+      await axios.post("createCampaignData", data);
+    },
+
+    passDesignDataCampaign(){
       this.$refs.emailEditor.editor.saveDesign((design) => {
+        let pisti = JSON.stringify(design, null, "\t");
+        this.storeCampaignData(pisti);
+      });
+    },
+    saveDesign(e) {
+      e.preventDefault();
+      this.$refs.emailEditor.editor.saveDesign((design) => {
+        const des = this.design_html
+        console.log(des);
         console.log("saveDesign", JSON.stringify(design), null, "\t");
-        this.exportHtml();
         let html = JSON.stringify(design, null, "\t");
-        this.send(html);
+        this.send(html, des);
+
+        document.getElementById("loading").style.display = "block";
+        // document.getElementById("eye").style.display = "none";
+        setTimeout(function () {
+          document.getElementById("loading").style.display = "none";
+        }, 3000);
 
         var save = document.getElementById("toast");
         document.getElementById("toast").style.display = "block";
@@ -1061,11 +666,12 @@ export default {
         }, 1000);
       });
     },
-    async send(html) {
+    async send(html, design) {
       await axios.post("createEmail", {
         user_id: localStorage.getItem("userID"),
         html: html,
         title: this.title,
+        design_html: design
       });
     },
     async sendTemplate(data) {
@@ -1074,12 +680,19 @@ export default {
       setTimeout(function () {
         ele.style.display = "none";
       }, 3000);
+      document.getElementById("mail").style.display = "block";
+      // document.getElementById("eye").style.display = "none";
+      setTimeout(function () {
+        document.getElementById("mail").style.display = "none";
+      }, 5000);
       var element = document.getElementById("modal1");
       setTimeout(function () {
         element.style.display = "none";
       }, 3000);
       await axios.post("sendMail", data);
     },
+
+
     exportHtmlZIP() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
         const html = data.html;
@@ -1092,7 +705,8 @@ export default {
         });
       });
     },
-    exportHtml() {
+    exportHtml(e) {
+      e.preventDefault();
       this.$refs.emailEditor.editor.exportHtml((data) => {
         const html = data.html;
         this.sendEmail(html);
@@ -1104,9 +718,22 @@ export default {
       this.user = null;
       this.$router.push("/");
     },
-  },
+  },  
 };
+window.onclick = function(event) {
+  if (!event.target.matches('#dropShow')) {
+    var dropdowns = document.getElementById("dropdownShow");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.toggle('hide');
+      }
+    }
+  }
+}
 </script>
+
 
 <style>
 html,
@@ -1198,4 +825,7 @@ body {
   margin-top: 3px;
   color: white;
 }
+.show {display: block;}
+
+.hide {display: none;}
 </style>

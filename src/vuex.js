@@ -7,7 +7,9 @@ Vue.use(Vuex);
 const state = {
     user: null,
     data: [],
-    fav: []
+    fav: [],
+    recentCamp: [],
+    emailTemplates: [],
 }
 
 const store = new Vuex.Store({
@@ -21,6 +23,12 @@ const store = new Vuex.Store({
         },
         fav:(state) => {
             return state.fav;
+        },
+        recentCamp:(state) => {
+            return state.recentCamp;
+        },
+        emailTemplates:(state) => {
+            return state.emailTemplates;
         },
     
       
@@ -47,6 +55,24 @@ const store = new Vuex.Store({
                 console.log(error);
             }
           },
+          async loadRecentCamp({ commit }, id) {
+            try {
+                const response = await axios.get('showCampaignData/'+ id);
+                 commit('setRecentCamp', response.data)
+              }
+             catch (error) {
+                console.log(error);
+            }
+          },
+          async loadEmailTemplates({ commit }, id) {
+            try {
+                const response = await axios.get('showAll/'+ id);
+                 commit('setEmailTemplates', response.data)
+              }
+             catch (error) {
+                console.log(error);
+            }
+          },
     
     },
     mutations:{
@@ -58,6 +84,12 @@ const store = new Vuex.Store({
         },
         setFav(state, fav) {
             state.fav = fav
+        },
+        setRecentCamp(state, recentCamp) {
+            state.recentCamp = recentCamp
+        },
+        setEmailTemplates(state, emailTemplates) {
+            state.emailTemplates = emailTemplates
         },
 
        

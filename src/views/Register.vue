@@ -58,16 +58,14 @@
                   ></path>
                 </svg>
               </div>
-              <span class="ml-6 text-sm font-normal my-0.5" id="alert">{{
-                error
-              }}</span>
+              <span class="ml-6 text-sm font-normal my-0.5" id="alert">{{ error }}</span>
             </div>
             <div class="text-md text-black-500 font-semibold mt-14">
               Already have an account?
               <router-link
                 :to="'/'"
-                class="font-medium text-indigo-400 hover:text-rose-500"
-                >Register an Account</router-link
+                class="font-medium text-indigo-400 hover:text-blue-600"
+                >Login to your Account</router-link
               >
             </div>
             <h6 class="text-2xl mt-3 text-center font-extrabold text-gray-900">
@@ -315,11 +313,13 @@ export default {
       email: "",
       password: "",
       password_confirmation: "",
+      error: "",
     };
   },
   methods: {
     async handleSubmit() {
-      var element = document.getElementById("loader");
+      try {
+       var element = document.getElementById("loader");
       element.classList.add("animate-spin");
       await axios.post("register", {
         name: this.name,
@@ -331,6 +331,16 @@ export default {
         element.classList.remove("animate-spin");
       }, 6000);
       this.$router.push("/");
+    } catch (error) {
+       var element = document.getElementById("loader");
+        element.classList.remove("animate-spin");
+       var ele = document.getElementById("toast-danger");
+        document.getElementById("toast-danger").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 2000);
+        this.error = "Invalid credentials in password/email!";
+    }
     },
   },
 };
