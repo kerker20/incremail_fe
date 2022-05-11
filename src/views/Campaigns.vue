@@ -208,29 +208,24 @@
                 >
                   Recent Campaign
                 </h6>
-                 <div v-if="data.data.length == 0">
-                   <div
-              class="
-                max-w-md
-                mx-auto
-                bg-transparent
-                rounded-xl
-                overflow-hidden
-                md:max-w-2xl
-              "
-            >
-              <div class="md:flex">
-                <div class="md:shrink-0">
-                   <p class="mt-12 mb-3 text-xs">No Email Templates Found</p>
-                  <img
-                    class="h-36 w-full object-cover"
-                    src="../assets/nodata.png"
-                    alt="empty"
-                  />
+                <div v-if="data.data.length == 0">
+                  <div
+                    class="max-w-md mx-auto bg-transparent rounded-xl overflow-hidden md:max-w-2xl"
+                  >
+                    <div class="md:flex">
+                      <div class="md:shrink-0">
+                        <p class="mt-12 mb-3 text-xs">
+                          No Email Templates Found
+                        </p>
+                        <img
+                          class="h-36 w-full object-cover"
+                          src="../assets/nodata.png"
+                          alt="empty"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-                 </div>
                 <ul
                   class="my-4 space-y-3"
                   v-for="item in data.data"
@@ -269,6 +264,69 @@
                 </ul>
               </div>
             </div>
+            <div
+              id="htmlShow"
+              tabindex="-1"
+              class="hidden bg-gray-800 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+            >
+              <div class="relative p-4 w-full max-w-4xl mx-auto h-full md:h-auto">
+                <!-- Modal content -->
+                <div
+                  class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                >
+                  <!-- Modal header -->
+                  <div
+                    class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600"
+                  >
+                    <h3
+                      class="text-xl font-medium text-gray-900 dark:text-white"
+                    >
+                      Previewing "{{ title }}"
+                    </h3>
+                    <button
+                      type="button"
+                      class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      @click="close"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="p-6 space-y-6" v-html="design_html">
+                  </div>
+                  <!-- Modal footer -->
+                  <div
+                    class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
+                  >
+                    <button
+                      @click="setID(id); setHTMLID(id);"
+                      type="button"
+                      class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                    >
+                      Customize
+                    </button>
+                    <button
+                      @click="close"
+                      type="button"
+                      class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="col-start-3 col-end-5">
               <h6
@@ -285,18 +343,31 @@
                 >
                   <div class="-mt-14">
                     <center>
-                      <h6
-                        style="font-size: 12px"
-                        class="mt-1 mb-3 font-sm"
-                      >
-                        Chosen Email Template
+                      <h6 style="font-size: 12px" class="mt-1 ml-12 mb-3 font-sm">
+                        Click to View your Chosen Template
                       </h6>
                       <div
+                        v-if="title"
                         id="cardTemp"
+                        type="button"
+                        @click="htmlShow"
+                        style="height: 100%"
+                        class="p-4 max-w-sm bg-white shadow-md mb-3 ml-14 sm:p-6 cursor-pointer rounded-xl"
+                      >
+                        {{ title }}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+</svg>
+                      </div>
+                       <div
+                        v-else
+                        id="cardTemp"
+                        type="button"
                         style="height: 100%"
                         class="p-4 max-w-sm bg-white shadow-md mb-3 ml-14 sm:p-6 rounded-xl"
                       >
-                        {{ title }}
+                        <img class="h-20" src="../assets/email.png" alt="">
                       </div>
                     </center>
                     <div
@@ -448,14 +519,31 @@
                       v-bind:key="item.id"
                       class="mt-6"
                     >
-                      <li
-                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500"
+                      <div
+                        v-if="item.favorite == 1"
+                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500 cursor-pointer"
                         id="select"
                         style="font-size: 12px"
-                        @click="select(item.title, item.design_html)"
+                        @click="select(item.title, item.design_html, item.id)"
                       >
                         {{ item.title }}
-                      </li>
+                        <span class="absolute ml-8 transform -translate-y-1/2 w-4 h-4 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                         <p class="text-xs absolute -mb-6 cursor-pointer" id="date"
+                        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ getHumanDate(item.created_at) }}
+                      </p>
+                      </div>
+                      <div
+                        v-else
+                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500 cursor-pointer"
+                        id="select"
+                        style="font-size: 12px"
+                        @click="select(item.title, item.design_html, item.id)"
+                      >
+                        {{ item.title }}
+                         <p class="text-xs absolute -mb-6 cursor-pointer" id="date"
+                        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ getHumanDate(item.created_at) }}
+                      </p>
+                      </div>
                     </ul>
                   </div>
                 </center>
@@ -481,18 +569,48 @@ export default {
       activeTag: null,
       design_html: null,
       title: null,
+      id: null,
     };
   },
   methods: {
-    select(title, design) {
+     getHumanDate: function (date) {
+      return moment(date).format("MMMM D, yyyy");
+    },
+    setID: function (id) {
+      localStorage.setItem("templateID", id);
+    },
+    async setHTMLID(id) {
+      const dataHTML = await axios.get("templateEmail/" + id);
+      console.log(dataHTML.data.html);
+      var htmlTemplate = dataHTML.data.html;
+      var htmlTitle = dataHTML.data.title;
+      localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
+      localStorage.setItem("templateTitle", htmlTitle);
+      // document.getElementById("loading").style.display = "block";
+      // document.getElementById("eye").style.display = "none";
+      //  setTimeout(function () {
+      //   document.getElementById("loading").style.display = "none";
+      // }, 5000);
+      setTimeout(function () {
+        window.location.href = "http://localhost:3001/emailView";
+      }, 100);
+    },
+    htmlShow(){
+      document.getElementById('htmlShow').style.display="block";
+    },
+    close(){
+       document.getElementById('htmlShow').style.display="none";
+    },
+    select(title, design, id) {
       document
         .getElementById("cardTemp")
         .setAttribute(
           "style",
-          "background: gray; font-style: italic; color:white;"
+          "background: #3e3f40; font-style: italic; color:white;"
         );
       this.design_html = design;
       this.title = title;
+      this.id = id;
     },
     showDrop() {
       document.getElementById("dropdownShow").classList.toggle("show");
@@ -625,5 +743,12 @@ input:focus {
 }
 .show {
   display: block;
+}
+* {
+  text-decoration: none;
+}
+#date {
+  font-size: 10px;
+  font-weight: 500;
 }
 </style>
