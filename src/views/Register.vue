@@ -1,11 +1,55 @@
 <template>
   <div class="flex justify-center bg-gray">
-    <div class="w-full h-full rounded mt-8" id="sign">
+    <div class="w-full h-full rounded mt-20" id="sign">
+      <div
+        id="toast"
+        class="
+          absolute
+          right-0
+          top-0
+          m-5
+          flex
+          items-center
+          p-4
+          mb-4
+          w-96
+          max-w-xs
+          text-gray-500
+          bg-gray-200
+          rounded-lg
+          shadow
+          dark:text-gray-400 dark:bg-gray-800
+          hidden
+        "
+        role="alert"
+      >
+        <div
+          class="
+            inline-flex
+            flex-shrink-0
+            justify-center
+            items-center
+            w-8
+            h-8
+            text-red-500
+            bg-red-100
+            rounded-lg
+            dark:bg-green-800 dark:text-green-200
+          "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+</svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >{{ taken }}</span
+        >
+      </div>
       <div
         class="
           max-w-md
           mx-auto
-          bg-gray-50
+          bg-white
           rounded-xl
           shadow-md
           overflow-hidden
@@ -19,7 +63,7 @@
               class="
                 flex
                 items-center
-                w-80
+                w-76
                 p-2
                 text-gray-500
                 bg-white
@@ -60,7 +104,7 @@
               </div>
               <span class="ml-6 text-sm font-normal my-0.5" id="alert">{{ error }}</span>
             </div>
-            <div class="text-md text-black-500 font-semibold mt-14">
+            <div class="text-md text-black-500 font-semibold mt-2">
               Already have an account?
               <router-link
                 :to="'/'"
@@ -259,7 +303,7 @@
                     font-medium
                     rounded-md
                     text-white
-                    bg-gray-600
+                    bg-gray-800
                     hover:bg-gray-700
                     focus:outline-none
                     focus:ring-2
@@ -293,7 +337,7 @@
           <div class="md:shrink-0">
             <img
               class="md:max-w-md"
-              src="../assets/signs.png"
+              src="../assets/signup.gif"
               alt="Man looking at item at a store"
             />
           </div>
@@ -314,6 +358,7 @@ export default {
       password: "",
       password_confirmation: "",
       error: "",
+      taken: ""
     };
   },
   methods: {
@@ -332,14 +377,31 @@ export default {
       }, 6000);
       this.$router.push("/");
     } catch (error) {
-       var element = document.getElementById("loader");
+        var element = document.getElementById("loader");
         element.classList.remove("animate-spin");
-       var ele = document.getElementById("toast-danger");
+      if(this.password != this.password_confirmation){
+         var ele = document.getElementById("toast-danger");
         document.getElementById("toast-danger").style.display = "block";
         setTimeout(function () {
           ele.style.display = "none";
         }, 2000);
-        this.error = "Invalid credentials in password/email!";
+        this.error = "Invalid credentials in password!";
+      }else if(error.response.data.errors.email[0] == "The email has already been taken."){
+        var takenEmail = error.response.data.errors.email[0]; 
+        var ele = document.getElementById("toast");
+        document.getElementById("toast").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 3000);
+        this.taken = takenEmail;
+      }else{
+         var ele = document.getElementById("toast-danger");
+        document.getElementById("toast-danger").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 2000);
+        this.error = "The given data was invalid!";
+      }
     }
     },
   },

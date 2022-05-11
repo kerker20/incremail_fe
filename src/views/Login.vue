@@ -2,7 +2,7 @@
   <div class="flex justify-center bg-gray-500">
     <div class="w-full h-full rounded" id="sign">
       <div
-        class="max-w-md mx-auto bg-gray-50 rounded-xl shadow-md overflow-hidden md:max-w-3xl"
+        class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-3xl"
       >
         <div class="md:flex">
           <div class="p-8 md:max-w-sm mx-auto">
@@ -31,7 +31,7 @@
                 error
               }}</span>
             </div>
-            <div class="text-md text-black-500 font-semibold mt-14">
+            <div class="text-md text-black-500 font-semibold mt-2">
               Don't have an account?
               <router-link
                 :to="'/register'"
@@ -45,7 +45,7 @@
             <form class="mt-2 space-y-6" @submit.prevent="handleSubmit">
               <input type="hidden" name="remember" value="true" />
               <div class="rounded-md shadow-sm -space-y-px">
-                <div class="relative">
+                <div class="relative mb-2">
                   <label
                     for="email-address"
                     class="sr-only relative text-gray-600 block"
@@ -76,7 +76,6 @@
                     placeholder="Email address"
                   />
                 </div>
-                <br />
                 <div class="relative">
                   <label
                     for="password "
@@ -152,7 +151,7 @@
           <div class="md:shrink-0">
             <img
               class="md:max-w-md"
-              src="../assets/signs.png"
+              src="../assets/signs.gif"
               alt="Man looking at item at a store"
             />
           </div>
