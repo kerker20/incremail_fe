@@ -324,7 +324,7 @@
       </div>
       <!-- Sidebar ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
-      <div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
+      <div class="container mx-auto py-10 h-64 w-full px-6">
         <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
         <div class="flex justify-center">
           <a
@@ -348,7 +348,7 @@
                 rounded-t-lg
                 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg
               "
-              src="../assets/settings.png"
+              src="../assets/settings.gif"
               alt=""
             />
             <div class="flex flex-col justify-between p-4 leading-normal">
@@ -376,7 +376,7 @@
                     id="fullname"
                     name="fullname"
                     type="text"
-                    autocomplete="fullname"
+                    autocomplete="off"
                     required
                     class="
                       appearance-none
@@ -405,7 +405,7 @@
                     id="emailad"
                     name="emailaddress"
                     type="email address"
-                    autocomplete="email address"
+                    autocomplete="off"
                     required
                     class="
                       appearance-none

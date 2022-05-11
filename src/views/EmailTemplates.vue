@@ -239,39 +239,26 @@
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
             <p class="mt-12 mb-3 subpixel-antialiased">No Email Templates Found</p>
-            <section class="overflow-hidden text-gray-700">
-              <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
-                <div class="flex flex-wrap -m-1 md:-m-2">
-                  <div class="flex flex-wrap w-1/3 shadow-md">
-                    <div class="w-full p-1 md:p-2">
-                      <img
-                        class="h-60 w-84 object-cover"
-                        src="../assets/load.png"
-                        alt="empty"
-                      />
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap w-1/3 shadow-md">
-                    <div class="w-full p-1 md:p-2">
-                      <img
-                        class="h-60 w-84 object-cover"
-                        src="../assets/load.png"
-                        alt="empty"
-                      />
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap w-1/3 shadow-md">
-                    <div class="w-full p-1 md:p-2">
-                      <img
-                        class="h-60 w-84 object-cover"
-                        src="../assets/load.png"
-                        alt="empty"
-                      />
-                    </div>
-                  </div>
+              <div
+              class="
+                max-w-md
+                mx-auto
+                bg-transparent
+                rounded-xl
+                overflow-hidden
+                md:max-w-2xl
+              "
+            >
+              <div class="md:flex">
+                <div class="md:shrink-0">
+                  <img
+                    class="h-96 w-full object-cover"
+                    src="../assets/empty.gif"
+                    alt="empty"
+                  />
                 </div>
               </div>
-            </section>
+            </div>
           </div>
           <div v-else></div>
           <div id="wrap">

@@ -39,8 +39,8 @@
       </div>
       <div class="flex justify-end">
         <button
-        @click="showDrop"
-        id="dropShow"
+          @click="showDrop"
+          id="dropShow"
           type="button"
           class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
@@ -51,17 +51,21 @@
           class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class=" text-sm text-gray-700 dark:text-gray-200"
+            class="text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
-              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
-               </li>
+              <button
+                @click="logout"
+                class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center"
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
         <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
-      
     </nav>
     <hr />
     <div class="flex flex-no-wrap bg-gray-200 h-screen">
@@ -204,7 +208,29 @@
                 >
                   Recent Campaign
                 </h6>
-
+                 <div v-if="data.data.length == 0">
+                   <div
+              class="
+                max-w-md
+                mx-auto
+                bg-transparent
+                rounded-xl
+                overflow-hidden
+                md:max-w-2xl
+              "
+            >
+              <div class="md:flex">
+                <div class="md:shrink-0">
+                   <p class="mt-12 mb-3 text-xs">No Email Templates Found</p>
+                  <img
+                    class="h-36 w-full object-cover"
+                    src="../assets/nodata.png"
+                    alt="empty"
+                  />
+                </div>
+              </div>
+            </div>
+                 </div>
                 <ul
                   class="my-4 space-y-3"
                   v-for="item in data.data"
@@ -224,10 +250,7 @@
                           >
                         </div>
                         <div class="flex-1 min-w-0 text-wrap">
-                          <p
-                            class="text-gray-900 w-12"
-                            style="font-size: 7px"
-                          >
+                          <p class="text-gray-900 w-12" style="font-size: 7px">
                             {{ item.sender }}
                           </p>
                           <p style="font-size: 7px" class="text-gray-500">
@@ -260,23 +283,20 @@
                 <div
                   class="bg-tranparent -ml-2 rounded-xl sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700"
                 >
-                  <h6 style="font-size: 10px" class="-mt-14 font-semibold">
-                    Send Email Newsletter to New Recepient
-                  </h6>
-                  <div>
+                  <div class="-mt-14">
                     <center>
                       <h6
                         style="font-size: 12px"
-                        class="mt-1 mb-3 font-semibold"
+                        class="mt-1 mb-3 font-sm"
                       >
                         Chosen Email Template
                       </h6>
                       <div
                         id="cardTemp"
                         style="height: 100%"
-                        class="p-4 max-w-sm bg-white shadow-md mb-3 sm:p-6 rounded-xl"
+                        class="p-4 max-w-sm bg-white shadow-md mb-3 ml-14 sm:p-6 rounded-xl"
                       >
-                      {{title}}
+                        {{ title }}
                       </div>
                     </center>
                     <div
@@ -284,7 +304,7 @@
                       class="p-4 max-w-sm bg-white mb-3 sm:p-6 rounded-xl"
                     >
                       <div
-                        class="flex relative z-0 mb-6 w-full group mb-42 sticky"
+                        class="flex relative z-0 mb-6 w-full group mb-42 sticky -mt-8"
                       >
                         <form>
                           <div class="tags-input-container">
@@ -297,10 +317,10 @@
                                 @keyup.enter="addTag"
                                 required
                                 class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm -ml-4"
-                                placeholder="To"
+                                placeholder="Thread To"
                               />
                             </div>
-                            <div class="flex z-0 mb-6 w-full group">
+                            <div class="flex z-0 mb-4 w-full group">
                               <input
                                 autocomplete="off"
                                 id="from"
@@ -395,29 +415,50 @@
                   </h6>
                 </center>
                 <center>
-                      <h6 style="font-size: 13px" class="-mt-4 font-semibold">
-                  Browse Templates you have created before
-                </h6>
-                <h6 style="font-size: 10px" class="font-semibold">
-                  You want a brand new email template?
-                  <router-link
-                    :to="'/new'"
-                    class="content-end text-blue-600 hover:text-indigo-500 underline"
-                    >Create New</router-link
-                  >
-                </h6>
-
-                <div class="flex justify-evenly">
-                  <ul v-for="item in data.email" v-bind:key="item.id" class="mt-6">
-                    <li class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500" id="select" style="font-size: 12px"
-                      @click="select(item.title, item.design_html)"
+                  <h6 style="font-size: 13px" class="-mt-4 font-semibold">
+                    Browse Templates you have created before
+                  </h6>
+                  <h6 style="font-size: 10px" class="font-semibold">
+                    You want a brand new email template?
+                    <router-link
+                      :to="'/new'"
+                      class="content-end text-blue-600 hover:text-indigo-500 underline"
+                      >Create New</router-link
                     >
-                      {{ item.title }}
-                    </li>
-                  </ul>
-                </div>
+                  </h6>
+
+                  <div class="flex justify-evenly">
+                    <div v-if="data.email.length == 0">
+                      <div
+                        class="max-w-md mx-auto bg-transparent rounded-xl overflow-hidden md:max-w-2xl"
+                      >
+                        <div class="md:flex">
+                          <div class="md:shrink-0">
+                            <img
+                              class="h-96 w-full object-cover"
+                              src="../assets/empty1.gif"
+                              alt="empty"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ul
+                      v-for="item in data.email"
+                      v-bind:key="item.id"
+                      class="mt-6"
+                    >
+                      <li
+                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500"
+                        id="select"
+                        style="font-size: 12px"
+                        @click="select(item.title, item.design_html)"
+                      >
+                        {{ item.title }}
+                      </li>
+                    </ul>
+                  </div>
                 </center>
-                
               </div>
             </div>
           </div>
@@ -444,9 +485,14 @@ export default {
   },
   methods: {
     select(title, design) {
-        document.getElementById("cardTemp").setAttribute("style", "background: gray; font-style: italic; color:white;");
-        this.design_html = design;
-        this.title = title;
+      document
+        .getElementById("cardTemp")
+        .setAttribute(
+          "style",
+          "background: gray; font-style: italic; color:white;"
+        );
+      this.design_html = design;
+      this.title = title;
     },
     showDrop() {
       document.getElementById("dropdownShow").classList.toggle("show");
@@ -479,7 +525,7 @@ export default {
       this.tagValue = "";
       // console.log(tags);
     },
-     logout() {
+    logout() {
       localStorage.clear();
       window.location.href = "http://localhost:3001/";
     },
@@ -574,10 +620,10 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-#cardC{
+#cardC {
   display: inline-block;
 }
-.show{
+.show {
   display: block;
 }
 </style>
