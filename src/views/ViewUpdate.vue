@@ -139,7 +139,7 @@
                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
                   />
                 </svg>
-                <span class="text-sm ml-2">Templates</span>
+                <span class="text-sm ml-2">Workshop</span>
               </div>
             </router-link>
             <router-link
@@ -256,7 +256,7 @@
                           d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"
                         />
                       </svg>
-                      <span>Save Design</span>
+                      <span>Update Design</span>
                     </button>
                     <button
                       @click="show1"
@@ -354,7 +354,7 @@
                               type="submit"
                               class="text-white bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
                             >
-                              Submit &nbsp;
+                              Update &nbsp;
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"

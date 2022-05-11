@@ -206,7 +206,7 @@
                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
                   />
                 </svg>
-                <span class="text-sm ml-2">Templates</span>
+                <span class="text-sm ml-2">Workshop</span>
               </div>
             </router-link>
             <router-link
@@ -334,10 +334,6 @@
       <!-- Sidebar ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
       <div class="max-w-max mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-1xl font-bold text-gray-900">
-          Your Favorite Email Templates
-        </h1>
-        <hr class="m-5" />
         <div class="max-w-max" align="center">
           <div
             id="toast"
@@ -394,8 +390,8 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-            <p class="mb-3 subpixel-antialiased">No Email Templates Found</p>
-            <div
+             <p class="mt-12 mb-3 subpixel-antialiased">No Email Templates Found</p>
+              <div
               class="
                 max-w-md
                 mx-auto
@@ -409,12 +405,12 @@
                 <div class="md:shrink-0">
                   <img
                     class="h-96 w-full object-cover"
-                    src="../assets/empty.png"
+                    src="../assets/empty.gif"
                     alt="empty"
                   />
                 </div>
               </div>
-            </div>
+          </div>
           </div>
           <div v-else></div>
           <div id="wrap">
