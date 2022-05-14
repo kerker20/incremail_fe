@@ -624,9 +624,9 @@ export default {
         setTimeout(function () {
           save.style.display = "none";
         }, 3000);
-        setTimeout(function () {
-          window.location.href = "http://localhost:3001/emailTemplates";
-        }, 1000);
+        setTimeout(() => {
+           document.getElementById("modal").style.display = "none";
+        }, 3000);
       });
     },
     async send(html, design) {
@@ -636,6 +636,9 @@ export default {
         title: this.title,
         design_html: design
       });
+       setTimeout(function () {
+          window.location.href = "http://localhost:3001/emailTemplates";
+        }, 1000);
     },
     async sendTemplate(data) {
       var ele = document.getElementById("toastSend");

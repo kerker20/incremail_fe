@@ -37,10 +37,6 @@ export default {
     loadScript(this.loadEditor.bind(this));
   },
   methods: {
-    hide() {
-      
-document.querySelector("#editor > div > div > div > div > div > div > div.sc-jifIRw.kIFJtK.blockbuilder-preferences.right > div > div > div.sc-cbDGPM.gCuogY.blockbuilder-tools-panel.bootstrap > a").style.display = "none"
-    },
     loadEditor() {
       const options = this.options || {};
 

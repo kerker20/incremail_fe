@@ -195,6 +195,7 @@
           </ul>
         </div>
       </div>
+      
       <div class="container max-w-full bg-white">
         <div class="container">
           <div class="grid grid-cols-8 gap-0">
@@ -244,8 +245,8 @@
                             >{{ item.sender.charAt(0).toUpperCase() }}</a
                           >
                         </div>
-                        <div class="flex-1 min-w-0 text-wrap">
-                          <p class="text-gray-900 w-12" style="font-size: 7px">
+                        <div class="flex-1 min-w-0">
+                          <p class="text-gray-900 w-24" id="word" style="font-size: 7px">
                             {{ item.sender }}
                           </p>
                           <p style="font-size: 7px" class="text-gray-500">
@@ -269,7 +270,9 @@
               tabindex="-1"
               class="hidden bg-gray-800 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
             >
-              <div class="relative p-4 w-full max-w-4xl mx-auto h-full md:h-auto">
+              <div
+                class="relative p-4 w-full max-w-4xl mx-auto h-full md:h-auto"
+              >
                 <!-- Modal content -->
                 <div
                   class="relative bg-white rounded-lg shadow dark:bg-gray-700"
@@ -303,14 +306,16 @@
                     </button>
                   </div>
                   <!-- Modal body -->
-                  <div class="p-6 space-y-6" v-html="design_html">
-                  </div>
+                  <div class="p-6 space-y-6" v-html="design_html"></div>
                   <!-- Modal footer -->
                   <div
                     class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
                   >
                     <button
-                      @click="setID(id); setHTMLID(id);"
+                      @click="
+                        setID(id);
+                        setHTMLID(id);
+                      "
                       type="button"
                       class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                     >
@@ -343,7 +348,10 @@
                 >
                   <div class="-mt-14">
                     <center>
-                      <h6 style="font-size: 12px" class="mt-1 ml-12 mb-3 font-sm">
+                      <h6
+                        style="font-size: 12px"
+                        class="mt-1 ml-12 mb-3 font-sm"
+                      >
                         Click to View your Chosen Template
                       </h6>
                       <div
@@ -355,19 +363,16 @@
                         class="p-4 max-w-sm bg-white shadow-md mb-3 ml-14 sm:p-6 cursor-pointer rounded-xl"
                       >
                         {{ title }}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-</svg>
+                         <img class="h-20" src="../assets/mail1.png" alt="" />
                       </div>
-                       <div
+                      <div
                         v-else
                         id="cardTemp"
                         type="button"
                         style="height: 100%"
                         class="p-4 max-w-sm bg-white shadow-md mb-3 ml-14 sm:p-6 rounded-xl"
                       >
-                        <img class="h-20" src="../assets/email.png" alt="">
+                        <img class="h-20" src="../assets/email.png" alt="" />
                       </div>
                     </center>
                     <div
@@ -514,37 +519,72 @@
                         </div>
                       </div>
                     </div>
-                    <ul
-                      v-for="item in data.email"
-                      v-bind:key="item.id"
-                      class="mt-6"
+
+                    <div
+                      class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 overflow-scroll h-96"
                     >
-                      <div
-                        v-if="item.favorite == 1"
-                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500 cursor-pointer"
-                        id="select"
-                        style="font-size: 12px"
-                        @click="select(item.title, item.design_html, item.id)"
-                      >
-                        {{ item.title }}
-                        <span class="absolute ml-8 transform -translate-y-1/2 w-4 h-4 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                         <p class="text-xs absolute -mb-6 cursor-pointer" id="date"
-                        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ getHumanDate(item.created_at) }}
-                      </p>
+                      <!--Card 1-->
+                      <div v-for="item in data.email" v-bind:key="item.id">
+                      <div>
+                         <div v-if="item.favorite == 1">
+                          <div
+                            class="rounded overflow-hidden shadow-lg h-44"
+                            @click="
+                              select(item.title, item.design_html, item.id)
+                            "
+                          > 
+                            <p class="text-xs text-red-500">Favorite</p>
+                            <img
+                              class="w-screen h-24"
+                              src="../assets/mail1.png"
+                              alt="Mountain"
+                            />
+                            <div class="px-6 py-4">
+                              <div class="font-semibold text-sm mb-2 -mt-6 cursor-pointer">
+                                {{ item.title }}
+                              </div>
+                              <p
+                                class="text-xs -mb-6 cursor-pointer"
+                                id="date"
+                              >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                                  getHumanDate(item.created_at)
+                                }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                         <div v-else>
+                          <div
+                            class="rounded overflow-hidden shadow-lg h-44"
+                            @click="
+                              select(item.title, item.design_html, item.id)
+                            "
+                          >
+                            <p class="text-xs text-blue-500">Template</p>
+                            <img
+                              class="w-screen h-24"
+                              src="../assets/mail1.png"
+                              alt="Mountain"
+                            />
+                            <div class="px-6 py-4">
+                              <div class="font-semibold text-sm mb-2 -mt-6 cursor-pointer">
+                                {{ item.title }}
+                              </div>
+                              <p
+                                class="text-xs -mb-6 cursor-pointer"
+                                id="date"
+                              >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                                  getHumanDate(item.created_at)
+                                }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div
-                        v-else
-                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500 cursor-pointer"
-                        id="select"
-                        style="font-size: 12px"
-                        @click="select(item.title, item.design_html, item.id)"
-                      >
-                        {{ item.title }}
-                         <p class="text-xs absolute -mb-6 cursor-pointer" id="date"
-                        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ getHumanDate(item.created_at) }}
-                      </p>
                       </div>
-                    </ul>
+                    </div>
                   </div>
                 </center>
               </div>
@@ -573,7 +613,7 @@ export default {
     };
   },
   methods: {
-     getHumanDate: function (date) {
+    getHumanDate: function (date) {
       return moment(date).format("MMMM D, yyyy");
     },
     setID: function (id) {
@@ -595,18 +635,18 @@ export default {
         window.location.href = "http://localhost:3001/emailView";
       }, 100);
     },
-    htmlShow(){
-      document.getElementById('htmlShow').style.display="block";
+    htmlShow() {
+      document.getElementById("htmlShow").style.display = "block";
     },
-    close(){
-       document.getElementById('htmlShow').style.display="none";
+    close() {
+      document.getElementById("htmlShow").style.display = "none";
     },
     select(title, design, id) {
       document
         .getElementById("cardTemp")
         .setAttribute(
           "style",
-          "background: #3e3f40; font-style: italic; color:white;"
+          "background: #ffff; font-style: italic; color:black;"
         );
       this.design_html = design;
       this.title = title;
@@ -738,6 +778,9 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 #cardC {
   display: inline-block;
 }
@@ -748,7 +791,10 @@ input:focus {
   text-decoration: none;
 }
 #date {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 8px;
+  font-weight: 400;
+}
+#word{
+  word-wrap: break-word;
 }
 </style>

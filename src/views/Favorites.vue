@@ -331,6 +331,58 @@
           </ul>
         </div>
       </div>
+
+        <div
+        id="htmlShow"
+        tabindex="-1"
+        class="hidden bg-gray-800 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+      >
+        <div class="relative p-4 w-full max-w-4xl mx-auto h-full md:h-auto">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div
+              class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600"
+            >
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                Previewing "{{ title }}"
+              </h3>
+              <button
+                type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                @click="close"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6" v-html="design_html"></div>
+            <!-- Modal footer -->
+            <div
+              class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
+            >
+              <button
+                @click="close"
+                type="button"
+                class="text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-white focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Sidebar ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
       <div class="max-w-max mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -413,7 +465,7 @@
           </div>
           </div>
           <div v-else></div>
-          <div id="wrap">
+          <div id="wrap" class="overflow-scroll">
             <div
               class="flex justify-start card"
               v-for="item in data"
@@ -421,6 +473,10 @@
             >
               <div>
                 <div
+                  @click="
+                    select(item.title, item.design_html, item.id);
+                    htmlShow();
+                  "
                   class="
                     max-w-xs
                     rounded
@@ -506,6 +562,7 @@
                       class="font-bold text-gray-800 text-md mb-2 text-justify"
                     >
                       {{ item.title }}
+                      <img class="h-25 w-40" src="../assets/blocks.gif" alt="" />
                     </div>
                     <hr />
                     <p
@@ -571,9 +628,18 @@ export default {
     return {
       user: localStorage.getItem("data"),
       favorites: undefined,
+      design_html: null,
+      title: null,
+      id: null,
     };
   },
   methods: {
+     htmlShow() {
+      document.getElementById("htmlShow").style.display = "block";
+    },
+    close() {
+      document.getElementById("htmlShow").style.display = "none";
+    },
      showDrop() {
       document.getElementById("dropdownShow").classList.toggle("show");
     },
@@ -617,6 +683,12 @@ export default {
         }, 1000);
       }
     },
+    select(title, design, id) {
+      this.design_html = design;
+      this.title = title;
+      this.id = id;
+    },
+
     async setHTMLID(id) {
       const dataHTML = await axios.get("templateEmail/" + id);
       console.log(dataHTML.data.html);
@@ -661,5 +733,11 @@ export default {
 
 .show{
   display: block;
+}
+#wrap{
+  height: 90vh;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 </style>

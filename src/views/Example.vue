@@ -534,9 +534,9 @@
     </div>
   </main>
 </template>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
-import { EmailEditor } from "../components";
+// import { EmailEditor } from "../components";
+import { EmailEditor } from 'vue-email-editor'
 import sample from "../data/sample.json";
 import axios from "axios";
 export default {
@@ -583,10 +583,6 @@ export default {
       document.getElementById("modal1").style.display = "block";
     },
     logout() {
-       var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log("User signed out.");
-      });
       localStorage.clear();
       window.location.href = "http://localhost:3001/";
     },
@@ -691,6 +687,22 @@ export default {
       }, 3000);
       await axios.post("sendMail", data);
     },
+
+  previewFile() {
+  const preview = document.querySelector('img');
+  const file = document.querySelector('input[type=file]').files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener("load", function () {
+    // convert image file to base64 string
+    preview.src = reader.result;
+    console.log(preview.src);
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+},
 
 
     exportHtmlZIP() {
