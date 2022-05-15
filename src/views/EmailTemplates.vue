@@ -51,10 +51,10 @@
           </svg>
         </button>
       </div>
-     <div class="flex justify-end">
+      <div class="flex justify-end">
         <button
-        @click="showDrop"
-        id="dropShow"
+          @click="showDrop"
+          id="dropShow"
           type="button"
           class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
@@ -65,12 +65,17 @@
           class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class=" text-sm text-gray-700 dark:text-gray-200"
+            class="text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
-              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
-               </li>
+              <button
+                @click="logout"
+                class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center"
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
         <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
@@ -205,6 +210,58 @@
           </ul>
         </div>
       </div>
+
+      <div
+        id="htmlShow"
+        tabindex="-1"
+        class="hidden bg-gray-800 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+      >
+        <div class="relative p-4 w-full max-w-4xl mx-auto h-full md:h-auto">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div
+              class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600"
+            >
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                Previewing "{{ title }}"
+              </h3>
+              <button
+                type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                @click="close"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6" v-html="design_html"></div>
+            <!-- Modal footer -->
+            <div
+              class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
+            >
+              <button
+                @click="close"
+                type="button"
+                class="text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-white focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Sidebar ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
 
@@ -238,16 +295,11 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-            <p class="mt-12 mb-3 subpixel-antialiased">No Email Templates Found</p>
-              <div
-              class="
-                max-w-md
-                mx-auto
-                bg-transparent
-                rounded-xl
-                overflow-hidden
-                md:max-w-2xl
-              "
+            <p class="mt-12 mb-3 subpixel-antialiased">
+              No Email Templates Found
+            </p>
+            <div
+              class="max-w-md mx-auto bg-transparent rounded-xl overflow-hidden md:max-w-2xl"
             >
               <div class="md:flex">
                 <div class="md:shrink-0">
@@ -261,7 +313,7 @@
             </div>
           </div>
           <div v-else></div>
-          <div id="wrap">
+          <div id="wrap" class="overflow-scroll">
             <div
               class="flex justify-start card"
               v-for="item in data"
@@ -270,6 +322,10 @@
               <div class="mt-16">
                 <div
                   class="max-w-xs rounded overflow-hidden shadow-lg mx-2 my-2 bg-white hover:shadow-xl transition duration-50 ease-in-out"
+                  @click="
+                    select(item.title, item.design_html, item.id);
+                    htmlShow();
+                  "
                   id="cardC"
                 >
                   <div class="relative">
@@ -317,6 +373,11 @@
                       class="font-bold text-gray-800 text-md mb-2 text-justify"
                     >
                       {{ item.title }}
+                      <img
+                        class="h-25 w-40"
+                        src="../assets/blocks.gif"
+                        alt=""
+                      />
                     </div>
                     <hr />
                     <p
@@ -340,7 +401,7 @@
                         "
                         class="text-xs"
                       >
-                        View Template
+                        Customize
                       </p>
                       &nbsp;
                       <svg
@@ -383,17 +444,26 @@ export default {
     return {
       user: localStorage.getItem("data"),
       images: undefined,
+      design_html: null,
+      title: null,
+      id: null,
       // thumbnail: sample,
     };
   },
   methods: {
+    htmlShow() {
+      document.getElementById("htmlShow").style.display = "block";
+    },
+    close() {
+      document.getElementById("htmlShow").style.display = "none";
+    },
     jsredir() {
       window.location.href = "../../public/sample.html";
     },
     showDrop() {
       document.getElementById("dropdownShow").classList.toggle("show");
     },
-     logout() {
+    logout() {
       localStorage.clear();
       window.location.href = "http://localhost:3001/";
     },
@@ -455,6 +525,11 @@ export default {
         window.location.href = "http://localhost:3001/emailView";
       }, 100);
     },
+    select(title, design, id) {
+      this.design_html = design;
+      this.title = title;
+      this.id = id;
+    },
   },
   // mounted() {
   //     this.showImage()
@@ -482,7 +557,16 @@ export default {
 #date {
   font-size: 10px;
 }
-.show{
+.show {
   display: block;
+}
+#wrap {
+  height: 90vh;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  text-decoration: none;
 }
 </style>

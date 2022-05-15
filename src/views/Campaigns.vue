@@ -215,8 +215,8 @@
                   >
                     <div class="md:flex">
                       <div class="md:shrink-0">
-                        <p class="mt-12 mb-3" style="font-size: 14px;">
-                          No Email Account yet
+                        <p class="mt-12 mb-3 text-xs">
+                          No Email Templates Found
                         </p>
                         <img
                           class="h-36 w-full object-cover"

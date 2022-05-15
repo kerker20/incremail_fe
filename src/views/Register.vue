@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center bg-gray">
+  <div class="flex justify-center bg-gray-800">
     <div class="w-full h-full rounded mt-20" id="sign">
 <div
         id="registerToast"
