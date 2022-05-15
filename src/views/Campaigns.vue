@@ -195,7 +195,7 @@
           </ul>
         </div>
       </div>
-      
+
       <div class="container max-w-full bg-white">
         <div class="container">
           <div class="grid grid-cols-8 gap-0">
@@ -382,7 +382,7 @@
                       <div
                         class="flex relative z-0 mb-6 w-full group mb-42 sticky -mt-8"
                       >
-                        <form>
+                        <form @submit="send">
                           <div class="tags-input-container">
                             <div class="p-4">
                               <input
@@ -419,7 +419,7 @@
                               />
                             </div>
                             <button
-                              @click="send"
+                              type="submit"
                               class="bg-gray-800 h-8 text-white hover:bg-white text-xs hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
                             >
                               Transmit &nbsp;

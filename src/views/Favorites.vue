@@ -586,7 +586,7 @@
                         "
                         class="text-xs"
                       >
-                        View Template
+                        Customize
                       </p>
                       &nbsp;
                       <svg
