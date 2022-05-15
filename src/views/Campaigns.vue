@@ -72,7 +72,7 @@
       <div
         class="w-44 absolute sm:relative bg-white shadow md:h-full flex-col justify-between hidden sm:flex"
       >
-        <div class="px-6 h-screen" style="backgroundcolor: #fe5555">
+        <div class="px-6 h-screen">
           <ul class="mt-4">
             <router-link
               :to="'/campaigns'"
@@ -195,6 +195,7 @@
           </ul>
         </div>
       </div>
+
       <div class="container max-w-full bg-white">
         <div class="container">
           <div class="grid grid-cols-8 gap-0">
@@ -205,7 +206,6 @@
               >
                 <h6
                   class="mb-1 text-base text-gray-900 dark:text-white text-left font-semibold mt-3"
-                  style="font-size: 20px;"
                 >
                   Recent Campaign
                 </h6>
@@ -245,8 +245,8 @@
                             >{{ item.sender.charAt(0).toUpperCase() }}</a
                           >
                         </div>
-                        <div class="flex-1 min-w-0 text-wrap">
-                          <p class="text-gray-900 w-12" style="font-size: 7px">
+                        <div class="flex-1 min-w-0">
+                          <p class="text-gray-900 w-24" id="word" style="font-size: 7px">
                             {{ item.sender }}
                           </p>
                           <p style="font-size: 7px" class="text-gray-500">
@@ -335,7 +335,7 @@
 
             <div class="col-start-3 col-end-5">
               <h6
-                class="m-3 text-base text-gray-900 dark:text-white text-left font-semibold" style="font-size: 20px;"
+                class="m-3 text-base text-gray-900 dark:text-white text-left font-semibold"
               >
                 Start your campaign here
               </h6>
@@ -349,7 +349,7 @@
                   <div class="-mt-14">
                     <center>
                       <h6
-                        style="font-size: 14px"
+                        style="font-size: 12px"
                         class="mt-1 ml-12 mb-3 font-sm"
                       >
                         Click to View your Chosen Template
@@ -363,21 +363,7 @@
                         class="p-4 max-w-sm bg-white shadow-md mb-3 ml-14 sm:p-6 cursor-pointer rounded-xl"
                       >
                         {{ title }}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="currentColor"
-                          class="bi bi-eye"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
-                          />
-                          <path
-                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
-                          />
-                        </svg>
+                         <img class="h-20" src="../assets/mail1.png" alt="" />
                       </div>
                       <div
                         v-else
@@ -398,7 +384,19 @@
                       >
                         <form @submit="send">
                           <div class="tags-input-container">
-                            <div class="flex z-0 mb-4 w-full group mt-6">
+                            <div class="p-4">
+                              <input
+                                type="email"
+                                autocomplete="off"
+                                v-model="tagValue"
+                                id="box"
+                                @keyup.enter="addTag"
+                                required
+                                class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm -ml-4"
+                                placeholder="Thread To"
+                              />
+                            </div>
+                            <div class="flex z-0 mb-4 w-full group">
                               <input
                                 autocomplete="off"
                                 id="from"
@@ -409,7 +407,7 @@
                               />
                             </div>
 
-                            <div class="flex z-0 w-full group">
+                            <div class="flex z-0 mb-6 w-full group">
                               <input
                                 id="subject"
                                 autocomplete="off"
@@ -420,21 +418,7 @@
                                 required
                               />
                             </div>
-                            <div class="flex z-0  w-full group p-4">
-                              <input
-                                type="email"
-                                autocomplete="off"
-                                v-model="tagValue"
-                                id="box"
-                                @keyup.enter="addTag"
-                                
-                                class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm -ml-4"
-                                placeholder="Thread To (Multiple Recipient)"
-                              />
-                            </div>
-
                             <button
-                              
                               type="submit"
                               class="bg-gray-800 h-8 text-white hover:bg-white text-xs hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
                             >
@@ -502,19 +486,19 @@
                 style="height: 95vh"
               >
                 <center>
-                  <h6 style="font-size: 20px" class="mt-3 mb-10 font-semibold">
+                  <h6 style="font-size: 15px" class="mt-3 mb-10 font-semibold">
                     Choose Your Desired Email Template
                   </h6>
                 </center>
                 <center>
-                  <h6 style="font-size: 16px" class="-mt-4 font-semibold">
+                  <h6 style="font-size: 13px" class="-mt-4 font-semibold">
                     Browse Templates you have created before
                   </h6>
-                  <h6 style="font-size: 15px">
+                  <h6 style="font-size: 10px" class="font-semibold">
                     You want a brand new email template?
                     <router-link
                       :to="'/new'"
-                      class="content-end text-blue-600 hover:text-indigo-500 underline font-semibold"
+                      class="content-end text-blue-600 hover:text-indigo-500 underline"
                       >Create New</router-link
                     >
                   </h6>
@@ -535,49 +519,72 @@
                         </div>
                       </div>
                     </div>
-                    <ul
-                      v-for="item in data.email"
-                      v-bind:key="item.id"
-                      class="mt-6"
+
+                    <div
+                      class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 overflow-scroll h-96"
                     >
-                      <li
-                        v-if="item.favorite == 1"
-                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500 cursor-pointer"
-                        id="select"
-                        style="font-size: 12px"
-                        @click="select(item.title, item.design_html, item.id)"
-                      >
-                        {{ item.title }}
-                        <span
-                          class="absolute ml-8 transform -translate-y-1/2 w-4 h-4 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"
-                        ></span>
-                        <p
-                          class="text-xs absolute -mb-6 cursor-pointer"
-                          id="date"
-                        >
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
-                            getHumanDate(item.created_at)
-                          }}
-                        </p>
-                      </li>
-                      <li
-                        v-else
-                        class="bg-white shadow w-32 h-14 font-bold hover:shadow-md transition duration-50 ease-in-out hover:text-blue-500 cursor-pointer"
-                        id="select"
-                        style="font-size: 12px"
-                        @click="select(item.title, item.design_html, item.id)"
-                      >
-                        {{ item.title }}
-                        <p
-                          class="text-xs absolute -mb-6 cursor-pointer"
-                          id="date"
-                        >
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
-                            getHumanDate(item.created_at)
-                          }}
-                        </p>
-                      </li>
-                    </ul>
+                      <!--Card 1-->
+                      <div v-for="item in data.email" v-bind:key="item.id">
+                      <div>
+                         <div v-if="item.favorite == 1">
+                          <div
+                            class="rounded overflow-hidden shadow-lg h-44"
+                            @click="
+                              select(item.title, item.design_html, item.id)
+                            "
+                          > 
+                            <p class="text-xs text-red-500">Favorite</p>
+                            <img
+                              class="w-screen h-24"
+                              src="../assets/mail1.png"
+                              alt="Mountain"
+                            />
+                            <div class="px-6 py-4">
+                              <div class="font-semibold text-sm mb-2 -mt-6 cursor-pointer">
+                                {{ item.title }}
+                              </div>
+                              <p
+                                class="text-xs -mb-6 cursor-pointer"
+                                id="date"
+                              >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                                  getHumanDate(item.created_at)
+                                }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                         <div v-else>
+                          <div
+                            class="rounded overflow-hidden shadow-lg h-44"
+                            @click="
+                              select(item.title, item.design_html, item.id)
+                            "
+                          >
+                            <p class="text-xs text-blue-500">Template</p>
+                            <img
+                              class="w-screen h-24"
+                              src="../assets/mail1.png"
+                              alt="Mountain"
+                            />
+                            <div class="px-6 py-4">
+                              <div class="font-semibold text-sm mb-2 -mt-6 cursor-pointer">
+                                {{ item.title }}
+                              </div>
+                              <p
+                                class="text-xs -mb-6 cursor-pointer"
+                                id="date"
+                              >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                                  getHumanDate(item.created_at)
+                                }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
                   </div>
                 </center>
               </div>
@@ -639,7 +646,7 @@ export default {
         .getElementById("cardTemp")
         .setAttribute(
           "style",
-          "background: #3e3f40; font-style: italic; color:white;"
+          "background: #ffff; font-style: italic; color:black;"
         );
       this.design_html = design;
       this.title = title;
@@ -771,6 +778,9 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 #cardC {
   display: inline-block;
 }
@@ -781,7 +791,10 @@ input:focus {
   text-decoration: none;
 }
 #date {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 8px;
+  font-weight: 400;
+}
+#word{
+  word-wrap: break-word;
 }
 </style>
