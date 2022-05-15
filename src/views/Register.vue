@@ -1,6 +1,31 @@
 <template>
   <div class="flex justify-center bg-gray">
     <div class="w-full h-full rounded mt-20" id="sign">
+<div
+        id="registerToast"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        role="alert"
+      >
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >Successfully Registered!</span
+        >
+      </div>
       <div
         id="toast"
         class="
@@ -329,7 +354,7 @@
                       />
                     </svg>
                   </span>
-                  Sign in
+                  Sign Up
                 </button>
               </div>
             </form>
@@ -374,8 +399,15 @@ export default {
       });
       setTimeout(function () {
         element.classList.remove("animate-spin");
-      }, 6000);
-      this.$router.push("/");
+      }, 3000);
+         var save = document.getElementById("registerToast");
+        document.getElementById("registerToast").style.display = "block";
+        setTimeout(function () {
+          save.style.display = "none";
+        }, 3000);
+        setTimeout(function () {
+          window.location.href = "http://localhost:3001";
+        }, 1000);
     } catch (error) {
         var element = document.getElementById("loader");
         element.classList.remove("animate-spin");
