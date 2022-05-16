@@ -466,7 +466,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http://localhost:3001/";
+      window.location.href = "https://incremail-d8cdc.web.app/";
     },
     check(data) {
       console.log(data);
@@ -493,7 +493,7 @@ export default {
           ele.style.display = "none";
         }, 6000);
         setTimeout(function () {
-          window.location.href = "http://localhost:3001/emailTemplates";
+          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
         }, 1000);
       }
     },
@@ -506,7 +506,7 @@ export default {
           ele.style.display = "none";
         }, 6000);
         setTimeout(function () {
-          window.location.href = "http://localhost:3001/emailTemplates";
+          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
         }, 1000);
       }
     },
@@ -523,7 +523,7 @@ export default {
       //   document.getElementById("loading").style.display = "none";
       // }, 5000);
       setTimeout(function () {
-        window.location.href = "http://localhost:3001/emailView";
+        window.location.href = "https://incremail-d8cdc.web.app/emailView";
       }, 100);
     },
     select(title, design, id) {

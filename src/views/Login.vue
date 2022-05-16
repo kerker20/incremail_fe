@@ -193,7 +193,7 @@ export default {
         localStorage.setItem("data", response.data.user.name);
         localStorage.setItem("userID", response.data.user.id);
         this.$store.dispatch("user", response.data.user);
-        window.location.href = "http://localhost:3001/example";
+        window.location.href = "https://incremail-d8cdc.web.app/example";
       } catch (e) {
         var element = document.getElementById("loader");
         element.classList.remove("animate-spin");
