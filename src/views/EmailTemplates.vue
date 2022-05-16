@@ -295,8 +295,9 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-            <p class="mt-12 mb-3 subpixel-antialiased">
-              No Email Templates Found
+            <p class="mt-12 mb-3 subpixel-antialiased"
+              style="font-size:20px;">
+              No Email Template Found.
             </p>
             <div
               class="max-w-md mx-auto bg-transparent rounded-xl overflow-hidden md:max-w-2xl"

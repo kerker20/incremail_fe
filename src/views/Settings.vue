@@ -53,7 +53,7 @@
           </svg>
         </div>
         <span class="ml-3 text-sm font-normal"
-          >Email Template Successfully Saved!</span
+          >User Information Successfully Updated!</span
         >
       </div>
      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
