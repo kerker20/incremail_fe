@@ -23,28 +23,28 @@ export default new Router({
     },
     { 
         path: "/new",
-        beforeEnter : guardMyroute, 
+        // beforeEnter : guardMyroute, 
         component: DesignEdit 
     },
     { 
         path: "/campaigns", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: Campaigns 
     },
     { 
         path: "/settings", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: Settings },
     { 
         path: "/register", 
         component: Register },
     { 
         path: "/example", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: Example },
     { 
         path: "/emailTemplates", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: EmailTemplates 
     },
     { 
@@ -53,17 +53,17 @@ export default new Router({
     },
     { 
         path: "/reset/:token", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: ResetPassword 
     },
     { 
         path: "/emailView", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: EmailView 
     },
     { 
         path: "/favorites", 
-        beforeEnter : guardMyroute,
+        // beforeEnter : guardMyroute,
         component: Favorites },
   ],
 });
