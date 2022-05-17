@@ -1,11 +1,11 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-4 absolute"
+      class="flex items-center justify-between flex-wrap bg-blue absolute sticky  p-4 "
     >
       <div
         id="toast"
-        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-white-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
@@ -35,7 +35,7 @@
           class="w-10 h-10"
         />
         &nbsp; &nbsp;
-        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
+        <span class="font-semibold text-white text-2xl tracking-tight">IncreMail</span>
       </div>
       <div class="flex justify-end">
         <button
@@ -64,7 +64,7 @@
             </li>
           </ul>
         </div>
-        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
+        <div class="text-white mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
