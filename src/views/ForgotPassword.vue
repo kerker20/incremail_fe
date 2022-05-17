@@ -231,7 +231,7 @@ export default {
   },
   methods: {
     back(){
-      window.location.href = "http://localhost:3001/"
+      window.location.href = "https://incremail-d8cdc.web.app/"
     },
     async handleSubmit() {
       try {
@@ -267,7 +267,7 @@ export default {
           element.classList.remove("animate-spin");
         }, 1000);
          setTimeout(function () {
-          window.location.href = "http://localhost:3001/forgot";
+          window.location.href = "https://incremail-d8cdc.web.app/forgot";
         }, 3000);
       }
     },

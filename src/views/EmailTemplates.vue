@@ -393,13 +393,13 @@
 
                   <div class="px-6 pt-4 pb-5">
                     <button
-                      class="bg-gray-800 h-8 text-white hover:bg-white hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
-                    >
-                      <p
-                        @click="
+                      @click="
                           setID(item.id);
                           setHTMLID(item.id);
                         "
+                      class="bg-gray-800 h-8 text-white hover:bg-white hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
+                    >
+                      <p
                         class="text-xs"
                       >
                         Customize
@@ -466,7 +466,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http://localhost:3001/";
+      window.location.href = "https://incremail-d8cdc.web.app/";
     },
     check(data) {
       console.log(data);
@@ -493,7 +493,7 @@ export default {
           ele.style.display = "none";
         }, 6000);
         setTimeout(function () {
-          window.location.href = "http://localhost:3001/emailTemplates";
+          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
         }, 1000);
       }
     },
@@ -506,7 +506,7 @@ export default {
           ele.style.display = "none";
         }, 6000);
         setTimeout(function () {
-          window.location.href = "http://localhost:3001/emailTemplates";
+          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
         }, 1000);
       }
     },
@@ -523,7 +523,7 @@ export default {
       //   document.getElementById("loading").style.display = "none";
       // }, 5000);
       setTimeout(function () {
-        window.location.href = "http://localhost:3001/emailView";
+        window.location.href = "https://incremail-d8cdc.web.app/emailView";
       }, 100);
     },
     select(title, design, id) {

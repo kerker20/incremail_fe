@@ -646,7 +646,7 @@ export default {
       //   document.getElementById("loading").style.display = "none";
       // }, 5000);
       setTimeout(function () {
-        window.location.href = "http://localhost:3001/emailView";
+        window.location.href = "https://incremail-d8cdc.web.app/emailView";
       }, 100);
     },
     htmlShow() {
@@ -699,7 +699,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http://localhost:3001/";
+      window.location.href = "https://incremail-d8cdc.web.app/";
     },
     removeTag(index) {
       this.tags.splice(index, 1);

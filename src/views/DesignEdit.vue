@@ -552,7 +552,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http://localhost:3001/";
+      window.location.href = "https://incremail-d8cdc.web.app/";
     },
     editorLoaded() {
       console.log("editorLoaded");
@@ -637,7 +637,7 @@ export default {
         design_html: design
       });
        setTimeout(function () {
-          window.location.href = "http://localhost:3001/emailTemplates";
+          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
         }, 1000);
     },
     async sendTemplate(data) {
