@@ -5,39 +5,11 @@
     >
       <div
         id="toast1"
-        class="
-          absolute
-          right-0
-          top-0
-          m-5
-          flex
-          items-center
-          p-4
-          mb-4
-          w-full
-          max-w-xs
-          text-gray-500
-          bg-gray-200
-          rounded-lg
-          shadow
-          dark:text-gray-400 dark:bg-gray-800
-          hidden
-        "
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
-          class="
-            inline-flex
-            flex-shrink-0
-            justify-center
-            items-center
-            w-8
-            h-8
-            text-green-500
-            bg-green-100
-            rounded-lg
-            dark:bg-green-800 dark:text-green-200
-          "
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
         >
           <svg
             class="w-5 h-5"
@@ -56,24 +28,18 @@
           >Email Template Successfully Saved!</span
         >
       </div>
-       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
-        <img src="../../public/logo.png" alt="incremail logo" class="w-10 h-10">
-         &nbsp; &nbsp;
+      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
+        <img
+          src="../../public/logo.png"
+          alt="incremail logo"
+          class="w-10 h-10"
+        />
+        &nbsp; &nbsp;
         <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
       </div>
       <div class="block lg:hidden">
         <button
-          class="
-            flex
-            items-center
-            px-3
-            py-2
-            border
-            rounded
-            text-teal-200
-            border-teal-400
-            hover:text-white hover:border-white
-          "
+          class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
         >
           <svg
             class="fill-current h-3 w-3"
@@ -87,8 +53,8 @@
       </div>
       <div class="flex justify-end">
         <button
-        @click="showDrop"
-        id="dropShow"
+          @click="showDrop"
+          id="dropShow"
           type="button"
           class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
@@ -99,12 +65,17 @@
           class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class=" text-sm text-gray-700 dark:text-gray-200"
+            class="text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
-              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
-               </li>
+              <button
+                @click="logout"
+                class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center"
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
         <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
@@ -113,41 +84,13 @@
     <hr />
     <div class="flex flex-no-wrap bg-gray-100 h-screen">
       <div
-        class="
-          w-40
-          absolute
-          sm:relative
-          bg-white
-          shadow
-          md:h-full
-          flex-col
-          justify-between
-          hidden
-          sm:flex
-        "
+        class="w-40 absolute sm:relative bg-white shadow md:h-full flex-col justify-between hidden sm:flex"
       >
         <div class="px-6 h-screen">
           <ul class="mt-4">
             <router-link
               :to="'/campaigns'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -174,24 +117,7 @@
             </router-link>
             <router-link
               :to="'/example'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -211,24 +137,7 @@
             </router-link>
             <router-link
               :to="'/emailTemplates'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                mb-4
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -253,21 +162,7 @@
             </router-link>
             <router-link
               :to="'/favorites'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-white
-                bg-gray-800
-                cursor-pointer
-                items-center
-                mb-4
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-white bg-gray-800 cursor-pointer items-center mb-4"
             >
               <div class="flex items-center">
                 <svg
@@ -288,23 +183,7 @@
             </router-link>
             <router-link
               :to="'/settings'"
-              class="
-                flex
-                w-full
-                bg-white
-                rounded-xl
-                shadow-md
-                overflow-hidden
-                p-2
-                justify-between
-                text-gray-800
-                hover:text-white hover:bg-gray-400
-                cursor-pointer
-                items-center
-                transition
-                duration-50
-                ease-in-out
-              "
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -332,7 +211,7 @@
         </div>
       </div>
 
-        <div
+      <div
         id="htmlShow"
         tabindex="-1"
         class="hidden bg-gray-800 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
@@ -389,39 +268,11 @@
         <div class="max-w-max" align="center">
           <div
             id="toast"
-            class="
-              absolute
-              right-0
-              top-0
-              m-5
-              flex
-              items-center
-              p-4
-              mb-4
-              w-full
-              max-w-xs
-              text-gray-500
-              bg-gray-200
-              rounded-lg
-              shadow
-              dark:text-gray-400 dark:bg-gray-800
-              hidden
-            "
+            class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
             role="alert"
           >
             <div
-              class="
-                inline-flex
-                flex-shrink-0
-                justify-center
-                items-center
-                w-8
-                h-8
-                text-green-500
-                bg-green-100
-                rounded-lg
-                dark:bg-green-800 dark:text-green-200
-              "
+              class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
             >
               <svg
                 class="w-5 h-5"
@@ -442,18 +293,11 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-             <p class="mt-12 mb-3 subpixel-antialiased"
-                style="font-size:20px;">
-                No Email Template Found.</p>
-              <div
-              class="
-                max-w-md
-                mx-auto
-                bg-transparent
-                rounded-xl
-                overflow-hidden
-                md:max-w-2xl
-              "
+            <p class="mt-12 mb-3 subpixel-antialiased" style="font-size: 20px">
+              No Email Template Found.
+            </p>
+            <div
+              class="max-w-md mx-auto bg-transparent rounded-xl overflow-hidden md:max-w-2xl"
             >
               <div class="md:flex">
                 <div class="md:shrink-0">
@@ -464,7 +308,7 @@
                   />
                 </div>
               </div>
-          </div>
+            </div>
           </div>
           <div v-else></div>
           <div id="wrap" class="overflow-scroll">
@@ -475,42 +319,20 @@
             >
               <div>
                 <div
-                  @click="
-                    select(item.title, item.design_html, item.id);
-                    htmlShow();
-                  "
-                  class="
-                    max-w-xs
-                    rounded
-                    overflow-hidden
-                    shadow-lg
-                    mx-2
-                    my-2
-                    bg-white
-                  "
+                  class="max-w-xs rounded overflow-hidden shadow-lg mx-2 my-2 bg-white"
                   id="cardC"
                 >
                   <div class="relative">
                     <div class="flex">
                       <div class="absolute p-7">
                         <svg
-                        @click="removeTemplate(item.id)"
-                        cursor="pointer"
+                          @click="removeTemplate(item.id)"
+                          cursor="pointer"
                           xmlns="http://www.w3.org/2000/svg"
                           width="18"
                           height="18"
                           fill="currentColor"
-                          class="
-                            bi bi-heart-fill
-                            text-red-500
-                            hover:text-gray-500
-                            transition
-                            duration-50
-                            ease-in-out
-                            absolute
-                            mb-8
-                            animate-bounce
-                          "
+                          class="bi bi-heart-fill text-red-500 hover:text-gray-500 transition duration-50 ease-in-out absolute mb-8 animate-bounce"
                           viewBox="0 0 16 16"
                         >
                           <path
@@ -522,31 +344,12 @@
                     </div>
                     <div class="flex">
                       <button
-                        class="
-                          bg-neutral-300
-                          hover:bg-gray-700 hover:text-white
-                          py-2
-                          px-3
-                          transition
-                          duration-150
-                          ease-in-out
-                          rounded-full
-                          absolute
-                          top-3
-                          right-3
-                        "
+                        class="bg-neutral-300 hover:bg-gray-700 hover:text-white py-2 px-3 transition duration-150 ease-in-out rounded-full absolute top-3 right-3"
                       >
                         <svg
                           @click="deleteTemplate(item.id)"
                           xmlns="http://www.w3.org/2000/svg"
-                          class="
-                            h-5
-                            w-5
-                            hover:text-white
-                            transition
-                            duration-50
-                            ease-in-out
-                          "
+                          class="h-5 w-5 hover:text-white transition duration-50 ease-in-out"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -564,7 +367,15 @@
                       class="font-bold text-gray-800 text-md mb-2 text-justify"
                     >
                       {{ item.title }}
-                      <img class="h-25 w-40" src="../assets/blocks.gif" alt="" />
+                      <img
+                        class="h-25 w-40"
+                        @click="
+                          select(item.title, item.design_html, item.id);
+                          htmlShow();
+                        "
+                        src="../assets/blocks.gif"
+                        alt=""
+                      />
                     </div>
                     <hr />
                     <p
@@ -577,7 +388,7 @@
                     </p>
                   </div>
 
-                   <div class="px-6 pt-4 pb-5">
+                  <div class="px-6 pt-4 pb-5">
                     <button
                       class="bg-gray-800 h-8 text-white hover:bg-white hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
                     >
@@ -636,16 +447,16 @@ export default {
     };
   },
   methods: {
-     htmlShow() {
+    htmlShow() {
       document.getElementById("htmlShow").style.display = "block";
     },
     close() {
       document.getElementById("htmlShow").style.display = "none";
     },
-     showDrop() {
+    showDrop() {
       document.getElementById("dropdownShow").classList.toggle("show");
     },
-     logout() {
+    logout() {
       localStorage.clear();
       window.location.href = "https://incremail-d8cdc.web.app/";
     },
@@ -667,12 +478,13 @@ export default {
           ele.style.display = "none";
         }, 6000);
         setTimeout(function () {
-          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
+          window.location.href =
+            "https://incremail-d8cdc.web.app/emailTemplates";
         }, 1000);
       }
     },
 
-     async removeTemplate(id) {
+    async removeTemplate(id) {
       const response = await axios.put(`removeFavorite/${id}`);
       if (response) {
         var ele = document.getElementById("toast1");
@@ -733,13 +545,13 @@ export default {
   font-size: 10px;
 }
 
-.show{
+.show {
   display: block;
 }
-#wrap{
+#wrap {
   height: 90vh;
 }
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 </style>

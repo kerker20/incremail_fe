@@ -657,9 +657,6 @@ export default {
         setTimeout(function () {
           save.style.display = "none";
         }, 3000);
-        setTimeout(function () {
-          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
-        }, 1000);
       });
     },
     async send(html, design) {
@@ -669,6 +666,9 @@ export default {
         title: this.title,
         design_html: design
       });
+       setTimeout(function () {
+          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
+      }, 1000);
     },
     async sendTemplate(data) {
       var ele = document.getElementById("toastSend");
