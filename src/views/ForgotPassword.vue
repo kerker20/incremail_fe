@@ -233,7 +233,8 @@ export default {
     back(){
       window.location.href = "https://incremail-d8cdc.web.app/"
     },
-    async handleSubmit() {
+    async handleSubmit(e) {
+      e.preventDefault();
       try {
         var element = document.getElementById("loader");
         element.classList.add("animate-spin");

@@ -11,6 +11,7 @@ import ResetPassword from "./views/ResetPassword.vue";
 import EmailTemplates from "./views/EmailTemplates.vue";
 import EmailView from "./views/ViewUpdate.vue";
 import Favorites from "./views/Favorites.vue";
+import PageNotFound from "./views/PageNotFound.vue"
 
 Vue.use(Router);
 
@@ -23,28 +24,28 @@ export default new Router({
     },
     { 
         path: "/new",
-        // beforeEnter : guardMyroute, 
+        beforeEnter : guardMyroute, 
         component: DesignEdit 
     },
     { 
         path: "/campaigns", 
-        // beforeEnter : guardMyroute,
+        beforeEnter : guardMyroute,
         component: Campaigns 
     },
     { 
         path: "/settings", 
-        // beforeEnter : guardMyroute,
+        beforeEnter : guardMyroute,
         component: Settings },
     { 
         path: "/register", 
         component: Register },
     { 
         path: "/example", 
-        // beforeEnter : guardMyroute,
+        beforeEnter : guardMyroute,
         component: Example },
     { 
         path: "/emailTemplates", 
-        // beforeEnter : guardMyroute,
+        beforeEnter : guardMyroute,
         component: EmailTemplates 
     },
     { 
@@ -53,18 +54,22 @@ export default new Router({
     },
     { 
         path: "/reset/:token", 
-        // beforeEnter : guardMyroute,
         component: ResetPassword 
     },
     { 
         path: "/emailView", 
-        // beforeEnter : guardMyroute,
+        beforeEnter : guardMyroute,
         component: EmailView 
     },
     { 
         path: "/favorites", 
-        // beforeEnter : guardMyroute,
-        component: Favorites },
+        beforeEnter : guardMyroute,
+        component: Favorites 
+    },
+    { 
+        path: "*", 
+        component: PageNotFound 
+    },
   ],
 });
 function guardMyroute(to, from, next) {
