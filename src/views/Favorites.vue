@@ -554,4 +554,7 @@ export default {
 ::-webkit-scrollbar {
   display: none;
 }
+* {
+  text-decoration: none;
+}
 </style>
