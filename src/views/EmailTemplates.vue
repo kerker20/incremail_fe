@@ -534,7 +534,7 @@ export default {
         }, 6000);
         setTimeout(function () {
           window.location.href =
-            "https://incremail-d8cdc.web.app/emailTemplates";
+            "https://incremail-d8cdc.web.app/favorites";
         }, 1000);
       }
     },
