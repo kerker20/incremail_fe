@@ -2,7 +2,7 @@
   <main>
     <!-- <button class="btn">Button</button> -->
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-4"
+      class="flex items-center justify-between flex-wrap bg-blue sticky p-4"
     >
       <div
         id="toastSend"
@@ -61,7 +61,7 @@
           class="w-10 h-10"
         />
         &nbsp; &nbsp;
-        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
+        <span class="font-semibold text-2xl tracking-tight text-white">IncreMail</span>
       </div>
       <div class="flex justify-end">
         <button
@@ -91,7 +91,7 @@
             </li>
           </ul>
         </div>
-        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
+        <div class="text-white mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
@@ -639,7 +639,7 @@ export default {
       this.$refs.emailEditor.editor.saveDesign((design) => {
         let pisti = JSON.stringify(design, null, "\t");
         this.storeCampaignData(pisti);
-      });
+      }); 
     },
     saveDesign(e) {
       e.preventDefault();

@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-white sticky p-4"
+      class="flex items-center justify-between flex-wrap bg-blue sticky p-4"
     >
       <div
         id="toast1"
@@ -78,7 +78,7 @@
             </li>
           </ul>
         </div>
-        <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
+        <div class="text-white mt-1 ml-2" v-if="user">{{ user }}</div>
       </div>
     </nav>
     <hr />
