@@ -1,8 +1,8 @@
 <template>
   <main>
     <!-- <button class="btn">Button</button> -->
-    <nav
-      class="flex items-center justify-between flex-wrap bg-blue  sticky p-4"
+     <nav
+      class="flex items-center justify-between flex-wrap bg-blue sticky p-4"
     >
       <div
         id="toastSend"
@@ -31,7 +31,7 @@
       </div>
       <div
         id="toast"
-        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-green-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
@@ -61,28 +61,34 @@
           class="w-10 h-10"
         />
         &nbsp; &nbsp;
-        <span class="font-semibold text-2xl text-white tracking-tight">IncreMail</span>
+        <span class="font-semibold text-2xl tracking-tight text-white">IncreMail</span>
       </div>
       <div class="flex justify-end">
         <button
-        @click="showDrop"
-        id="dropShow"
+          @click="showDrop"
+          id="dropShow"
           type="button"
           class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
           <p class="initial mr-4 mb-1" v-if="user">{{ user.charAt(0) }}</p>
+          <p class="initial mr-4 mb-1" v-else>{{ user.charAt(0) }}</p>
         </button>
         <div
           id="dropdownShow"
           class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class=" text-sm text-gray-700 dark:text-gray-200"
+            class="text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
-              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
-               </li>
+              <button
+                @click="logout"
+                class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center"
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
         <div class="text-white mt-1 ml-2" v-if="user">{{ user }}</div>

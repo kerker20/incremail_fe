@@ -1,8 +1,6 @@
 <template>
   <main>
-    <nav
-      class="flex items-center justify-between flex-wrap bg-blue sticky p-4"
-    >
+    <nav class="flex items-center justify-between flex-wrap bg-blue sticky p-4">
       <div
         id="toast1"
         class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
@@ -35,7 +33,9 @@
           class="w-10 h-10"
         />
         &nbsp; &nbsp;
-        <span class="font-semibold text-2xl tracking-tight">IncreMail</span>
+        <span class="font-semibold text-2xl text-white tracking-tight"
+          >IncreMail</span
+        >
       </div>
       <div class="block lg:hidden">
         <button
@@ -254,7 +254,7 @@
               <button
                 @click="close"
                 type="button"
-                class="text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-white focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                class="text-white bg-gray-800 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-white focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
               >
                 Close
               </button>
@@ -293,25 +293,13 @@
           </div>
           <!-- Replace with your content -->
           <div v-if="data.length == 0" @click="check(data.length)">
-            <p class="mt-12 mb-3 subpixel-antialiased" style="font-size: 20px">
+            <p class="mt-12 mb-3 subpixel-antialiased" style="font-size: 15px">
               No Email Template Found.
             </p>
-            <div
-              class="max-w-md mx-auto bg-transparent rounded-xl overflow-hidden md:max-w-2xl"
-            >
-              <div class="md:flex">
-                <div class="md:shrink-0">
-                  <img
-                    class="h-96 w-full object-cover"
-                    src="../assets/empty.gif"
-                    alt="empty"
-                  />
-                </div>
-              </div>
-            </div>
+            <img src="../assets/nodata.png" class="w-96 h-54" alt="">
           </div>
-          <div v-else></div>
-          <div id="wrap" class="overflow-scroll">
+          <div v-else>
+              <div id="wrap" class="overflow-scroll">
             <div
               class="flex justify-start card"
               v-for="item in data"
@@ -425,6 +413,7 @@
               </div>
               <!-- end of fourth card -->
             </div>
+          </div>
           </div>
           <!-- /End replace -->
         </div>
