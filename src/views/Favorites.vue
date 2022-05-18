@@ -266,6 +266,36 @@
       <!-- Remove class [ h-64 ] when adding a card block -->
       <div class="max-w-max mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div class="max-w-max" align="center">
+           <form class="flex justify-center items-center -mt-8 p-10">
+            <label for="simple-search" class="sr-only">Search for Titles</label>
+            <div class="relative w-64">
+              <div
+                class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+              >
+                <svg
+                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                v-model="search"
+                id="simple-search"
+                autocomplete="off"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for Titles"
+                required
+              />
+            </div>
+          </form>
           <div
             id="toast"
             class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
@@ -292,7 +322,7 @@
             >
           </div>
           <!-- Replace with your content -->
-          <div v-if="data.length == 0" @click="check(data.length)">
+          <div v-if="data.length == 0" @click="check(data.length)" class="-mt-12">
             <p class="mt-12 mb-3 subpixel-antialiased" style="font-size: 20px">
               No Email Template Found.
             </p>
@@ -311,10 +341,10 @@
             </div>
           </div>
           <div v-else></div>
-          <div id="wrap" class="overflow-scroll">
+          <div id="wrap" class="overflow-scroll -mt-8">
             <div
               class="flex justify-start card"
-              v-for="item in data"
+              v-for="item in filterMail"
               v-bind:key="item.id"
             >
               <div>
@@ -444,6 +474,7 @@ export default {
       design_html: null,
       title: null,
       id: null,
+      search: "",
     };
   },
   methods: {
@@ -523,6 +554,11 @@ export default {
   computed: {
     data() {
       return this.$store.getters.fav;
+    },
+    filterMail() {
+      return this.data.filter((item) => {
+        return item.title.toLowerCase().match(this.search.toLowerCase());
+      });
     },
   },
   created() {

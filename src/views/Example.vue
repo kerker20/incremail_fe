@@ -31,7 +31,7 @@
       </div>
       <div
         id="toast"
-        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-green-200  rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-green-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
@@ -65,8 +65,8 @@
       </div>
       <div class="flex justify-end">
         <button
-        @click="showDrop"
-        id="dropShow"
+          @click="showDrop"
+          id="dropShow"
           type="button"
           class="cursor-pointer inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-400 hover:bg-gray-700"
         >
@@ -78,12 +78,17 @@
           class="hidden absolute mt-8 mr-12 bg-white rounded divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class=" text-sm text-gray-700 dark:text-gray-200"
+            class="text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
-              <button @click="logout" class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center">Logout</button>
-               </li>
+              <button
+                @click="logout"
+                class="block py-2 px-4 bg-gray-100 hover:bg-gray-800 hover:text-white rounded items-center"
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
         <div class="text-gray-800 mt-1 ml-2" v-if="user">{{ user }}</div>
@@ -224,9 +229,7 @@
             <nav
               class="flex items-center justify-between flex-wrap bg-white p-6 h-20"
             >
-              <div
-                class="flex items-center flex-shrink-0 text-gray-800 mr-6"
-              >
+              <div class="flex items-center flex-shrink-0 text-gray-800 mr-6">
                 <img
                   src="../../public/logo.png"
                   alt="incremail logo"
@@ -241,6 +244,15 @@
                 class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
               >
                 <div class="text-sm lg:flex-grow">
+                   <!-- <div class="toggle-button-cover absolute" id='mode'>
+                      <div class="button-cover">
+                        <div class="button r" id="button-4" @click="mode">
+                          <input type="checkbox" class="checkbox" />
+                          <div class="knobs" id="modeUp" :stats='stats'></div>
+                          <div class="layer"></div>
+                        </div>
+                      </div>
+                    </div> -->
                   <div
                     class="block mt-4 text-gray-50 lg:inline-block lg:mt-0 hover:text-white ml-56"
                   >
@@ -525,7 +537,7 @@
             <EmailEditor
               ref="emailEditor"
               :appearance="appearance"
-              v-on:load="editorLoaded"
+               v-on:load="editorLoaded"
               v-on:ready="editorReady"
             />
           </div>
@@ -535,8 +547,7 @@
   </main>
 </template>
 <script>
-// import { EmailEditor } from "../components";
-import { EmailEditor } from 'vue-email-editor'
+import { EmailEditor } from "../components";
 import sample from "../data/sample.json";
 import axios from "axios";
 export default {
@@ -549,18 +560,13 @@ export default {
       title: "",
       user: localStorage.getItem("data"),
       appearance: {
-        theme: "light",
+        theme:'light',
       },
-      design_html: null
+      design_html: null,
+      // stats: false,
     };
   },
-  mounted() {
-    gapi.load('auth2', function() {
-        gapi.auth2.init();
-      });
-  },
   methods: {
-
     showDrop() {
       document.getElementById("dropdownShow").classList.toggle("show");
     },
@@ -577,7 +583,7 @@ export default {
       document.getElementById("modal1").style.display = "none";
     },
     show1() {
-       this.$refs.emailEditor.editor.exportHtml((data) => {
+      this.$refs.emailEditor.editor.exportHtml((data) => {
         this.design_html = data.html;
       });
       document.getElementById("modal1").style.display = "block";
@@ -609,29 +615,27 @@ export default {
       this.sendTemplate(mailData);
     },
 
-
-     storeCampaignData(design) {
+    storeCampaignData(design) {
       const recipient = document.getElementById("recipient").value;
       const subject = document.getElementById("subject").value;
-      const des = this.design_html
+      const des = this.design_html;
 
       const mailData = {
         user_id: localStorage.getItem("userID"),
         sender: recipient, //(to)
         subject: subject,
         html: design,
-        design_html: des
-
+        design_html: des,
       };
       console.log(mailData);
       this.sendCampaignData(mailData);
     },
 
-    async sendCampaignData(data){
+    async sendCampaignData(data) {
       await axios.post("createCampaignData", data);
     },
 
-    passDesignDataCampaign(){
+    passDesignDataCampaign() {
       this.$refs.emailEditor.editor.saveDesign((design) => {
         let pisti = JSON.stringify(design, null, "\t");
         this.storeCampaignData(pisti);
@@ -640,7 +644,7 @@ export default {
     saveDesign(e) {
       e.preventDefault();
       this.$refs.emailEditor.editor.saveDesign((design) => {
-        const des = this.design_html
+        const des = this.design_html;
         console.log(des);
         console.log("saveDesign", JSON.stringify(design), null, "\t");
         let html = JSON.stringify(design, null, "\t");
@@ -664,10 +668,10 @@ export default {
         user_id: localStorage.getItem("userID"),
         html: html,
         title: this.title,
-        design_html: design
+        design_html: design,
       });
-       setTimeout(function () {
-          window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
+      setTimeout(function () {
+        window.location.href = "https://incremail-d8cdc.web.app/emailTemplates";
       }, 1000);
     },
     async sendTemplate(data) {
@@ -688,23 +692,31 @@ export default {
       await axios.post("sendMail", data);
     },
 
-  previewFile() {
-  const preview = document.querySelector('img');
-  const file = document.querySelector('input[type=file]').files[0];
-  const reader = new FileReader();
+    previewFile() {
+      const preview = document.querySelector("img");
+      const file = document.querySelector("input[type=file]").files[0];
+      const reader = new FileReader();
 
-  reader.addEventListener("load", function () {
-    // convert image file to base64 string
-    preview.src = reader.result;
-    console.log(preview.src);
-  }, false);
+      reader.addEventListener(
+        "load",
+        function () {
+          // convert image file to base64 string
+          preview.src = reader.result;
+          console.log(preview.src);
+        },
+        false
+      );
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-},
-
-
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    },
+    // mode(){
+    //   var mode = document.querySelector("#modeUp").getAttribute('stats'); 
+    //   mode = !mode
+    //   this.stats = mode
+    //   console.log(mode);
+    // },
     exportHtmlZIP() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
         const html = data.html;
@@ -730,22 +742,21 @@ export default {
       this.user = null;
       this.$router.push("/");
     },
-  },  
+  },
 };
-window.onclick = function(event) {
-  if (!event.target.matches('#dropShow')) {
+window.onclick = function (event) {
+  if (!event.target.matches("#dropShow")) {
     var dropdowns = document.getElementById("dropdownShow");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.toggle('hide');
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.toggle("hide");
       }
     }
   }
-}
+};
 </script>
-
 
 <style>
 html,
@@ -837,7 +848,133 @@ body {
   margin-top: 3px;
   color: white;
 }
-.show {display: block;}
+.show {
+  display: block;
+}
 
-.hide {display: none;}
+.hide {
+  display: none;
+}
+#button-4 .knobs:before,
+#button-4 .knobs:after {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: #03a9f4;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+#button-4 .knobs:before {
+  content: "light";
+}
+
+#button-4 .knobs:after {
+  content: "dark";
+}
+
+#button-4 .knobs:after {
+  top: -30px;
+  right: 4px;
+  left: auto;
+  background-color: #282828;
+}
+
+#button-4 .checkbox:checked + .knobs:before {
+  top: -30px;
+}
+
+#button-4 .checkbox:checked + .knobs:after {
+  top: 4px;
+}
+
+#button-4 .checkbox:checked ~ .layer {
+  background-color: #fcebeb;
+}
+* {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #f1f9f9;
+}
+
+#app-cover {
+  display: table;
+  width: 600px;
+  margin: 80px auto;
+  counter-reset: button-counter;
+}
+
+.row {
+  display: table-row;
+}
+
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button {
+  position: relative;
+  top: 50%;
+  width: 74px;
+  height: 36px;
+  margin: -20px auto 0 auto;
+  overflow: hidden;
+}
+
+.button.r,
+.button.r .layer {
+  border-radius: 100px;
+}
+
+.button.b2 {
+  border-radius: 2px;
+}
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #ebf7fc;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+#mode{
+  margin-left: 2rem;
+  margin-top: 20px;
+}
 </style>
