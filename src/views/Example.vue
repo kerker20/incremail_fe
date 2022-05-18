@@ -635,7 +635,7 @@ export default {
       this.$refs.emailEditor.editor.saveDesign((design) => {
         let pisti = JSON.stringify(design, null, "\t");
         this.storeCampaignData(pisti);
-      });
+      }); 
     },
     saveDesign(e) {
       e.preventDefault();

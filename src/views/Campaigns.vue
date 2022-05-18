@@ -1,8 +1,58 @@
 <template>
   <main>
     <nav
-      class="flex items-center justify-between flex-wrap bg-blue absolute sticky  p-4 "
+      class="flex items-center justify-between flex-wrap bg-blue absolute sticky p-4"
     >
+      <div
+        id="noEmailRecipients"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        role="alert"
+      >
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >Please provide email recipients!</span
+        >
+      </div>
+      <div
+        id="noTemplateToast"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        role="alert"
+      >
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >Please provide your template!</span
+        >
+      </div>
       <div
         id="toast"
         class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-white-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
@@ -28,6 +78,31 @@
           >Email Template Successfully Saved!</span
         >
       </div>
+      <div
+        id="toastSubmitSuccess"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-white-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        role="alert"
+      >
+        <div
+          class="inline-flex flex-shrink-0 justif qy-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span class="ml-3 text-sm font-normal"
+          >Email Template Successfully Sent!</span
+        >
+      </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <img
           src="../../public/logo.png"
@@ -35,7 +110,9 @@
           class="w-10 h-10"
         />
         &nbsp; &nbsp;
-        <span class="font-semibold text-white text-2xl tracking-tight">IncreMail</span>
+        <span class="font-semibold text-white text-2xl tracking-tight"
+          >IncreMail</span
+        >
       </div>
       <div class="flex justify-end">
         <button
@@ -384,6 +461,21 @@
                         <img class="h-20" src="../assets/email.png" alt="" />
                       </div>
                     </center>
+
+                    <div class="flex z-0 group w-full ml-10 mt-5">
+                      <input
+                        type="email"
+                        autocomplete="off"
+                        v-model="tagValue"
+                        id="box"
+                        @keyup.enter="addTag"
+                        class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm -ml-4"
+                        placeholder="Thread To (Multiple Recipient)"
+                      />
+                    </div>
+                    <p class="text-xs italic ml-6">
+                      note: Please click enter for multiple recipient.
+                    </p>
                     <div
                       style="height: 100%"
                       class="p-4 max-w-sm bg-white mb-3 sm:p-6 rounded-xl"
@@ -392,11 +484,12 @@
                         class="flex relative z-0 mb-6 w-full group mb-42 sticky -mt-8"
                       >
                         <form @submit="send">
-                          <div class="tags-input-container">
-                            <div class="flex z-0 mb-4 w-full group mt-5">
+                          <div class="tags-input-container mt-6">
+                            <div class="flex z-0 mb-4 w-full group">
                               <input
                                 autocomplete="off"
                                 id="from"
+                                type="email"
                                 name="from_email"
                                 class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm"
                                 placeholder="Sender"
@@ -416,21 +509,9 @@
                               />
                             </div>
 
-                            <div class=" flex z-0 mb-6 w-full group p-4">
-                              <input
-                                type="email"
-                                autocomplete="off"
-                                v-model="tagValue"
-                                id="box"
-                                @keyup.enter="addTag"
-                            
-                                class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm -ml-4"
-                                placeholder="Thread To (Multiple Recipient)"
-                              />
-                            </div>
                             <button
                               type="submit"
-                              class="bg-gray-800 h-8 text-white hover:bg-white text-xs hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
+                              class="bg-gray-800 h-8 text-white mt-4 hover:bg-white text-xs hover:text-gray-800 text-black py-2 px-4 rounded-xl hover:rounded-2xl border border-gray-800 inline-flex items-center transition duration-150 ease-in-out"
                             >
                               Transmit &nbsp;
                               <div
@@ -551,7 +632,7 @@
                               />
                               <div class="px-6 py-4">
                                 <div
-                                  class="font-semibold text-sm mb-2 -mt-6 cursor-pointer "
+                                  class="font-semibold text-sm mb-2 -mt-6 cursor-pointer"
                                 >
                                   {{ item.title }}
                                 </div>
@@ -671,19 +752,41 @@ export default {
     },
     send(e) {
       e.preventDefault();
-      const from = document.getElementById("from").value;
-      const subject = document.getElementById("subject").value;
-      const tags = JSON.stringify(this.tags);
-      const temp = tags.replace(/[^\w ~%.:\\&-\,.@]/gi, "");
-      const html = this.design_html;
-      const mailData = {
-        from: from,
-        subject: subject,
-        recipient: temp,
-        html: html,
-      };
-      console.log(mailData);
-      this.sendCampaignThread(mailData);
+
+      if (this.title == null) {
+        var ele = document.getElementById("noTemplateToast");
+        document.getElementById("noTemplateToast").style.display = "block";
+        setTimeout(function () {
+          ele.style.display = "none";
+        }, 3000);
+      } else if (this.tags.length == 0) {
+        var noRecipients = document.getElementById("noEmailRecipients");
+        document.getElementById("noEmailRecipients").style.display = "block";
+        setTimeout(function () {
+          noRecipients.style.display = "none";
+        }, 3000);
+      } else {
+        const from = document.getElementById("from").value;
+        const subject = document.getElementById("subject").value;
+        const tags = JSON.stringify(this.tags);
+        const temp = tags.replace(/[^\w ~%.:\\&-\,.@]/gi, "");
+        const html = this.design_html;
+        const mailData = {
+          from: from,
+          subject: subject,
+          recipient: temp,
+          html: html,
+        };
+        console.log(mailData);
+        this.sendCampaignThread(mailData);
+
+        var success = document.getElementById("toastSubmitSuccess");
+        document.getElementById("toastSubmitSuccess").style.display = "block";
+        setTimeout(function () {
+          success.style.display = "none";
+        }, 3000);
+        window.location.href = "https://incremail-d8cdc.web.app/campaigns";
+      }
     },
     async sendCampaignThread(data) {
       await axios.post("sendMail", data);
@@ -699,7 +802,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "https://incremail-d8cdc.web.app/";
+      window.location.href = "https://incremail-d8cdc.web.app/emailView/";
     },
     removeTag(index) {
       this.tags.splice(index, 1);
