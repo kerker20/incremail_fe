@@ -252,9 +252,6 @@ export default {
         }, 1000);
         const email = document.getElementById("email-address");
         email.value = "";
-        // setTimeout(function () {
-        //   window.location.href = "http://localhost:3001/";
-        // }, 3000);
 
 
       } catch (error) {

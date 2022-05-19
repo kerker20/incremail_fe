@@ -492,7 +492,7 @@
                                 type="email"
                                 name="from_email"
                                 class="appearance-none rounded block px-2 py-3 w-60 bg-neutral-200 border border-gray-300 placeholder-gray-500 text-gray-900 focus:z-10 sm:text-sm"
-                                placeholder="Sender"
+                                placeholder="Your Email"
                                 required
                               />
                             </div>
@@ -721,11 +721,6 @@ export default {
       var htmlTitle = dataHTML.data.title;
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
-      // document.getElementById("loading").style.display = "block";
-      // document.getElementById("eye").style.display = "none";
-      //  setTimeout(function () {
-      //   document.getElementById("loading").style.display = "none";
-      // }, 5000);
       setTimeout(function () {
         window.location.href = "https://incremail-d8cdc.web.app/emailView";
       }, 100);
@@ -752,7 +747,6 @@ export default {
     },
     send(e) {
       e.preventDefault();
-
       if (this.title == null) {
         var ele = document.getElementById("noTemplateToast");
         document.getElementById("noTemplateToast").style.display = "block";
@@ -785,7 +779,9 @@ export default {
         setTimeout(function () {
           success.style.display = "none";
         }, 3000);
-        window.location.href = "https://incremail-d8cdc.web.app/campaigns";
+        setTimeout(function () {
+          window.location.href = "https://incremail-d8cdc.web.app/campaigns";
+        }, 3000);
       }
     },
     async sendCampaignThread(data) {
@@ -798,7 +794,6 @@ export default {
       if (!this.tagValue == "") this.tags.push(this.tagValue);
 
       this.tagValue = "";
-      // console.log(tags);
     },
     logout() {
       localStorage.clear();

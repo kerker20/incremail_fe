@@ -499,11 +499,6 @@ export default {
       var htmlTitle = dataHTML.data.title;
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
-      // document.getElementById("loading").style.display = "block";
-      // document.getElementById("eye").style.display = "none";
-      // setTimeout(function () {
-      //   document.getElementById("loading").style.display = "none";
-      // }, 5000);
       setTimeout(function () {
         window.location.href = "https://incremail-d8cdc.web.app/emailView";
       }, 4000);
@@ -528,7 +523,6 @@ export default {
 #cardC {
   background-size: contain;
   background-repeat: no-repeat;
-  /* background-image: -webkit-linear-gradient(45deg, #ffffff 50%, #cecece 50%); */
 }
 #date {
   font-size: 10px;

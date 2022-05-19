@@ -564,7 +564,6 @@ export default {
       console.log("editorLoaded");
     },
 
-    // called when the editor has finished loading
     editorReady() {
       console.log("editorReady");
     },
@@ -620,7 +619,6 @@ export default {
         this.send(html, des);
 
         document.getElementById("loading").style.display = "block";
-        // document.getElementById("eye").style.display = "none";
         setTimeout(function () {
           document.getElementById("loading").style.display = "none";
         }, 3000);
@@ -653,7 +651,6 @@ export default {
         ele.style.display = "none";
       }, 3000);
       document.getElementById("mail").style.display = "block";
-      // document.getElementById("eye").style.display = "none";
       setTimeout(function () {
         document.getElementById("mail").style.display = "none";
       }, 5000);

@@ -117,7 +117,7 @@
             </router-link>
             <router-link
               :to="'/example'"
-              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
+              class="flex w-full bg-white rounded-xl shadow-md border-4 border-gray-300 overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -464,7 +464,6 @@ export default {
       title: null,
       id: null,
       search: "",
-      // thumbnail: sample,
     };
   },
   methods: {
@@ -487,13 +486,6 @@ export default {
     check(data) {
       console.log(data);
     },
-    // showImage(){
-    //     axios.get('showImage/' + localStorage.getItem('userID'))
-    //     .then((res) =>{
-    //         this.images = res.data;
-    //         console.log(res.data);
-    //     })
-    // },
     setID: function (id) {
       localStorage.setItem("templateID", id);
     },
@@ -535,11 +527,6 @@ export default {
       var htmlTitle = dataHTML.data.title;
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
-      // document.getElementById("loading").style.display = "block";
-      // document.getElementById("eye").style.display = "none";
-      //  setTimeout(function () {
-      //   document.getElementById("loading").style.display = "none";
-      // }, 5000);
       setTimeout(function () {
         window.location.href = "https://incremail-d8cdc.web.app/emailView";
       }, 100);
@@ -550,9 +537,6 @@ export default {
       this.id = id;
     },
   },
-  // mounted() {
-  //     this.showImage()
-  // },
   computed: {
     data() {
       return this.$store.getters.data;

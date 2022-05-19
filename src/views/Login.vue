@@ -136,14 +136,7 @@
                   </span>
                   Sign in
                 </button>
-                <!-- <div class="flex align-center justify-center">
-                   <div
-                  class="g-signin2 mt-5"
-                  id="google-signin-button"
-                  data-onsuccess="onSignIn"
-                  data-theme="dark"
-                ></div>
-                </div> -->
+
               </div>
             </form>
           </div>
@@ -160,7 +153,6 @@
     </div>
   </div>
 </template>
-<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 <script>
 import axios from "axios";
 export default {
@@ -172,11 +164,6 @@ export default {
       error: "",
     };
   },
-  // mounted() {
-  //   gapi.signin2.render("google-signin-button", {
-  //     onsuccess: this.onSignIn,
-  //   });
-  // },
   methods: {
     async handleSubmit() {
       try {
@@ -206,29 +193,6 @@ export default {
       }
     },
 
-    // onSignIn(googleUser) {
-    //   // Useful data for your client-side scripts:
-    //   var profile = googleUser.getBasicProfile();
-    //   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    //   console.log("Full Name: " + profile.getName());
-    //   console.log("Given Name: " + profile.getGivenName());
-    //   console.log("Family Name: " + profile.getFamilyName());
-    //   console.log("Image URL: " + profile.getImageUrl());
-    //   console.log("Email: " + profile.getEmail());
-    //   localStorage.setItem("data", profile.getName());
-
-    //   // The ID token you need to pass to your backend:
-    //   var id_token = googleUser.getAuthResponse().id_token;
-    //   console.log("ID Token: " + id_token);
-    //   window.location.href = "http://localhost:3001/example";
-    // },
-
-    // signOut() {
-    //   var auth2 = gapi.auth2.getAuthInstance();
-    //   auth2.signOut().then(function () {
-    //     console.log("User signed out.");
-    //   });
-    // },
   },
 
 };

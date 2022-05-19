@@ -244,15 +244,6 @@
                 class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
               >
                 <div class="text-sm lg:flex-grow">
-                   <!-- <div class="toggle-button-cover absolute" id='mode'>
-                      <div class="button-cover">
-                        <div class="button r" id="button-4" @click="mode">
-                          <input type="checkbox" class="checkbox" />
-                          <div class="knobs" id="modeUp" :stats='stats'></div>
-                          <div class="layer"></div>
-                        </div>
-                      </div>
-                    </div> -->
                   <div
                     class="block mt-4 text-gray-50 lg:inline-block lg:mt-0 hover:text-white ml-56"
                   >
@@ -563,7 +554,6 @@ export default {
         theme:'light',
       },
       design_html: null,
-      // stats: false,
     };
   },
   methods: {
@@ -711,12 +701,6 @@ export default {
         reader.readAsDataURL(file);
       }
     },
-    // mode(){
-    //   var mode = document.querySelector("#modeUp").getAttribute('stats'); 
-    //   mode = !mode
-    //   this.stats = mode
-    //   console.log(mode);
-    // },
     exportHtmlZIP() {
       this.$refs.emailEditor.editor.exportHtml((data) => {
         const html = data.html;
