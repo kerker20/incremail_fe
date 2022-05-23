@@ -30,7 +30,7 @@
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <img
-          src="../../public/logo.png"
+          src="../../public/logobl.jpeg"
           alt="incremail logo"
           class="w-10 h-10"
         />
@@ -117,7 +117,7 @@
             </router-link>
             <router-link
               :to="'/example'"
-              class="flex w-full bg-white rounded-xl shadow-md border-4 border-gray-300 overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
+              class="flex w-full bg-white rounded-xl shadow-md overflow-hidden p-2 justify-between text-gray-800 hover:text-white hover:bg-gray-400 cursor-pointer items-center mb-4 transition duration-50 ease-in-out"
             >
               <div class="flex items-center">
                 <svg
@@ -274,7 +274,7 @@
               <div
                 class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
               >
-                <svg
+                <!-- <svg
                   class="w-5 h-5 text-gray-500 mb-5 dark:text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -285,9 +285,9 @@
                     d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                     clip-rule="evenodd"
                   ></path>
-                </svg>
+                </svg> -->
               </div>
-              <input
+              <!-- <input
                 type="text"
                 v-model="search"
                 id="simple-search"
@@ -295,8 +295,8 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search for Titles"
                 required
-              />
-              <p style="font-size: 12px;">Browse you template Archives</p>
+              /> -->
+              <p style="font-size: 14px;" class="mt-4">Browse your template Archives</p>
             </div>
           </form>
           <div
@@ -325,17 +325,19 @@
             >
           </div>
           <!-- Replace with your content -->
-          <div v-if="data.length == 0" @click="check(data.length)" class="-mt-12">
+          <div v-if="data.length == 0" class="-mt-12">
             <p class="mt-12 mb-3 subpixel-antialiased" style="font-size: 16px">
-              No Email Template Found.
+              <div v-if="data">
+                <p style="font-size: 15px;" class="mt-3 mb-3"></p>
+                 <img src="../assets/load.gif" class="w-96 h-54" alt="">
+              </div>
             </p>
-            <img src="../assets/nodata.png" class="w-96 h-54" alt="">
           </div>
           <div v-else>
              <div id="wrap" class="overflow-scroll -mt-10">
             <div
               class="flex justify-start card"
-              v-for="item in filterMail"
+              v-for="item in data"
               v-bind:key="item.id"
             >
               <div class="mt-16">
@@ -394,7 +396,7 @@
                           select(item.title, item.design_html, item.id);
                           htmlShow();
                         "
-                        src="../assets/blocks.gif"
+                        src="../assets/blocks.jpg"
                         alt=""
                       />
                     </div>
@@ -541,11 +543,11 @@ export default {
     data() {
       return this.$store.getters.data;
     },
-    filterMail() {
-      return this.data.filter((item) => {
-        return item.title.toLowerCase().match(this.search.toLowerCase());
-      });
-    },
+    // filterMail() {
+    //   return this.data.filter((item) => {
+    //     return item.title.toLowerCase().match(this.search.toLowerCase());
+    //   });
+    // },
   },
   created() {
     this.$store.dispatch("loadData", localStorage.getItem("userID"));

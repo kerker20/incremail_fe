@@ -31,6 +31,7 @@
     "vue": "^2.6.14",
     "vue-axios": "^3.4.1",
     "vue-email-editor": "^0.9.0",
+    "vue-fb-customer-chat": "^0.2.1",
     "vue-ityped": "^0.2.1",
     "vue-material-chips": "^0.0.4",
     "vue-moment": "^4.1.0",

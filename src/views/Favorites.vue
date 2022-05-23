@@ -28,7 +28,7 @@
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <img
-          src="../../public/logo.png"
+          src="../../public/logobl.jpeg"
           alt="incremail logo"
           class="w-10 h-10"
         />
@@ -361,7 +361,7 @@
                           select(item.title, item.design_html, item.id);
                           htmlShow();
                         "
-                        src="../assets/blocks.gif"
+                        src="../assets/blocks.jpg"
                         alt=""
                       />
                     </div>

@@ -10,7 +10,7 @@
         role="alert"
       >
         <div
-          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200"
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-gray-500 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200"
         >
           <svg
             class="w-5 h-5"
@@ -56,7 +56,7 @@
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <img
-          src="../../public/logo.png"
+          src="../../public/logobl.jpeg"
           alt="incremail logo"
           class="w-10 h-10"
         />
@@ -233,7 +233,7 @@
                 class="flex items-center flex-shrink-0 text-gray-800 mr-6"
               >
                 <img
-                  src="../../public/logo.png"
+                  src="../../public/logo.jpeg"
                   alt="incremail logo"
                   class="w-10 h-10"
                 />

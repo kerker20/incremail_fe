@@ -105,7 +105,7 @@
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <img
-          src="../../public/logo.png"
+          src="../../public/logobl.jpeg"
           alt="incremail logo"
           class="w-10 h-10"
         />
@@ -779,13 +779,13 @@ export default {
         setTimeout(function () {
           success.style.display = "none";
         }, 3000);
-        setTimeout(function () {
-          window.location.href = "https://incremail-d8cdc.web.app/campaigns";
-        }, 3000);
       }
     },
     async sendCampaignThread(data) {
       await axios.post("sendMail", data);
+       setTimeout(function () {
+          window.location.href = "https://incremail-d8cdc.web.app/campaigns";
+      }, 3000);
     },
     date(data) {
       return moment(data).format("MMMM-D-Y");

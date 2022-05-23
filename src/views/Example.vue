@@ -31,7 +31,7 @@
       </div>
       <div
         id="toast"
-        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-green-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
+        class="absolute right-0 top-0 m-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-gray-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden"
         role="alert"
       >
         <div
@@ -56,7 +56,7 @@
       </div>
       <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
         <img
-          src="../../public/logo.png"
+          src="../../public/logobl.jpeg"
           alt="incremail logo"
           class="w-10 h-10"
         />
@@ -231,7 +231,7 @@
             >
               <div class="flex items-center flex-shrink-0 text-gray-800 mr-6">
                 <img
-                  src="../../public/logo.png"
+                  src="../../public/logo.jpeg"
                   alt="incremail logo"
                   class="w-10 h-10"
                 />
@@ -539,7 +539,7 @@
 </template>
 <script>
 import { EmailEditor } from "../components";
-import sample from "../data/sample.json";
+import sample from "../data/increment.json";
 import axios from "axios";
 export default {
   name: "Example",

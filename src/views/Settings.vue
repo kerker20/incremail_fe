@@ -57,7 +57,7 @@
         >
       </div>
      <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 mt-2">
-        <img src="../../public/logo.png" alt="incremail logo" class="w-10 h-10">
+        <img src="../../public/logobl.jpeg" alt="incremail logo" class="w-10 h-10">
          &nbsp; &nbsp;
         <span class="font-semibold text-2xl text-white tracking-tight">IncreMail</span>
       </div>
