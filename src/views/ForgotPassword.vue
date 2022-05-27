@@ -231,7 +231,7 @@ export default {
   },
   methods: {
     back(){
-      window.location.href = "https://incremail-d8cdc.web.app/"
+      window.location.href = "http:/localhost:3001/"
     },
     async handleSubmit(e) {
       e.preventDefault();

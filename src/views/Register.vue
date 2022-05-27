@@ -406,7 +406,7 @@ export default {
           save.style.display = "none";
         }, 3000);
         setTimeout(function () {
-          window.location.href = "https://incremail-d8cdc.web.app/";
+          window.location.href = "http:/localhost:3001/";
         }, 1000);
     } catch (error) {
         var element = document.getElementById("loader");

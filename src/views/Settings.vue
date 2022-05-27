@@ -476,7 +476,7 @@ export default {
     },
      logout() {
       localStorage.clear();
-      window.location.href = "https://incremail-d8cdc.web.app/";
+      window.location.href = "http:/localhost:3001/";
     },
     sidebarHandler() {
       var sideBar = document.getElementById("mobile-nav");
@@ -507,7 +507,7 @@ export default {
         ele.style.display = "none";
       }, 3000);
       setTimeout(function () {
-        window.location.href = "https://incremail-d8cdc.web.app/";
+        window.location.href = "http:/localhost:3001/";
       }, 1000);
     },
   },
