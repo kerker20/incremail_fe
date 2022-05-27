@@ -580,7 +580,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http:/localhost:3001/";
+      window.location.href = "http://localhost:3001/";
     },
     editorLoaded() {
       console.log("editorLoaded");
@@ -661,7 +661,7 @@ export default {
         design_html: design,
       });
       setTimeout(function () {
-        window.location.href = "http:/localhost:3001/emailTemplates";
+        window.location.href = "http://localhost:3001/emailTemplates";
       }, 1000);
     },
     async sendTemplate(data) {

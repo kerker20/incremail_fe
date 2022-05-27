@@ -447,7 +447,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http:/localhost:3001/";
+      window.location.href = "http://localhost:3001/";
     },
     check(data) {
       console.log(data);
@@ -468,7 +468,7 @@ export default {
         }, 6000);
         setTimeout(function () {
           window.location.href =
-            "http:/localhost:3001/emailTemplates";
+            "http://localhost:3001/emailTemplates";
         }, 1000);
       }
     },
@@ -482,7 +482,7 @@ export default {
           ele.style.display = "none";
         }, 6000);
         setTimeout(function () {
-          window.location.href = "http:/localhost:3001/favorites";
+          window.location.href = "http://localhost:3001/favorites";
         }, 1000);
       }
     },
@@ -500,7 +500,7 @@ export default {
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
       setTimeout(function () {
-        window.location.href = "http:/localhost:3001/emailView";
+        window.location.href = "http://localhost:3001/emailView";
       }, 4000);
     },
   },

@@ -722,7 +722,7 @@ export default {
       localStorage.setItem("templateHTML", JSON.stringify(htmlTemplate));
       localStorage.setItem("templateTitle", htmlTitle);
       setTimeout(function () {
-        window.location.href = "http:/localhost:3001/emailView";
+        window.location.href = "http://localhost:3001/emailView";
       }, 100);
     },
     htmlShow() {
@@ -784,7 +784,7 @@ export default {
     async sendCampaignThread(data) {
       await axios.post("sendMail", data);
        setTimeout(function () {
-          window.location.href = "http:/localhost:3001/campaigns";
+          window.location.href = "http://localhost:3001/campaigns";
       }, 3000);
     },
     date(data) {
@@ -797,7 +797,7 @@ export default {
     },
     logout() {
       localStorage.clear();
-      window.location.href = "http:/localhost:3001/emailView/";
+      window.location.href = "http://localhost:3001/emailView/";
     },
     removeTag(index) {
       this.tags.splice(index, 1);
